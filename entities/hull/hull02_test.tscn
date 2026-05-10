@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://ex7446se7go6"]
+
+[ext_resource type="Script" uid="uid://c7ffgg58xal6b" path="res://scripts/component_hull.gd" id="1_t4ihf"]
+[ext_resource type="Script" uid="uid://be0ffafnlxhw3" path="res://scripts/component_mount.gd" id="2_fh1gg"]
+[ext_resource type="Texture2D" uid="uid://bfdm1yie2c8f" path="res://materials/Tanks/testtank01/hull_base_color.png" id="3_jf13t"]
+[ext_resource type="Texture2D" uid="uid://tgig1hs3a6hy" path="res://materials/Tanks/testtank01/hull_metallic.png" id="4_ie3w0"]
+[ext_resource type="Texture2D" uid="uid://b4h7uyxo23tc3" path="res://materials/Tanks/testtank01/hull_roughness.png" id="6_2je76"]
+[ext_resource type="ArrayMesh" uid="uid://bb6grih8ov1ny" path="res://meshes/Tanks/Test Tanks/tnk00_hulla.obj" id="7_h6r2p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rfb85"]
+points = PackedVector3Array(2.3249996, -2.3502762, 3.6994443, 2.3249996, -2.3502762, 3.4997783, 2.3218133, -1.2166346, 3.1758971, 2.3199928, -0.6014763, 3.5016189, 2.3199928, -0.6332773, 3.701285, 2.2999656, -1.0499974, 4.7999053, 2.2999656, -1.5501633, 4.699612, 2.2999656, -2.0500748, 4.399654, 1.3495739, -2.3947976, 4.2616363, 1.3495739, -2.450004, 4.0996957, 2.3218133, -1.2166346, 3.0157967, 1.3495739, -2.450004, 3.6994443, 1.2999606, -2.450004, -3.1591136, 2.2999656, -2.3502762, 2.7121577, 2.2999656, -1.0868865, -4.600018, 2.2999656, -0.9866499, -4.600018, 2.2999656, -0.8767456, -4.3405447, 2.2999656, -0.8487607, -4.1003942, 2.2248628, -0.020154238, -1.6307979, 2.2248628, -0.020154238, -0.92046714, 1.8143008, -5.6028366e-05, 1.3973098, 2.2999656, -0.8500328, 4.399654, 1.3996425, -0.050174236, 2.6514301, -2.300421, -1.0499974, 4.7999053, 1.3495739, -1.6476016, 4.7612605, 1.3495739, -1.8053344, 4.7456183, 1.3495739, -1.9569616, 4.699612, 1.3495739, -2.096886, 4.6250825, 1.3495739, -2.2195106, 4.52387, 1.3495739, -2.3200016, 4.4014945, -1.3500295, -2.3947976, 4.2616363, -1.3500295, -2.450004, 4.0996957, -1.3004161, -2.450004, -3.1591136, 1.2999606, -2.148785, -4.1003942, 1.0541697, -2.074498, -4.1500807, -2.3841858e-07, -2.0747523, -4.1500807, -2.300421, -1.0868865, -4.600018, -2.300421, -0.9866499, -4.600018, 1.8143008, -0.250139, -4.200687, 0.9995494, 0.14902711, -3.9255717, 0.9995494, 0.14902711, -3.450791, 1.0996866, 0.12409496, -1.701647, 0.80291677, 0.06914306, 2.313747, -2.300421, -0.8500328, 4.399654, -1.400098, -0.050174236, 2.6514301, -2.300421, -1.5501633, 4.699612, -1.3500295, -1.8053344, 4.7456183, -1.3500295, -1.6476016, 4.7612605, -2.3204484, -0.6332773, 3.701285, -2.325, -2.3502762, 3.6994443, -1.3500295, -1.9569616, 4.699612, -1.3500295, -2.096886, 4.6250825, -1.3500295, -2.2195106, 4.52387, -1.3500295, -2.3200016, 4.4014945, -2.300421, -2.0500748, 4.399654, -1.3500295, -2.450004, 3.6994443, -1.3004161, -2.148785, -4.1003942, -2.325, -2.3502762, 3.4997783, -2.300421, -2.3502762, 2.7121577, -1.0546253, -2.074498, -4.1500807, -2.300421, -0.8767456, -4.3405447, -1.8147564, -0.250139, -4.200687, -2.322269, -1.2166346, 3.0157967, -2.3204484, -0.6014763, 3.5016189, 0.9995494, 0.14114046, -3.943054, -1.000005, 0.14902711, -3.9255717, -1.000005, 0.14902711, -3.450791, -0.80337226, 0.06914306, 2.313747, -1.8147564, -5.6028366e-05, 1.3973098, -2.322269, -1.2166346, 3.1758971, -2.300421, -0.8487607, -4.1003942, -1.8147564, -0.22291732, -3.9393735, -1.000005, 0.14114046, -3.943054, -2.2380629, -0.4875015, 2.673513, -2.281759, -0.55720925, 1.283215, -2.281759, -0.6080909, -0.004029751, -2.281759, -0.6597357, -1.2894342, -1.8143013, -5.6028366e-05, -1.4007685, -1.100142, 0.12409496, -1.701647)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aa6hk"]
+albedo_texture = ExtResource("3_jf13t")
+metallic_texture = ExtResource("4_ie3w0")
+roughness_texture = ExtResource("6_2je76")
+normal_enabled = true
+texture_filter = 0
+
+[node name="Hull" type="Node3D" unique_id=609745220]
+script = ExtResource("1_t4ihf")
+weight = 15000
+metadata/_custom_type_script = "uid://c7ffgg58xal6b"
+
+[node name="Mount_Turret" type="Node3D" parent="." unique_id=795821904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5997915, 0)
+script = ExtResource("2_fh1gg")
+accepts = "Turret"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Left_Suspension" type="Node3D" parent="." unique_id=1967003123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.90000004, 0.100000024, 0)
+script = ExtResource("2_fh1gg")
+accepts = "Suspension"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Right_Suspension" type="Node3D" parent="." unique_id=1026526655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90000004, 0.100000024, 0)
+script = ExtResource("2_fh1gg")
+accepts = "Suspension"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Hull_MG" type="Node3D" parent="." unique_id=184260221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58574516, 0.43973607, -1.33964)
+script = ExtResource("2_fh1gg")
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Engine" type="Node3D" parent="." unique_id=1686349903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1)
+script = ExtResource("2_fh1gg")
+accepts = "Engine"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Transmission" type="Node3D" parent="." unique_id=917368755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28826925, -1.4000001)
+script = ExtResource("2_fh1gg")
+accepts = "Transmission"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1395103482]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0.6, 0)
+shape = SubResource("ConvexPolygonShape3D_rfb85")
+
+[node name="Tnk00Hulla" type="MeshInstance3D" parent="." unique_id=2121729127]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 0, 0.12923223, -0.09670091)
+mesh = ExtResource("7_h6r2p")
+surface_material_override/0 = SubResource("StandardMaterial3D_aa6hk")

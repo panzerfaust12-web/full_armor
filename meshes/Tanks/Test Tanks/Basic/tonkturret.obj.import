@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cnni6s8lw8kuj"
+path="res://.godot/imported/tonkturret.obj-39f4dcd0ec3ab999447b2ec234f3b147.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tonkturret.obj-39f4dcd0ec3ab999447b2ec234f3b147.mesh"]
+
+source_file="res://meshes/Tanks/Test Tanks/Basic/tonkturret.obj"
+dest_files=["res://.godot/imported/tonkturret.obj-39f4dcd0ec3ab999447b2ec234f3b147.mesh", "res://.godot/imported/tonkturret.obj-39f4dcd0ec3ab999447b2ec234f3b147.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

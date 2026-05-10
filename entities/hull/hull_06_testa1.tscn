@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://dxrgjt7rqrgu5"]
+
+[ext_resource type="Script" uid="uid://c7ffgg58xal6b" path="res://scripts/component_hull.gd" id="1_lioe1"]
+[ext_resource type="Script" uid="uid://be0ffafnlxhw3" path="res://scripts/component_mount.gd" id="2_kyn74"]
+[ext_resource type="Material" uid="uid://bicss3jsjuwh7" path="res://materials/PolyHaven/green_metal_rust.res" id="3_djlm4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lioe1"]
+points = PackedVector3Array(0.375, 0.3, 0.5, 0.375, -0.3, 0.5, 0.375, 0.3, -0.5, -0.375, 0.3, 0.5, -0.375, -0.3, 0.5, 0.375, -0.3, -0.5, -0.375, 0.3, -0.5, -0.375, -0.3, -0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kyn74"]
+points = PackedVector3Array(0.65, 0.1, 1.25, 0.65, -0.1, 1.25, 0.65, 0.1, -1.25, -0.65, 0.1, 1.25, -0.65, -0.1, 1.25, 0.65, -0.1, -1.25, -0.65, 0.1, -1.25, -0.65, -0.1, -1.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p7pfy"]
+size = Vector3(0.75, 0.6, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nftdl"]
+size = Vector3(1.3, 0.2, 2.5)
+
+[node name="Hull" type="Node3D" unique_id=609745220]
+script = ExtResource("1_lioe1")
+weight = 15000
+long_name = "Shitbox Alpha4.3"
+short_name = "SA43"
+description = "issa truck!"
+metadata/_custom_type_script = "uid://c7ffgg58xal6b"
+
+[node name="Mount_Turret" type="Node3D" parent="." unique_id=1766486986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14943832, 0.8)
+script = ExtResource("2_kyn74")
+accepts = "Turret"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Left_Suspension" type="Node3D" parent="." unique_id=790569139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70000005, 0.100000024, 0.7)
+script = ExtResource("2_kyn74")
+accepts = "Suspension"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Right_Suspension" type="Node3D" parent="." unique_id=1426415415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70000005, 0.100000024, 0.7)
+script = ExtResource("2_kyn74")
+accepts = "Suspension"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Engine" type="Node3D" parent="." unique_id=1074024164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21829903, -0.80821055)
+script = ExtResource("2_kyn74")
+accepts = "Engine"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Transmission" type="Node3D" parent="." unique_id=1759677841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1459538, -1.2100881)
+script = ExtResource("2_kyn74")
+accepts = "Transmission"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Wheel" type="Node3D" parent="." unique_id=219309532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, -1)
+script = ExtResource("2_kyn74")
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Wheel2" type="Node3D" parent="." unique_id=1796194362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, -1)
+script = ExtResource("2_kyn74")
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="MockTank" type="Node3D" parent="." unique_id=991510056]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MockTank" unique_id=1011242858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -1)
+shape = SubResource("ConvexPolygonShape3D_lioe1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MockTank" unique_id=1635034244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07499999, 0.7238)
+shape = SubResource("ConvexPolygonShape3D_kyn74")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MockTank" unique_id=243616122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -1)
+mesh = SubResource("BoxMesh_p7pfy")
+surface_material_override/0 = ExtResource("3_djlm4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MockTank" unique_id=2023378787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07499999, 0.7238)
+mesh = SubResource("BoxMesh_nftdl")
+surface_material_override/0 = ExtResource("3_djlm4")

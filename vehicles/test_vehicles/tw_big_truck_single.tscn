@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://bf5nox2iyr7ax"]
+
+[ext_resource type="Script" uid="uid://b1gwwakd2mit2" path="res://phys_wheel.gd" id="1_0y5qs"]
+[ext_resource type="ArrayMesh" uid="uid://dbpsa05rgt83f" path="res://meshes/Vehicles/Test Vehicles/test_truck_tire2.obj" id="2_0y5qs"]
+[ext_resource type="Texture2D" uid="uid://lfhx82tk8kwt" path="res://meshes/Vehicles/Test Vehicles/Tire1.png" id="3_jluog"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7be3d"]
+resource_local_to_scene = true
+height = 0.35
+radius = 0.525
+
+[sub_resource type="Curve" id="Curve_7be3d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_gceed"]
+_data = [Vector2(0, 0), 0.0, 3.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.75), -2.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vap6x"]
+albedo_texture = ExtResource("3_jluog")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_d0of0"]
+size = Vector3(0.1, 0.5, 0.1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ojqkp"]
+height = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bkm2n"]
+size = Vector3(0.5, 0.25, 1)
+
+[node name="Phys_Wheel" type="ShapeCast3D" unique_id=437283786]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_7be3d")
+target_position = Vector3(-0.25, 0, 0)
+max_results = 1
+debug_shape_custom_color = Color(0.5272715, 0.27082932, 1, 1)
+script = ExtResource("1_0y5qs")
+wheel_radius = 0.525
+wheel_thickness = 0.35
+traction_slip_ratio = SubResource("Curve_7be3d")
+traction_side_angle = SubResource("Curve_gceed")
+spring_length = 0.1
+spring_dampening = 20.0
+metadata/_custom_type_script = "uid://b1gwwakd2mit2"
+
+[node name="Turning_Origin" type="Node3D" parent="." unique_id=688910775]
+
+[node name="Wheel" type="MeshInstance3D" parent="Turning_Origin" unique_id=2106164813]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("2_0y5qs")
+surface_material_override/0 = SubResource("StandardMaterial3D_vap6x")
+
+[node name="Origin" type="MeshInstance3D" parent="." unique_id=861075619]
+visible = false
+mesh = SubResource("BoxMesh_d0of0")
+
+[node name="Col_Zero" type="CollisionShape3D" parent="." unique_id=1458536353]
+shape = SubResource("CylinderShape3D_ojqkp")
+
+[node name="Col_Illegal" type="CollisionShape3D" parent="." unique_id=663430051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26, 0, 0)
+shape = SubResource("BoxShape3D_bkm2n")
+disabled = true

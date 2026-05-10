@@ -1,0 +1,260 @@
+[gd_scene load_steps=20 format=3 uid="uid://jyeaw5jd77vm"]
+
+[ext_resource type="Script" uid="uid://dut0ecv2gbbx6" path="res://scripts/component_suspension.gd" id="1_71j04"]
+[ext_resource type="Script" uid="uid://ckn7gnojy400x" path="res://scripts/subcomp_suspension_wheel.gd" id="2_b26e1"]
+[ext_resource type="ArrayMesh" uid="uid://da8volygyijul" path="res://meshes/Tanks/Test Tanks/tnk00_sprocket.obj" id="4_ic5m5"]
+[ext_resource type="ArrayMesh" uid="uid://dm08xwifmsmyd" path="res://meshes/Tanks/Test Tanks/tnk00_idler.obj" id="5_wmb7f"]
+[ext_resource type="ArrayMesh" uid="uid://d00ehtfbauxpu" path="res://meshes/Tanks/Test Tanks/tnk00_roadwheel.obj" id="6_gqy38"]
+[ext_resource type="AudioStream" uid="uid://bw384mhgm7vfa" path="res://sound/smartsound_TRANSPORTATION_TANK_Small_Tracks_Rattle_Slow_01.mp3" id="6_i5coy"]
+[ext_resource type="Curve3D" uid="uid://doxmhtu6nt655" path="res://testcurve.tres" id="7_gqy38"]
+[ext_resource type="ArrayMesh" uid="uid://cxo88hevax5dv" path="res://meshes/Tanks/Test Tanks/tnk00_track.obj" id="9_b26e1"]
+[ext_resource type="Material" uid="uid://y3sp85mjm8tt" path="res://entities/suspension/t49tex.tres" id="9_y5olt"]
+[ext_resource type="Material" uid="uid://dek6mlwxm0g4l" path="res://red.tres" id="10_gpqq5"]
+[ext_resource type="Material" uid="uid://bpnp4wrq6wa0q" path="res://entities/hull/green.tres" id="11_tnp22"]
+
+[sub_resource type="Curve" id="Curve_8bggg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 0.75), 0.0, 0.0, 0, 0, Vector2(0.9638553, 0.20136523), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8bggg"]
+radius = 0.05
+height = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4hc05"]
+height = 0.25
+radius = 0.325
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0b673"]
+albedo_color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8bggg"]
+margin = 0.0
+height = 0.25
+radius = 0.288
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ua3tk"]
+height = 0.25
+radius = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_u6git"]
+size = Vector3(0.01, 0.2, 0.005)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rewv8"]
+size = Vector3(0.01, 0.01, 0.01)
+
+[node name="Suspension" type="Node3D" unique_id=492383474]
+script = ExtResource("1_71j04")
+weight = 5000.0
+grip_curve = SubResource("Curve_8bggg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=999592977]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.65, -0.060195327)
+shape = SubResource("CapsuleShape3D_8bggg")
+
+[node name="SuspensionWheels" type="Node3D" parent="." unique_id=1160662533]
+
+[node name="Sprocket" type="ShapeCast3D" parent="SuspensionWheels" unique_id=1637602679]
+process_physics_priority = -1
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.35196704, -2.1099098)
+shape = SubResource("CylinderShape3D_4hc05")
+target_position = Vector3(-0.01, 0, 0)
+max_results = 3
+script = ExtResource("2_b26e1")
+spring_max_force = 50000.0
+spring_stiffness = 50000.0
+spring_damping = 0.0
+spring_length = 0.01
+wheel_radius = 0.288
+is_suspension = false
+metadata/_custom_type_script = "uid://ckn7gnojy400x"
+
+[node name="Wheel" type="MeshInstance3D" parent="SuspensionWheels/Sprocket" unique_id=1876962506]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("4_ic5m5")
+skeleton = NodePath("../../HullShapeMainWeight")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b673")
+metadata/_edit_lock_ = true
+
+[node name="Idler" type="ShapeCast3D" parent="SuspensionWheels" unique_id=783053622]
+process_physics_priority = -1
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.43974796, 2.0160801)
+shape = SubResource("CylinderShape3D_4hc05")
+target_position = Vector3(-0.01, 0, 0)
+max_results = 3
+script = ExtResource("2_b26e1")
+spring_max_force = 50000.0
+spring_stiffness = 50000.0
+spring_damping = 0.0
+spring_length = 0.01
+wheel_radius = 0.288
+is_suspension = false
+metadata/_custom_type_script = "uid://ckn7gnojy400x"
+
+[node name="Wheel" type="MeshInstance3D" parent="SuspensionWheels/Idler" unique_id=1361386170]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("5_wmb7f")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b673")
+metadata/_edit_lock_ = true
+
+[node name="Wheel" type="ShapeCast3D" parent="SuspensionWheels" unique_id=1189872155]
+process_physics_priority = -1
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.40000004, 1.4000003)
+shape = SubResource("CylinderShape3D_8bggg")
+target_position = Vector3(-0.326, 0, 0)
+max_results = 3
+script = ExtResource("2_b26e1")
+spring_max_force = 100000.0
+spring_stiffness = 70000.0
+spring_damping = 20000.0
+spring_length = 0.038
+wheel_radius = 0.288
+
+[node name="Wheel" type="MeshInstance3D" parent="SuspensionWheels/Wheel" unique_id=248868312]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("6_gqy38")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b673")
+metadata/_edit_lock_ = true
+
+[node name="Wheel2" type="ShapeCast3D" parent="SuspensionWheels" unique_id=2145870801]
+process_physics_priority = -1
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.40000004, 0.70000005)
+shape = SubResource("CylinderShape3D_8bggg")
+target_position = Vector3(-0.326, 0, 0)
+max_results = 3
+script = ExtResource("2_b26e1")
+spring_max_force = 100000.0
+spring_stiffness = 70000.0
+spring_damping = 20000.0
+spring_length = 0.038
+wheel_radius = 0.288
+
+[node name="Wheel" type="MeshInstance3D" parent="SuspensionWheels/Wheel2" unique_id=1223298697]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("6_gqy38")
+skeleton = NodePath("../../HullShapeMainWeight")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b673")
+
+[node name="Wheel3" type="ShapeCast3D" parent="SuspensionWheels" unique_id=51592257]
+process_physics_priority = -1
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.40000004, 2.9802322e-08)
+shape = SubResource("CylinderShape3D_8bggg")
+target_position = Vector3(-0.326, 0, 0)
+max_results = 3
+script = ExtResource("2_b26e1")
+spring_max_force = 100000.0
+spring_stiffness = 70000.0
+spring_damping = 20000.0
+spring_length = 0.038
+wheel_radius = 0.288
+
+[node name="Wheel" type="MeshInstance3D" parent="SuspensionWheels/Wheel3" unique_id=1766725369]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("6_gqy38")
+skeleton = NodePath("../../HullShapeMainWeight")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b673")
+metadata/_edit_lock_ = true
+
+[node name="Wheel4" type="ShapeCast3D" parent="SuspensionWheels" unique_id=493986106]
+process_physics_priority = -1
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.40000004, -0.70000005)
+shape = SubResource("CylinderShape3D_8bggg")
+target_position = Vector3(-0.326, 0, 0)
+max_results = 3
+script = ExtResource("2_b26e1")
+spring_max_force = 100000.0
+spring_stiffness = 70000.0
+spring_damping = 20000.0
+spring_length = 0.038
+wheel_radius = 0.288
+
+[node name="Wheel" type="MeshInstance3D" parent="SuspensionWheels/Wheel4" unique_id=942531683]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("6_gqy38")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b673")
+metadata/_edit_lock_ = true
+
+[node name="Wheel5" type="ShapeCast3D" parent="SuspensionWheels" unique_id=755330857]
+process_physics_priority = -1
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.40000004, -1.4000001)
+shape = SubResource("CylinderShape3D_8bggg")
+target_position = Vector3(-0.326, 0, 0)
+max_results = 3
+script = ExtResource("2_b26e1")
+spring_max_force = 100000.0
+spring_stiffness = 70000.0
+spring_damping = 20000.0
+spring_length = 0.038
+wheel_radius = 0.288
+
+[node name="Wheel" type="MeshInstance3D" parent="SuspensionWheels/Wheel5" unique_id=1587631082]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("6_gqy38")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0b673")
+metadata/_edit_lock_ = true
+
+[node name="FakeWheel" type="ShapeCast3D" parent="SuspensionWheels" unique_id=1907799970]
+process_physics_priority = -1
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.3, 1.8)
+shape = SubResource("CylinderShape3D_ua3tk")
+target_position = Vector3(-0.325, 0, 0)
+max_results = 3
+script = ExtResource("2_b26e1")
+spring_max_force = 200000.0
+spring_stiffness = 100000.0
+spring_damping = 0.0
+spring_length = 0.075
+wheel_visible = false
+
+[node name="FakeWheel2" type="ShapeCast3D" parent="SuspensionWheels" unique_id=721796863]
+process_physics_priority = -1
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.3, -1.9)
+shape = SubResource("CylinderShape3D_ua3tk")
+target_position = Vector3(-0.325, 0, 0)
+max_results = 3
+script = ExtResource("2_b26e1")
+spring_max_force = 200000.0
+spring_stiffness = 100000.0
+spring_damping = 0.0
+spring_length = 0.075
+wheel_visible = false
+
+[node name="Moving" type="AudioStreamPlayer3D" parent="." unique_id=400558935]
+stream = ExtResource("6_i5coy")
+
+[node name="Path" type="Path3D" parent="." unique_id=539342104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06715727, 0)
+curve = ExtResource("7_gqy38")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path" unique_id=289795467]
+transform = Transform3D(0.9998257, 0, 0, 0, 0.99977547, 0.00067761843, 0, -0.0006775823, 0.99982876, 0, -1.0380763, -0.0066623986)
+rotation_order = 1
+cubic_interp = false
+
+[node name="TrackMesh" type="MeshInstance3D" parent="Path/PathFollow3D" unique_id=1302545921]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.052529573, 0)
+mesh = ExtResource("9_b26e1")
+surface_material_override/0 = ExtResource("9_y5olt")
+
+[node name="TrackMesh2" type="MeshInstance3D" parent="Path/PathFollow3D" unique_id=1036962997]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.742278e-08, -0.9999998, 0, 0, 0, 0.9999998, 0, -0.00027517832, 5.932282e-05)
+mesh = SubResource("BoxMesh_u6git")
+surface_material_override/0 = ExtResource("10_gpqq5")
+
+[node name="TrackMesh3" type="MeshInstance3D" parent="Path/PathFollow3D" unique_id=319072292]
+transform = Transform3D(-1, 8.742279e-08, 0, -3.284056e-15, 4.3711378e-08, 0.9999997, 8.742276e-08, 0.9999997, -4.3711378e-08, 0, -0.0002751783, 5.9322818e-05)
+mesh = SubResource("BoxMesh_u6git")
+surface_material_override/0 = ExtResource("10_gpqq5")
+
+[node name="TrackMesh4" type="MeshInstance3D" parent="Path/PathFollow3D" unique_id=1093633047]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.742277e-08, -0.99999976, 0, 0, 0, 0.99999976, 0, 0.05343372, 0.050649643)
+visible = false
+mesh = SubResource("BoxMesh_rewv8")
+surface_material_override/0 = ExtResource("11_tnp22")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=1490173924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6879028, 0)
+aabb = AABB(-0.2, -0.66241556, -2.6001198, 0.4, 1.3248311, 5.2002397)

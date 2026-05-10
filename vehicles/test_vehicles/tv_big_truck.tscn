@@ -1,0 +1,364 @@
+[gd_scene format=3 uid="uid://bwu2wli3s5k3k"]
+
+[ext_resource type="Script" uid="uid://drkitqcu7lbtv" path="res://vehicles/test_vehicles/quick_wheel_fix.gd" id="1_m0vfn"]
+[ext_resource type="Script" uid="uid://cha3alvwjjtqp" path="res://phys_obj.gd" id="1_o2dvw"]
+[ext_resource type="ArrayMesh" uid="uid://c3olmqxail2to" path="res://meshes/Vehicles/Test Vehicles/test_truck_cab.obj" id="2_7j57h"]
+[ext_resource type="Texture2D" uid="uid://bm5bo4kw5sn24" path="res://meshes/Vehicles/Test Vehicles/CabTexture.png" id="3_1fled"]
+[ext_resource type="Script" uid="uid://ddktfs6nkvlbi" path="res://scripts/player_controller.gd" id="5_m0vfn"]
+[ext_resource type="Texture2D" uid="uid://dc78ykto1dcta" path="res://hud/hud.png" id="6_63qyp"]
+[ext_resource type="Texture2D" uid="uid://dvb4vsiiy768l" path="res://hud/Ptkct.png" id="7_i3rg2"]
+[ext_resource type="PackedScene" uid="uid://dju2aoxj60xjk" path="res://PauseMenu.tscn" id="8_b2jjl"]
+[ext_resource type="ArrayMesh" uid="uid://pkyyigx1fbgg" path="res://meshes/Vehicles/Test Vehicles/test_truck_trailer.obj" id="8_tpju1"]
+[ext_resource type="Texture2D" uid="uid://bks5wx5vb2a8f" path="res://meshes/Vehicles/Test Vehicles/Trailer.png" id="9_m0vfn"]
+[ext_resource type="PackedScene" uid="uid://bf5nox2iyr7ax" path="res://vehicles/test_vehicles/tw_big_truck_single.tscn" id="10_tpju1"]
+[ext_resource type="PackedScene" uid="uid://be6iu0nr07piu" path="res://vehicles/test_vehicles/tw_big_truck_double.tscn" id="11_m0vfn"]
+[ext_resource type="PackedScene" uid="uid://0csqw8r6gbv4" path="res://phys_thruster.tscn" id="13_63qyp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63qyp"]
+albedo_texture = ExtResource("3_1fled")
+metallic_specular = 0.0
+texture_filter = 0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i3rg2"]
+points = PackedVector3Array(1.100047, 0.1658751, 0.610353, 1.0998317, 0.0035147518, 0.610353, 1.0406083, 0.0009521395, -3.0298824, 1.0998317, 0.50340885, 1.3099442, 1.0998317, 0.58504665, 1.7104049, 1.0998317, 0.4959041, 2.1101713, 1.0998317, 0.3372046, 2.471766, 1.0998317, 0.22353408, 2.5099378, 1.0998317, 0.20376527, 2.510632, 1.0998317, -0.096427456, 2.5113258, 1.0998317, -0.096427456, 2.473154, 1.0201494, -0.03089758, -3.709347, 1.0070125, 0.15251285, -3.7419667, 1.0255333, 0.22994062, -3.0298824, 1.0022746, 0.35715646, -3.0298824, 0.975355, 0.44593292, -3.0298824, 1.0539604, 0.70146286, 1.7104049, 1.0539604, 0.61232024, 2.1101713, 1.0539604, 0.51988286, 2.3100548, 0.9620029, 0.57186747, 2.5161843, 0.9146241, 0.17704082, 2.868062, 0.9146241, 0.030239224, 2.868062, 0.9146241, -0.043344595, 2.7403588, 1.0539604, -0.096427456, 2.51202, 0.59977114, -0.127545, -1.8500161, 0.7948853, -0.1258976, -1.8687551, 0.808022, -0.12553151, -1.8569565, 0.808022, -0.12553151, -4.2021146, 0.96824825, -0.10429837, -4.1223, 0.96049535, 0.07398683, -4.117442, 0.9775084, 0.31597146, -3.7378025, 0.94477427, 0.43165547, -3.6899137, 0.662871, 1.4717135, -0.4286239, 0.66803956, 1.4876384, 0.6506071, 0.9238845, 0.62879425, 2.5161843, 0.54937744, 0.90281165, 2.5043855, 0.44837475, 0.9007982, 2.5474162, 0.36804628, 0.9007982, 2.5488043, 0.00064611435, 0.9007982, 2.549498, -0.9148394, 0.17704082, 2.868062, -0.9148394, 0.030239224, 2.868062, -0.9148394, -0.043344595, 2.7403588, -1.0541759, -0.096427456, 2.51202, -0.60020185, -0.127545, -1.8500161, 0.59977114, -0.127545, -4.209055, 0.7948853, -0.1258976, -4.19101, 0.59977114, -0.12736195, -4.222242, 0.59998655, 0.03335099, -4.2159953, 0.805007, 0.03536448, -4.1958685, 0.9312066, 0.26837993, -4.0764937, 0.79337776, 0.2013857, -4.155614, 0.8889965, 0.41408324, -4.0223584, 0.90967095, 0.4966362, -3.6177337, 0.7050811, 1.2028214, -1.5862811, 0.3934585, 1.6311451, -0.35644364, 0.62712157, 1.5044785, -0.35227942, 0.39604282, 1.7395074, 0.5027766, 0.36395454, 0.94802356, 2.5064678, -0.00021529198, 0.9873781, 2.5071616, -0.36826158, 0.9007982, 2.5488043, -0.44859004, 0.9007982, 2.5474162, -0.5495928, 0.90281165, 2.5043855, -0.9240998, 0.62879425, 2.5161843, -0.96221805, 0.57186747, 2.5161843, -1.100047, 0.3372046, 2.471766, -1.100047, 0.22353408, 2.5099378, -1.100047, 0.20376527, 2.510632, -1.100047, -0.096427456, 2.5113258, -0.7955313, -0.1258976, -1.8687551, -0.60020185, -0.127545, -4.209055, -0.60020185, -0.12736195, -4.222242, -0.60020185, 0.03335099, -4.2159953, 0.59998655, 0.18527779, -4.1778235, 0.59998655, 0.35129902, -4.1063375, 0.76753485, 0.36740693, -4.085516, 0.839895, 0.48400617, -3.9987612, -0.00021529198, 1.6335247, -0.3536675, -0.00021529198, 1.742436, 0.5076351, 0.7416918, 0.4970023, -4.0216646, 0.48175514, 1.2516942, -1.5883632, -0.36416978, 0.94802356, 2.5064678, -0.39647347, 1.7395074, 0.5027766, -1.0541759, 0.61232024, 2.1101713, -0.66825485, 1.4876384, 0.6506071, -1.0541759, 0.51988286, 2.3100548, -1.100047, 0.4959041, 2.1101713, -1.100047, -0.096427456, 2.473154, -0.8084527, -0.12553151, -1.8569565, -0.7955313, -0.1258976, -4.190316, -0.8084527, -0.12553151, -4.2021146, -0.80522233, 0.03536448, -4.1958685, -0.79337764, 0.2013857, -4.155614, -0.60020185, 0.18527779, -4.1778235, 0.16927111, 0.30389053, -4.1278524, -0.60020185, 0.35129902, -4.1063375, 0.59998655, 0.495538, -4.033463, -0.48197043, 1.2516942, -1.5883632, -0.39367378, 1.6311451, -0.35644364, -0.62733686, 1.5044785, -0.35227942, -0.6633016, 1.4717135, -0.4286239, -1.0541759, 0.70146286, 1.7104049, -1.100047, 0.58504665, 1.7104049, -1.100047, 0.0035147518, 0.610353, -1.0408236, 0.0009521395, -3.0298824, -1.0203646, -0.03089758, -3.709347, -0.96867883, -0.10429837, -4.1223, -0.9607106, 0.07380378, -4.117442, -0.9316373, 0.26837993, -4.0771875, -0.7677501, 0.36740693, -4.085516, -0.16948646, 0.30389053, -4.1278524, -0.60020185, 0.495538, -4.033463, -0.7419072, 0.4970023, -4.0216646, -0.8401103, 0.48400617, -3.9987612, -0.7052964, 1.2028214, -1.5862811, -0.94520485, 0.43165547, -3.6899137, -0.97557026, 0.44593292, -3.0298824, -1.0027053, 0.35715646, -3.0298824, -1.0257486, 0.22994062, -3.0298824, -1.100047, 0.50340885, 1.3099442, -1.100047, 0.1658751, 0.610353, -1.0072278, 0.15251285, -3.7419667, -0.88921183, 0.41408324, -4.0223584, -0.97772384, 0.31597146, -3.7378025, -0.9098862, 0.49681926, -3.6177337)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_63qyp"]
+resource_local_to_scene = true
+height = 0.35
+radius = 0.525
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i3rg2"]
+resource_local_to_scene = true
+height = 0.35
+radius = 0.525
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b2jjl"]
+resource_local_to_scene = true
+height = 0.5
+radius = 0.525
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8gso3"]
+resource_local_to_scene = true
+height = 0.5
+radius = 0.525
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_px575"]
+resource_local_to_scene = true
+height = 0.5
+radius = 0.525
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3cood"]
+resource_local_to_scene = true
+height = 0.5
+radius = 0.525
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_c2vgk"]
+resource_local_to_scene = true
+height = 0.5
+radius = 0.525
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wv0bp"]
+resource_local_to_scene = true
+height = 0.5
+radius = 0.525
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qn874"]
+resource_local_to_scene = true
+height = 0.5
+radius = 0.525
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k7ra4"]
+resource_local_to_scene = true
+height = 0.5
+radius = 0.525
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2jjl"]
+albedo_texture = ExtResource("9_m0vfn")
+metallic_specular = 0.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_63qyp"]
+points = PackedVector3Array(1.15, 1.7254739, 3.4160237, 1.1232086, 1.8250833, 3.4151034, 1.1015955, 1.8248932, 3.635079, 1.1277114, 1.7254739, 3.6406007, 1.15, 0.81739306, 3.4160237, 1.15, 1.7403013, 2.2544808, 1.0504893, 1.8978894, 3.4114213, 1.0297767, 1.8978894, 3.6212726, 1.1232086, 1.8397206, 2.2544808, 1.0504893, 1.9125267, 2.2554011, 1.0376567, 1.8248932, 3.8458495, 1.0624217, 1.7254739, 3.8559747, 1.1277114, 0.81739306, 3.6406007, 1.15, -0.002674, 1.7547045, 1.15, 1.7254739, -3.686692, 1.1232086, 1.8250833, -3.6848512, 0.9509789, 1.9245026, 3.4068198, 0.9509789, 1.93933, 2.2554011, 0.9316169, 1.9245026, 3.6019444, 0.96989024, 1.8978894, 3.8182378, 1.0504893, 1.8978894, -3.6811695, 0.9338683, 1.8248932, 4.040054, 1.0624217, 0.81739306, 3.8559747, 0.95615685, 1.7254739, 4.0547805, -1.15, -0.002674, 1.7547045, 1.15, -0.002674, -3.5550752, 0.95615685, 0.81739306, 4.0547805, 0.8129698, 0.81739306, 4.2287354, 0.6387137, 0.81739306, 4.372318, 0.43991768, 0.81739306, 4.4781632, 0.22423649, 0.81739306, 4.543512, -0.00022518635, 0.81739306, 4.565602, 1.15, 0.7957223, -3.686692, 1.1277114, 1.7254739, -3.9112692, 1.1015955, 1.8248932, -3.905747, 1.0297767, 1.8978894, -3.8910205, -0.95120394, 1.93933, 2.2554011, -0.00022518635, 1.9245026, 4.366795, 0.18528771, 1.9245026, 4.3483872, 0.36337113, 1.9245026, 4.294084, 0.52772117, 1.9245026, 4.2066464, 0.6715838, 1.9245026, 4.087915, 0.78978074, 1.9245026, 3.9443326, 0.8775841, 1.9245026, 3.7795815, 0.9509789, 1.9245026, -3.6765676, 0.9316169, 1.9245026, -3.8716922, 0.8775841, 1.9245026, -4.0502496, 0.78978074, 1.9245026, -4.2140803, 0.6715838, 1.9245026, -4.3576627, 0.52772117, 1.9245026, -4.476394, 0.36337113, 1.9245026, -4.563832, 0.18528771, 1.9245026, -4.6181355, -0.00022518635, 1.9245026, -4.6365433, 0.87285626, 1.8978894, 3.999556, 0.7422768, 1.8978894, 4.1587853, 0.7940583, 1.8248932, 4.2103276, 0.8129698, 1.7254739, 4.2287354, -1.15, -0.002674, -3.5550752, -0.22446162, 0.81739306, 4.543512, -0.44014293, 0.81739306, 4.4781632, -0.6389389, 0.81739306, 4.372318, -0.813195, 0.81739306, 4.2287354, -0.95638216, 0.81739306, 4.0547805, -1.0626469, 0.81739306, 3.8559747, -1.1279366, 0.81739306, 3.6406007, -1.15, 0.81739306, 3.4160237, 1.1277114, -0.002674, -3.9094286, 0.6387137, 1.7254739, 4.372318, 0.43991768, 1.7254739, 4.4781632, 0.22423649, 1.7254739, 4.543512, -0.00022518635, 1.7254739, 4.566522, 1.1277114, 0.39557368, -3.910349, 1.1277114, 0.81511194, -3.9112692, 1.0624217, 1.7254739, -4.1266427, 1.0376567, 1.8248932, -4.116518, 0.96989024, 1.8978894, -4.087986, -1.0507145, 1.9125267, 2.2554011, -1.0507145, 1.8978894, 3.4114213, -0.95120394, 1.9245026, 3.4068198, -0.93206733, 1.9245026, 3.6019444, -0.8778093, 1.9245026, 3.7795815, -0.79000586, 1.9245026, 3.9443326, -0.672034, 1.9245026, 4.087915, -0.52794635, 1.9245026, 4.2066464, -0.36382145, 1.9245026, 4.294084, -0.18551296, 1.9245026, 4.3483872, -0.18551296, 1.9245026, -4.6181355, -0.36382145, 1.9245026, -4.563832, -0.52794635, 1.9245026, -4.476394, -0.672034, 1.9245026, -4.3576627, -0.79000586, 1.9245026, -4.2140803, -0.8778093, 1.9245026, -4.0502496, -0.93206733, 1.9245026, -3.8716922, -0.95120394, 1.9245026, -3.6765676, -1.0507145, 1.8978894, -3.6811695, -0.2048747, 1.8978894, 4.44595, -0.00022518635, 1.8978894, 4.4661984, 0.20464957, 1.8978894, 4.44595, 0.40164447, 1.8978894, 4.386124, 0.58333004, 1.8978894, 4.2894816, 0.87285626, 1.8978894, -4.2693043, 0.7422768, 1.8978894, -4.428533, 0.58333004, 1.8978894, -4.55923, 0.40164447, 1.8978894, -4.656792, 0.20464957, 1.8978894, -4.716618, -0.00022518635, 1.8978894, -4.736867, -0.2048747, 1.8978894, -4.716618, 0.62385464, 1.8248932, 4.350228, -1.15, 0.7957223, -3.686692, -1.1279366, -0.002674, -3.9094286, -0.22446162, 1.7254739, 4.543512, -0.44014293, 1.7254739, 4.4781632, -0.6389389, 1.7254739, 4.372318, -0.813195, 1.7254739, 4.2287354, -0.95638216, 1.7254739, 4.0547805, -1.0626469, 1.7254739, 3.8559747, -1.1279366, 1.7254739, 3.6406007, -1.15, 1.7254739, 3.4160237, 1.0624217, -0.002674, -4.1248016, 0.42978656, 1.8248932, 4.4542336, 0.21905828, 1.8248932, 4.5177407, -0.00022518635, 1.8248932, 4.5398307, -0.21928346, 1.8248932, 4.5177407, 1.0624217, 0.39557368, -4.125722, 1.0624217, 0.81511194, -4.1266427, 0.95615685, 1.7254739, -4.3254485, 0.9338683, 1.8248932, -4.3107224, -1.1234338, 1.8397206, 2.2544808, -1.1234338, 1.8250833, 3.4151034, -1.1234338, 1.8250833, -3.6848512, -1.0300019, 1.8978894, 3.6212726, -0.9703406, 1.8978894, 3.8182378, -0.8733066, 1.8978894, 3.999556, -0.7427271, 1.8978894, 4.1587853, -0.5835552, 1.8978894, 4.2894816, -0.4018696, 1.8978894, 4.386124, -0.4018696, 1.8978894, -4.656792, -0.5835552, 1.8978894, -4.55923, -0.7427271, 1.8978894, -4.428533, -0.8733066, 1.8978894, -4.2693043, -0.9703406, 1.8978894, -4.087986, -1.0300019, 1.8978894, -3.8910205, -0.43001175, 1.8248932, 4.4542336, 0.7940583, 1.8248932, -4.480996, 0.62385464, 1.8248932, -4.619976, 0.42978656, 1.8248932, -4.7239814, 0.21905828, 1.8248932, -4.788409, -0.00022518635, 1.8248932, -4.8095784, -0.21928346, 1.8248932, -4.788409, -1.15, 1.7254739, -3.686692, -1.1279366, 0.81511194, -3.9112692, -1.1279366, 0.39557368, -3.910349, -1.0626469, -0.002674, -4.1248016, -0.6240799, 1.8248932, 4.350228, -0.7942835, 1.8248932, 4.2103276, -0.9340936, 1.8248932, 4.040054, -1.0378817, 1.8248932, 3.8458495, -1.1018207, 1.8248932, 3.635079, -1.15, 1.7403013, 2.2544808, 0.95615685, -0.002674, -4.323608, 0.95615685, 0.39557368, -4.324528, 0.95615685, 0.81511194, -4.3254485, 0.8129698, 1.5496366, -4.5003242, 0.8129698, 1.7254739, -4.499404, -1.1018207, 1.8248932, -3.905747, -0.43001175, 1.8248932, -4.7239814, -0.6240799, 1.8248932, -4.619976, -0.7942835, 1.8248932, -4.480996, -0.9340936, 1.8248932, -4.3107224, -1.0378817, 1.8248932, -4.116518, 0.6387137, 1.7254739, -4.6429863, 0.43991768, 1.7254739, -4.748832, 0.22423649, 1.7254739, -4.8141804, -0.00022518635, 1.7254739, -4.83627, -0.22446162, 1.7254739, -4.8141804, -0.44014293, 1.7254739, -4.748832, -1.1279366, 1.7254739, -3.9112692, -1.0626469, 0.81511194, -4.1266427, -1.0626469, 0.39557368, -4.125722, -0.95638216, -0.002674, -4.323608, 0.8129698, -0.002674, -4.4984837, 0.8129698, 0.81511194, -4.5003242, -1.0626469, 1.7254739, -4.1266427, -0.6389389, 1.7254739, -4.6429863, -0.95638216, 1.7254739, -4.3254485, -0.813195, 1.7254739, -4.499404, 0.6387137, 0.81511194, -4.6429863, 0.43991768, 0.81511194, -4.748832, 0.22423649, 0.81511194, -4.8141804, -0.00022518635, 0.81511194, -4.83627, -0.22446162, 0.81511194, -4.8141804, -0.44014293, 0.81511194, -4.748832, -0.95638216, 0.81511194, -4.3254485, -0.95638216, 0.39557368, -4.324528, -0.813195, -0.002674, -4.4984837, 0.6387137, -0.002674, -4.641145, 0.6387137, 0.39557368, -4.642066, -0.813195, 1.5496366, -4.5003242, -0.6389389, 0.81511194, -4.6429863, 0.43991768, -0.002674, -4.7479115, 0.22423649, -0.002674, -4.81326, -0.00022518635, -0.002674, -4.8353496, -0.22446162, -0.002674, -4.81326, -0.44014293, -0.002674, -4.7479115, -0.813195, 0.81511194, -4.5003242, -0.6389389, 0.39557368, -4.642066, -0.6389389, -0.002674, -4.641145)
+
+[node name="Big_Truck_Together" type="Node3D" unique_id=859491101]
+physics_interpolation_mode = 2
+script = ExtResource("1_m0vfn")
+
+[node name="Big_Truck" type="RigidBody3D" parent="." unique_id=25238744]
+physics_interpolation_mode = 2
+transform = Transform3D(0.9999999, 0, 1.7484552e-07, 0, 1, 0, -1.7484552e-07, 0, 0.9999999, 0, 0, 0)
+mass = 10000.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0, -0.5)
+can_sleep = false
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_o2dvw")
+
+[node name="TestTruckCab" type="MeshInstance3D" parent="Big_Truck" unique_id=1065334794]
+transform = Transform3D(-1.0000001, 0, 2.6226837e-07, 0, 1, 0, -2.6226837e-07, 0, -1.0000001, 0, 0, 0)
+mesh = ExtResource("2_7j57h")
+surface_material_override/0 = SubResource("StandardMaterial3D_63qyp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Big_Truck" unique_id=782893796]
+transform = Transform3D(-1.0000001, 0, 2.6226837e-07, 0, 1, 0, -2.6226837e-07, 0, -1.0000001, 0, 0, 0)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_i3rg2")
+
+[node name="PlayerController" type="Node3D" parent="Big_Truck" unique_id=1353112075]
+transform = Transform3D(1.0000001, 0, -2.842171e-14, 0, 1, 0, 2.842171e-14, 0, 1.0000001, 8.742279e-08, 1.3000001, -0.50000006)
+script = ExtResource("5_m0vfn")
+
+[node name="CameraPivot" type="Node3D" parent="Big_Truck/PlayerController" unique_id=434550696]
+top_level = true
+
+[node name="MainCamera" type="Camera3D" parent="Big_Truck/PlayerController/CameraPivot" unique_id=1684656648]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 3.793)
+fov = 60.0
+far = 40000.0
+
+[node name="HUD" type="Control" parent="Big_Truck/PlayerController" unique_id=35778729]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HUDText" type="TextureRect" parent="Big_Truck/PlayerController/HUD" unique_id=1039549177]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_63qyp")
+expand_mode = 2
+
+[node name="SpNeed" type="TextureRect" parent="Big_Truck/PlayerController/HUD" unique_id=11592468]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -136.0
+offset_right = -2.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 7.5049157
+pivot_offset = Vector2(67.5, 67.5)
+texture = ExtResource("7_i3rg2")
+expand_mode = 1
+
+[node name="Engine" type="RichTextLabel" parent="Big_Truck/PlayerController/HUD" unique_id=1043996565]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -136.0
+offset_right = 1000.0
+offset_bottom = -59.0
+grow_vertical = 0
+text = "Test Output"
+autowrap_mode = 0
+
+[node name="Sprocket to Engine" type="RichTextLabel" parent="Big_Truck/PlayerController/HUD" unique_id=662912636]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -110.0
+offset_right = 1000.0
+offset_bottom = -33.0
+grow_vertical = 0
+text = "Test Output"
+autowrap_mode = 0
+
+[node name="Sprocket" type="RichTextLabel" parent="Big_Truck/PlayerController/HUD" unique_id=342369596]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -81.0
+offset_right = 1000.0
+offset_bottom = -4.0
+grow_vertical = 0
+text = "Test Output"
+autowrap_mode = 0
+
+[node name="Gearbox" type="RichTextLabel" parent="Big_Truck/PlayerController/HUD" unique_id=1185271157]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_right = 1000.0
+offset_bottom = 24.0
+grow_vertical = 0
+text = "Test Output"
+autowrap_mode = 0
+
+[node name="Pause_Menu" parent="Big_Truck/PlayerController" unique_id=1638997417 instance=ExtResource("8_b2jjl")]
+visible = false
+
+[node name="Phys_Wheel" parent="Big_Truck" unique_id=437283786 instance=ExtResource("10_tpju1")]
+transform = Transform3D(-4.3711392e-08, -1.0000001, -1.7484557e-07, 1, -4.371139e-08, 0, -7.642743e-15, -1.7484557e-07, 1.0000001, 0.75, -0.1, -1.8)
+shape = SubResource("CylinderShape3D_63qyp")
+spring_length = 0.25
+spring_force_max = 100000.0
+spring_stiffness = 200000.0
+spring_dampening = 2500.0
+
+[node name="Phys_Wheel4" parent="Big_Truck" unique_id=1890291576 instance=ExtResource("10_tpju1")]
+transform = Transform3D(-4.3711392e-08, -1.0000001, -1.748456e-07, 1, -4.371139e-08, 0, -7.642744e-15, -1.748456e-07, 1.0000001, -0.75, -0.1, -1.8)
+shape = SubResource("CylinderShape3D_i3rg2")
+spring_length = 0.25
+spring_force_max = 100000.0
+spring_stiffness = 200000.0
+spring_dampening = 2500.0
+
+[node name="Phys_Wheel2" parent="Big_Truck" unique_id=794907215 instance=ExtResource("11_m0vfn")]
+transform = Transform3D(-4.3711392e-08, -1.0000001, -1.7484557e-07, 1, -4.371139e-08, 0, -7.642743e-15, -1.7484557e-07, 1.0000001, 0.59999967, -0.1, 2.5000002)
+shape = SubResource("CylinderShape3D_b2jjl")
+steering_enabled = false
+engine_enabled = false
+wheel_passive_traction = 0.0
+spring_length = 0.25
+spring_force_max = 17500.0
+spring_stiffness = 60000.0
+spring_dampening = 2500.0
+
+[node name="Phys_Wheel3" parent="Big_Truck" unique_id=1234536857 instance=ExtResource("11_m0vfn")]
+transform = Transform3D(-4.3711392e-08, -1.0000001, -1.7484557e-07, 1, -4.371139e-08, 0, -7.642743e-15, -1.7484557e-07, 1.0000001, 0.5999994, -0.1, 3.6000004)
+shape = SubResource("CylinderShape3D_8gso3")
+steering_enabled = false
+engine_enabled = false
+wheel_passive_traction = 0.0
+spring_length = 0.25
+spring_force_max = 17500.0
+spring_stiffness = 60000.0
+spring_dampening = 2500.0
+
+[node name="Phys_Wheel5" parent="Big_Truck" unique_id=184451461 instance=ExtResource("11_m0vfn")]
+transform = Transform3D(-4.3711392e-08, -1.0000001, -1.7484558e-07, 1, -4.371139e-08, 0, -7.6427436e-15, -1.7484558e-07, 1.0000001, -0.6000005, -0.1, 2.5000002)
+shape = SubResource("CylinderShape3D_px575")
+steering_enabled = false
+engine_enabled = false
+wheel_passive_traction = 0.0
+spring_length = 0.25
+spring_force_max = 17500.0
+spring_stiffness = 60000.0
+spring_dampening = 2500.0
+
+[node name="Phys_Wheel6" parent="Big_Truck" unique_id=1310440532 instance=ExtResource("11_m0vfn")]
+transform = Transform3D(-4.3711392e-08, -1.0000001, -1.7484558e-07, 1, -4.371139e-08, 0, -7.6427436e-15, -1.7484558e-07, 1.0000001, -0.60000074, -0.1, 3.6000004)
+shape = SubResource("CylinderShape3D_3cood")
+steering_enabled = false
+engine_enabled = false
+wheel_passive_traction = 0.0
+spring_length = 0.25
+spring_force_max = 17500.0
+spring_stiffness = 60000.0
+spring_dampening = 2500.0
+
+[node name="Thruster2" parent="Big_Truck" unique_id=495601527 instance=ExtResource("13_63qyp")]
+transform = Transform3D(0.24620198, -0.04324681, -0.0037836067, 0, -0.021788942, 0.24904868, -0.043412004, -0.24526511, -0.02145792, 0.97990274, 0.75181544, 0.7544963)
+thrust_force = 50000.0
+sound_toggle = true
+
+[node name="Thruster4" parent="Big_Truck" unique_id=8975712 instance=ExtResource("13_63qyp")]
+transform = Transform3D(0.24620198, 0.043246903, 0.0037836158, 2.6158722e-10, -0.021788945, 0.24904871, 0.0434121, -0.24526511, -0.021457925, -0.97990024, 0.7518, 0.7544999)
+thrust_force = 50000.0
+sound_toggle = true
+
+[node name="Trailer" type="RigidBody3D" parent="." unique_id=301642438]
+physics_interpolation_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+mass = 7000.0
+center_of_mass_mode = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+
+[node name="Phys_Wheel4" parent="Trailer" unique_id=74358551 instance=ExtResource("11_m0vfn")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.8000001, -0.1, 1.2000004)
+shape = SubResource("CylinderShape3D_c2vgk")
+steering_enabled = false
+engine_enabled = false
+wheel_passive_traction = 0.0
+spring_length = 0.25
+spring_force_max = 50000.0
+spring_stiffness = 80000.0
+spring_dampening = 2500.0
+
+[node name="Phys_Wheel5" parent="Trailer" unique_id=1794751017 instance=ExtResource("11_m0vfn")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.8000001, -0.1, 2.2999997)
+shape = SubResource("CylinderShape3D_wv0bp")
+steering_enabled = false
+engine_enabled = false
+wheel_passive_traction = 0.0
+spring_length = 0.25
+spring_force_max = 50000.0
+spring_stiffness = 80000.0
+spring_dampening = 2500.0
+
+[node name="Phys_Wheel6" parent="Trailer" unique_id=950952102 instance=ExtResource("11_m0vfn")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.79999995, -0.1, 1.2000004)
+shape = SubResource("CylinderShape3D_qn874")
+steering_enabled = false
+engine_enabled = false
+wheel_passive_traction = 0.0
+spring_length = 0.25
+spring_force_max = 50000.0
+spring_stiffness = 80000.0
+spring_dampening = 2500.0
+
+[node name="Phys_Wheel7" parent="Trailer" unique_id=1451439913 instance=ExtResource("11_m0vfn")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.79999995, -0.1, 2.2999997)
+shape = SubResource("CylinderShape3D_k7ra4")
+steering_enabled = false
+engine_enabled = false
+wheel_passive_traction = 0.0
+spring_length = 0.25
+spring_force_max = 50000.0
+spring_stiffness = 80000.0
+spring_dampening = 2500.0
+
+[node name="TestTruckTrailer" type="MeshInstance3D" parent="Trailer" unique_id=2114211558]
+transform = Transform3D(-1, 0, 8.7422805e-08, 0, 1, 0, -8.7422805e-08, 0, -1, 6.0321736e-07, -0.051524937, -0.672945)
+mesh = ExtResource("8_tpju1")
+surface_material_override/0 = SubResource("StandardMaterial3D_b2jjl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trailer" unique_id=1916680940]
+transform = Transform3D(-1, 0, 8.7422805e-08, 0, 1, 0, -8.7422805e-08, 0, -1, 6.0321736e-07, -0.051524937, -0.672945)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_63qyp")
+
+[node name="Thruster" parent="Trailer" unique_id=2113817413 instance=ExtResource("13_63qyp")]
+transform = Transform3D(0.24904868, -0.02170602, -0.0018990312, 0, -0.021788942, 0.24904868, -0.021788934, -0.24810098, -0.021706028, 1.3443232, 1.0231228, 2.1061783)
+thrust_force = 50000.0
+sound_toggle = true
+
+[node name="Thruster3" parent="Trailer" unique_id=612477030 instance=ExtResource("13_63qyp")]
+transform = Transform3D(0.24904868, 0.021706026, 0.0018990317, 1.1597233e-10, -0.021788942, 0.24904868, 0.02178894, -0.24810097, -0.021706026, -1.3443, 1.0231, 2.1062002)
+thrust_force = 50000.0
+sound_toggle = true
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="." unique_id=2050755019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61903834, 2.9293046)
+node_a = NodePath("../Big_Truck")
+node_b = NodePath("../Trailer")
+angular_limit_x/upper_angle = 0.2617994
+angular_limit_x/lower_angle = -0.2617994
+angular_limit_x/softness = 0.01
+angular_limit_x/damping = 0.01
+angular_limit_y/upper_angle = 2.3561945
+angular_limit_y/lower_angle = -2.3561945
+angular_limit_y/damping = 0.01
+angular_limit_z/upper_angle = 0.08726646
+angular_limit_z/lower_angle = -0.08726646
+angular_limit_z/softness = 0.01
+angular_limit_z/damping = 0.01

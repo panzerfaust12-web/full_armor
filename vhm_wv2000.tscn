@@ -1,0 +1,284 @@
+[gd_scene format=3 uid="uid://3fe62llqr2l7"]
+
+[ext_resource type="Script" uid="uid://dvu0hwpe8ldcm" path="res://ctrl_vehicle.gd" id="1_2d52y"]
+[ext_resource type="PackedScene" uid="uid://bqxbc76uartwy" path="res://entities/hull/hull03_test_wv2000.tscn" id="1_eesq5"]
+[ext_resource type="PackedScene" uid="uid://103aqogyjqo8" path="res://entities/engine/engine03_test_wv2000.tscn" id="3_ck27v"]
+[ext_resource type="PackedScene" uid="uid://d3my2fwxjwafd" path="res://entities/transmission/trans02_test_wz2000.tscn" id="3_pf2mk"]
+[ext_resource type="PackedScene" uid="uid://bn1phu0iv1rwl" path="res://entities/wheel/wheel02_wz2000.tscn" id="4_7w5sl"]
+[ext_resource type="PackedScene" uid="uid://qpv7xuy81y8n" path="res://entities/suspension/sus03_overhaul.tscn" id="5_2s0wa"]
+[ext_resource type="AudioStream" uid="uid://c1e4ao3lbtja0" path="res://sound/tires/suspension_full_compress01.wav" id="5_c6kib"]
+[ext_resource type="Script" uid="uid://ddktfs6nkvlbi" path="res://scripts/player_controller.gd" id="7_wtju8"]
+[ext_resource type="Texture2D" uid="uid://dc78ykto1dcta" path="res://hud/hud.png" id="8_7w5sl"]
+[ext_resource type="Texture2D" uid="uid://dvb4vsiiy768l" path="res://hud/Ptkct.png" id="9_c6kib"]
+[ext_resource type="PackedScene" uid="uid://dju2aoxj60xjk" path="res://PauseMenu.tscn" id="10_rlc40"]
+[ext_resource type="PackedScene" uid="uid://c8i2gmq427ncc" path="res://entities/cannon/can04_test.tscn" id="12_c6kib"]
+[ext_resource type="PackedScene" uid="uid://c2mru8x1wud1q" path="res://entities/cannon/can03_test.tscn" id="13_rlc40"]
+[ext_resource type="PackedScene" uid="uid://dp6x55gsob7oh" path="res://entities/cannon/can05_test.tscn" id="14_xbwsi"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xbwsi"]
+resource_local_to_scene = true
+height = 0.15
+radius = 0.26
+
+[sub_resource type="Curve" id="Curve_eesq5"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.28198433, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_pf2mk"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 3.0, 0, 0, Vector2(0.6997389, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_shkjf"]
+resource_local_to_scene = true
+random_pitch = 1.122462
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("5_c6kib")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2d52y"]
+resource_local_to_scene = true
+height = 0.15
+radius = 0.26
+
+[sub_resource type="Curve" id="Curve_is30n"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.28198433, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_k21p2"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 3.0, 0, 0, Vector2(0.6997389, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lpexc"]
+resource_local_to_scene = true
+random_pitch = 1.122462
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("5_c6kib")
+
+[sub_resource type="SphereMesh" id="SphereMesh_opl4q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgsaf"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.47801316, 0.000874632, 0.61150765, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l4rn"]
+next_pass = SubResource("StandardMaterial3D_sgsaf")
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.47801316, 0.000874632, 0.61150765, 1)
+
+[node name="WV2000" type="RigidBody3D" unique_id=453725484]
+process_physics_priority = -1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_2d52y")
+metadata/_custom_type_script = "uid://dvu0hwpe8ldcm"
+
+[node name="Hull" parent="." unique_id=609745220 instance=ExtResource("1_eesq5")]
+
+[node name="Engine" parent="Hull/Mount_Engine" parent_id_path=PackedInt32Array(609745220, 792040698) index="0" unique_id=945426242 instance=ExtResource("3_ck27v")]
+weight = 200
+
+[node name="Mount_Wheel2" parent="Hull" index="2" unique_id=1356933969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.1, -1.1000001)
+
+[node name="Wheel" parent="Hull/Mount_Wheel2" index="0" unique_id=1317562008 instance=ExtResource("4_7w5sl")]
+
+[node name="Phys_Wheel" parent="Hull/Mount_Wheel2/Wheel" index="0" unique_id=437283786]
+shape = SubResource("CylinderShape3D_xbwsi")
+target_position = Vector3(-0.35, 0, 0)
+engine_enabled = false
+braking_enabled = false
+traction_slip_ratio = SubResource("Curve_eesq5")
+traction_side_angle = SubResource("Curve_pf2mk")
+spring_length = 0.55
+spring_force_max = 8300.0
+spring_stiffness = 8000.0
+
+[node name="Compress" parent="Hull/Mount_Wheel2/Wheel/Phys_Wheel/Audio" parent_id_path=PackedInt32Array(1317562008, 1134151525) index="1" unique_id=2008675456]
+stream = SubResource("AudioStreamRandomizer_shkjf")
+
+[node name="Mount_Wheel3" parent="Hull" index="3" unique_id=861576801]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.1, -1.1000001)
+
+[node name="Wheel" parent="Hull/Mount_Wheel3" index="0" unique_id=1738284918 instance=ExtResource("4_7w5sl")]
+
+[node name="Phys_Wheel" parent="Hull/Mount_Wheel3/Wheel" index="0" unique_id=437283786]
+shape = SubResource("CylinderShape3D_2d52y")
+target_position = Vector3(-0.35, 0, 0)
+wheel_left = true
+engine_enabled = false
+braking_enabled = false
+traction_slip_ratio = SubResource("Curve_is30n")
+traction_side_angle = SubResource("Curve_k21p2")
+spring_length = 0.55
+spring_force_max = 8300.0
+spring_stiffness = 8000.0
+
+[node name="Compress" parent="Hull/Mount_Wheel3/Wheel/Phys_Wheel/Audio" parent_id_path=PackedInt32Array(1738284918, 1134151525) index="1" unique_id=2008675456]
+stream = SubResource("AudioStreamRandomizer_lpexc")
+
+[node name="Transmission" parent="Hull/Mount_Transmission" parent_id_path=PackedInt32Array(609745220, 1322130413) index="0" unique_id=135719996 instance=ExtResource("3_pf2mk")]
+
+[node name="Suspension" parent="Hull" unique_id=492383474 instance=ExtResource("5_2s0wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.5, 0.9)
+
+[node name="Suspension2" parent="Hull" unique_id=1020662400 instance=ExtResource("5_2s0wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.5, 0.9)
+
+[node name="COM_Ball" type="MeshInstance3D" parent="." unique_id=468499247]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_opl4q")
+surface_material_override/0 = SubResource("StandardMaterial3D_3l4rn")
+
+[node name="PlayerController" type="Node3D" parent="." unique_id=553215416]
+script = ExtResource("7_wtju8")
+
+[node name="CameraPivot" type="Node3D" parent="PlayerController" unique_id=1840024112]
+top_level = true
+
+[node name="MainCamera" type="Camera3D" parent="PlayerController/CameraPivot" unique_id=293123782]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 3.793)
+fov = 37.849285
+
+[node name="HUD" type="Control" parent="PlayerController" unique_id=706464209]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HUDText" type="TextureRect" parent="PlayerController/HUD" unique_id=400320445]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_7w5sl")
+expand_mode = 2
+
+[node name="SpNeed" type="TextureRect" parent="PlayerController/HUD" unique_id=559277213]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -136.0
+offset_right = -2.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 7.5049157
+pivot_offset = Vector2(67.5, 67.5)
+texture = ExtResource("9_c6kib")
+expand_mode = 1
+
+[node name="Engine" type="RichTextLabel" parent="PlayerController/HUD" unique_id=1215551482]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -136.0
+offset_right = 1000.0
+offset_bottom = -59.0
+grow_vertical = 0
+text = "Test Output"
+autowrap_mode = 0
+
+[node name="Sprocket to Engine" type="RichTextLabel" parent="PlayerController/HUD" unique_id=1729166241]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -110.0
+offset_right = 1000.0
+offset_bottom = -33.0
+grow_vertical = 0
+text = "Test Output"
+autowrap_mode = 0
+
+[node name="Sprocket" type="RichTextLabel" parent="PlayerController/HUD" unique_id=587387221]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -81.0
+offset_right = 1000.0
+offset_bottom = -4.0
+grow_vertical = 0
+text = "Test Output"
+autowrap_mode = 0
+
+[node name="Gearbox" type="RichTextLabel" parent="PlayerController/HUD" unique_id=1432243021]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_right = 1000.0
+offset_bottom = 24.0
+grow_vertical = 0
+text = "Test Output"
+autowrap_mode = 0
+
+[node name="Pause_Menu" parent="PlayerController" unique_id=1638997417 instance=ExtResource("10_rlc40")]
+visible = false
+
+[node name="Cannon" parent="." unique_id=579937528 instance=ExtResource("12_c6kib")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 1.2837027, -0.3722008)
+weight = 1
+debug_key = 49
+
+[node name="Cannon3" parent="." unique_id=2036977193 instance=ExtResource("14_xbwsi")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0.12520769, 1.2854649, -0.0834617)
+weight = 1
+debug = true
+debug_key = 51
+
+[node name="Cannon4" parent="." unique_id=60987853 instance=ExtResource("14_xbwsi")]
+transform = Transform3D(1, 0, 0, 0, 0.81915206, -0.57357645, 0, 0.57357645, 0.81915206, 0.26910135, 1.2854649, -0.0834617)
+weight = 1
+debug = true
+debug_key = 51
+
+[node name="Cannon5" parent="." unique_id=1896851940 instance=ExtResource("14_xbwsi")]
+transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.42261827, 0, 0.42261827, 0.90630776, 0.4286351, 1.2854649, -0.0834617)
+weight = 1
+debug = true
+debug_key = 51
+
+[node name="Cannon6" parent="." unique_id=1614435725 instance=ExtResource("14_xbwsi")]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0.5948074, 1.2854649, -0.0834617)
+weight = 1
+debug = true
+debug_key = 51
+
+[node name="Cannon2" parent="." unique_id=384716883 instance=ExtResource("13_rlc40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4017, 0.44, -1.1651)
+weight = 1
+caliber = 12.7
+dispersion_mil_horizontal = 2.0
+dispersion_mil_vertical = 2.0
+debug = true
+debug_key = 50
+
+[editable path="Hull"]
+[editable path="Hull/Mount_Wheel2/Wheel"]
+[editable path="Hull/Mount_Wheel3/Wheel"]

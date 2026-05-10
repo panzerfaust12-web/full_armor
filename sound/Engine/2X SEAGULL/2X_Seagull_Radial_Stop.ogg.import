@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cjvvev8ld63rc"
+path="res://.godot/imported/2X_Seagull_Radial_Stop.ogg-a1ca4cbe2718ac06c007a362a595c0d0.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/Engine/2X SEAGULL/2X_Seagull_Radial_Stop.ogg"
+dest_files=["res://.godot/imported/2X_Seagull_Radial_Stop.ogg-a1ca4cbe2718ac06c007a362a595c0d0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

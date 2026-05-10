@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d4gmtfobq7x62"
+path="res://.godot/imported/2X_Seagull_Radial_4000.ogg-fd007701e4baef4948dd0e56cc1dd74a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/Engine/2X SEAGULL/2X_Seagull_Radial_4000.ogg"
+dest_files=["res://.godot/imported/2X_Seagull_Radial_4000.ogg-fd007701e4baef4948dd0e56cc1dd74a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

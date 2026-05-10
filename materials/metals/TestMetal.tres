@@ -1,0 +1,16 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://bxqbytu1v5vtg"]
+
+[ext_resource type="Texture2D" uid="uid://dakvodmtdfhhg" path="res://materials/metals/TestMetal_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bjj0wtm48e1rr" path="res://materials/metals/TestMetal_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bgaf0no6ypcv3" path="res://materials/metals/TestMetal_normal.png" id="3"]
+
+[resource]
+albedo_color = Color(0.11300836, 0.01626747, 0.029914664, 1)
+albedo_texture = ExtResource("1")
+albedo_texture_msdf = true
+orm_texture = ExtResource("2")
+normal_enabled = true
+normal_scale = 0.4
+normal_texture = ExtResource("3")
+uv1_scale = Vector3(5, 5, 5)
+uv2_scale = Vector3(10, 10, 10)

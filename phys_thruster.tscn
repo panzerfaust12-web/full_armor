@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://0csqw8r6gbv4"]
+
+[ext_resource type="ArrayMesh" uid="uid://btmq1qeogkaqq" path="res://meshes/Placeholders/V2.obj" id="1_1gdil"]
+[ext_resource type="Script" uid="uid://d0i2n2mwb4lk" path="res://phys_thruster.gd" id="1_ggvuc"]
+[ext_resource type="Material" uid="uid://dvtkwp4b7k00w" path="res://test.tres" id="2_5u3sj"]
+[ext_resource type="Shader" uid="uid://by11vig84aeot" path="res://test_phys_rocket.gdshader" id="3_5u3sj"]
+[ext_resource type="AudioStream" uid="uid://c2re5qhwjsq0k" path="res://sound/placeholder/rocketstart.wav" id="5_3q074"]
+[ext_resource type="AudioStream" uid="uid://brw0wemyeahqb" path="res://sound/placeholder/rocketloop.wav" id="6_d1p4q"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ggvuc"]
+lightmap_size_hint = Vector2i(17, 59)
+bottom_radius = 0.3
+height = 10.0
+radial_segments = 73
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5u3sj"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ggvuc"]
+noise = SubResource("FastNoiseLite_5u3sj")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6dkr"]
+render_priority = 0
+shader = ExtResource("3_5u3sj")
+shader_parameter/main_color = Color(1, 1, 1, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ggvuc")
+shader_parameter/emission = Color(0.8754651, 0.5845413, 0.4699493, 1)
+shader_parameter/emission_energy = 50.0
+shader_parameter/scroll_speed = 2.0
+shader_parameter/alpha_threshold = 0.0
+shader_parameter/use_threshold = false
+shader_parameter/invert_boost_direction = false
+shader_parameter/fade_emission = true
+shader_parameter/fade_mode = 0
+shader_parameter/fade_softness = 1.0
+shader_parameter/cylinder_half_height = 5.0000002375
+shader_parameter/cylinder_fade_bottom = 10.0
+shader_parameter/cylinder_fade_top = 0.0
+shader_parameter/box_half_extents = Vector3(0.5, 0.005, 0.5)
+shader_parameter/box_fade_x_neg = 0.12
+shader_parameter/box_fade_x_pos = 0.12
+shader_parameter/box_fade_z_neg = 0.12
+shader_parameter/box_fade_z_pos = 0.12
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5u3sj"]
+lightmap_size_hint = Vector2i(17, 59)
+flip_faces = true
+bottom_radius = 0.3
+height = 10.0
+radial_segments = 73
+cap_bottom = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggvuc"]
+render_priority = 0
+shader = ExtResource("3_5u3sj")
+shader_parameter/main_color = Color(1, 1, 1, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ggvuc")
+shader_parameter/emission = Color(0.96599406, 0.5328821, 0.31882724, 1)
+shader_parameter/emission_energy = 50.0
+shader_parameter/scroll_speed = 2.0
+shader_parameter/alpha_threshold = 0.0
+shader_parameter/use_threshold = false
+shader_parameter/invert_boost_direction = false
+shader_parameter/fade_emission = true
+shader_parameter/fade_mode = 0
+shader_parameter/fade_softness = 1.0
+shader_parameter/cylinder_half_height = 5.0000002375
+shader_parameter/cylinder_fade_bottom = 10.0
+shader_parameter/cylinder_fade_top = 0.0
+shader_parameter/box_half_extents = Vector3(0.5, 0.005, 0.5)
+shader_parameter/box_fade_x_neg = 0.12
+shader_parameter/box_fade_x_pos = 0.12
+shader_parameter/box_fade_z_neg = 0.12
+shader_parameter/box_fade_z_pos = 0.12
+
+[node name="Thruster" type="Node3D" unique_id=2113817413]
+script = ExtResource("1_ggvuc")
+thrust_force = 10000.0
+
+[node name="V2" type="MeshInstance3D" parent="." unique_id=957232154]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_1gdil")
+surface_material_override/1 = ExtResource("2_5u3sj")
+
+[node name="ThrustOrigin" type="Node3D" parent="." unique_id=1994574660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7, 0)
+
+[node name="Flame1" type="MeshInstance3D" parent="ThrustOrigin" unique_id=1295970477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)
+mesh = SubResource("CylinderMesh_ggvuc")
+surface_material_override/0 = SubResource("ShaderMaterial_y6dkr")
+
+[node name="Flame2" type="MeshInstance3D" parent="ThrustOrigin" unique_id=611755220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)
+mesh = SubResource("CylinderMesh_5u3sj")
+surface_material_override/0 = SubResource("ShaderMaterial_ggvuc")
+
+[node name="Start" type="AudioStreamPlayer3D" parent="." unique_id=212203053]
+stream = ExtResource("5_3q074")
+volume_db = -6.0
+max_db = -6.0
+
+[node name="Loop" type="AudioStreamPlayer3D" parent="." unique_id=2055925737]
+stream = ExtResource("6_d1p4q")
+volume_db = -6.0
+max_db = -6.0

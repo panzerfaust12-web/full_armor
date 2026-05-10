@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://201kim7h8of4"]
+
+[ext_resource type="Script" uid="uid://tahccehwxiwt" path="res://scripts/component_engine.gd" id="1_prnbi"]
+[ext_resource type="ArrayMesh" uid="uid://di6ylv7nk3fc0" path="res://meshes/Engines/BMW M78.obj" id="2_wqjlp"]
+[ext_resource type="Material" uid="uid://br06tgy556tws" path="res://materials/metals/BeatUpMetal.tres" id="3_yrmbg"]
+[ext_resource type="Material" uid="uid://bxqbytu1v5vtg" path="res://materials/metals/TestMetal.tres" id="4_u42tn"]
+[ext_resource type="AudioStream" uid="uid://cxpf5fbwcie03" path="res://sound/Engine/V12 KING/V12_King_400.ogg" id="5_wqjlp"]
+[ext_resource type="AudioStream" uid="uid://3bi8tkaekuwo" path="res://sound/Engine/V12 KING/V12_King_600.ogg" id="6_yrmbg"]
+[ext_resource type="AudioStream" uid="uid://ux6v20ssjllf" path="res://sound/Engine/V12 KING/V12_King_900.ogg" id="7_u42tn"]
+[ext_resource type="AudioStream" uid="uid://da4hgvbab7f2u" path="res://sound/Engine/V12 KING/V12_King_1200.ogg" id="8_oyode"]
+[ext_resource type="AudioStream" uid="uid://l7yiv3ymy8ah" path="res://sound/Engine/V12 KING/V12_King_1500.ogg" id="9_hdvol"]
+[ext_resource type="AudioStream" uid="uid://bxvgdou2v3qkk" path="res://sound/Engine/V12 KING/V12_King_1800.ogg" id="10_375od"]
+[ext_resource type="AudioStream" uid="uid://cs3llacue0ojm" path="res://sound/Engine/V12 KING/V12_King_2100.ogg" id="11_5m15m"]
+[ext_resource type="AudioStream" uid="uid://b3onhucm70gmy" path="res://sound/Engine/V12 KING/V12_King_2400.ogg" id="12_uumwh"]
+[ext_resource type="AudioStream" uid="uid://jrssaio17iaa" path="res://sound/Engine/V12 KING/V12_King_Start.ogg" id="13_kldh2"]
+[ext_resource type="AudioStream" uid="uid://c0st0q22hv16u" path="res://sound/Engine/V12 KING/V12_King_Stop.ogg" id="14_qttyu"]
+
+[sub_resource type="Curve" id="Curve_r34ss"]
+_data = [Vector2(0, 0.05), 0.0, 1.080137, 0, 1, Vector2(0.87951803, 1), 1.080137, -4.142917, 1, 1, Vector2(1, 0.5008532), -4.142917, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_gwmqh"]
+stream_count = 8
+stream_0/stream = ExtResource("5_wqjlp")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("6_yrmbg")
+stream_1/volume = 0.0
+stream_2/stream = ExtResource("7_u42tn")
+stream_2/volume = 0.0
+stream_3/stream = ExtResource("8_oyode")
+stream_3/volume = 0.0
+stream_4/stream = ExtResource("9_hdvol")
+stream_4/volume = 0.0
+stream_5/stream = ExtResource("10_375od")
+stream_5/volume = 0.0
+stream_6/stream = ExtResource("11_5m15m")
+stream_6/volume = 0.0
+stream_7/stream = ExtResource("12_uumwh")
+stream_7/volume = 0.0
+
+[node name="Engine" type="Node3D" unique_id=380098967]
+script = ExtResource("1_prnbi")
+long_name = "Royal King V12 Heavy"
+short_name = "RK-V12H"
+description = "The Chrysler A57 Multibank is a 30-cylinder 1,253 cu in (20.5 L) engine that was created in 1941 as America entered World War II. It consists of five banks of inline-6 cylinder engines. It was born out of the necessity for a rear-mounted tank engine to be developed and produced in the shortest time possible for use in the M3A4 Lee medium tank and its successor M4A4 Sherman medium tank. Each had lengthened hulls to accommodate the A57."
+length = 1600
+width = 2000
+height = 1260
+weight = 100
+horsepower = 370.0
+power_curve = SubResource("Curve_r34ss")
+RPM_max = 2400.0
+RPM_shift_up = 2200.0
+RPM_shift_down = 600.0
+RPM_accel = 1000.0
+RPM_decel = 500.0
+RPM_noise_array = [400.0, 600.0, 900.0, 1200.0, 1500.0, 1800.0, 2100.0, 2400.0]
+metadata/_custom_type_script = "uid://tahccehwxiwt"
+
+[node name="EngineMesh" type="MeshInstance3D" parent="." unique_id=428694392]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -0.58725655, 0)
+mesh = ExtResource("2_wqjlp")
+surface_material_override/0 = ExtResource("3_yrmbg")
+surface_material_override/1 = ExtResource("4_u42tn")
+
+[node name="Throttle_Mix" type="AudioStreamPlayer3D" parent="." unique_id=3703172]
+stream = SubResource("AudioStreamSynchronized_gwmqh")
+attenuation_model = 1
+
+[node name="Start" type="AudioStreamPlayer3D" parent="." unique_id=2062026870]
+stream = ExtResource("13_kldh2")
+
+[node name="Stop" type="AudioStreamPlayer3D" parent="." unique_id=1329738420]
+stream = ExtResource("14_qttyu")

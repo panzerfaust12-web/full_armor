@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3rq48668rven"]
+
+[ext_resource type="Script" uid="uid://bwlnqo1ib8d0t" path="res://addons/polyhaven-downloader/polyhaven_downloader.gd" id="1_nwibj"]
+
+[node name="PolyHavenDownloader" type="Node" unique_id=2025697468]
+script = ExtResource("1_nwibj")
+requested_texture = "aerial_grass_rock"
+texture_size = "4k"
+materials_dir = "res://materials/PolyHaven"

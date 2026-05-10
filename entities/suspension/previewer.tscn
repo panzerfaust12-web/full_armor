@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://ceepaxdhqe1qs"]
+
+[node name="Previewer" type="Node3D"]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6453122, 0.0046558976, 0)
+projection = 1
+size = 4.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8660254, -2.1855694e-08, 0.5, -0.5, -3.7855173e-08, 0.8660254, 0, -1, -4.371139e-08, 1.1, 0.7143094, 0)
+light_energy = 7.702
+light_specular = 0.0
+sky_mode = 1
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.0347222
+anchor_bottom = 0.0617284
+offset_right = 473.0
+offset_bottom = 472.0
+
+[node name="SubViewport" type="SubViewport" parent="HUD/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(512, 274)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="HUD/SubViewportContainer/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="HUD/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.6190589, -0.28567523, -2.573823)
+projection = 1
+fov = 60.0
+size = 0.7
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -512.0
+offset_bottom = 472.0
+grow_horizontal = 0
+
+[node name="SubViewport" type="SubViewport" parent="HUD/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(512, 274)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="HUD/SubViewportContainer2/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="HUD/SubViewportContainer2/SubViewport/Node3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.6190589, -0.28567523, 2.3044686)
+projection = 1
+fov = 60.0
+size = 0.7

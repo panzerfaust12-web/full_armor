@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://csbpw8q2wx44t"]
+
+[ext_resource type="ArrayMesh" uid="uid://5lg16c7754ev" path="res://meshes/Tanks/Test Tanks/Basic/basicGun.obj" id="1_8eajs"]
+[ext_resource type="Material" uid="uid://dvtkwp4b7k00w" path="res://test.tres" id="2_vwm46"]
+
+[node name="Cannon" type="Node3D" unique_id=1042561480]
+
+[node name="GunMesh" type="MeshInstance3D" parent="." unique_id=1467656627]
+transform = Transform3D(-0.6, -9.05975e-08, -3.96014e-15, 0, -2.62268e-08, 0.6, -9.05975e-08, 0.6, 2.62268e-08, 0, 0, 0.261)
+mesh = ExtResource("1_8eajs")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_vwm46")

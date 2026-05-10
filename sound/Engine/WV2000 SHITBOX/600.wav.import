@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dy1mhyl0i5h3r"
+path="res://.godot/imported/600.wav-151367cfd6ddc5268ee30687beee7d32.sample"
+
+[deps]
+
+source_file="res://sound/Engine/WV2000 SHITBOX/600.wav"
+dest_files=["res://.godot/imported/600.wav-151367cfd6ddc5268ee30687beee7d32.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

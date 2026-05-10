@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dtegfjfrfl2of"]
+
+[ext_resource type="Script" uid="uid://l0dy0k0resbn" path="res://entities/hud/parts/hud_part_loader.gd" id="1_3x6q3"]
+
+[sub_resource type="World3D" id="World3D_t7hiy"]
+resource_local_to_scene = true
+
+[sub_resource type="Environment" id="Environment_jwbas"]
+background_mode = 1
+background_color = Color(0.078431375, 0.15686275, 0.15294118, 1)
+
+[node name="PartSnapshotter" type="Control" unique_id=287784651]
+layout_mode = 3
+anchor_right = 0.44444445
+anchor_bottom = 0.79012346
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("1_3x6q3")
+metadata/_edit_use_anchors_ = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1058262293]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="AspectRatioContainer" unique_id=2131454602]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="AspectRatioContainer/SubViewportContainer" unique_id=6969767]
+own_world_3d = true
+world_3d = SubResource("World3D_t7hiy")
+transparent_bg = true
+handle_input_locally = false
+msaa_2d = 1
+msaa_3d = 1
+screen_space_aa = 1
+mesh_lod_threshold = 0.0
+audio_listener_enable_3d = true
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1394228878]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0, 0)
+light_energy = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1009758380]
+environment = SubResource("Environment_jwbas")
+
+[node name="Camera3D" type="Camera3D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=870072728]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="PartHolder" type="Node3D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1319652283]
+physics_interpolation_mode = 1
+
+[node name="RigidBody3D" type="RigidBody3D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/PartHolder" unique_id=445765619]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+gravity_scale = 0.0

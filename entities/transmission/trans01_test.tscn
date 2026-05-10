@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw8n5pwyi27wh"]
+
+[ext_resource type="Script" uid="uid://bl3swy4vsqlcb" path="res://scripts/component_transmission.gd" id="1_cxw7m"]
+[ext_resource type="ArrayMesh" uid="uid://c7l7lxe5srysp" path="res://meshes/Wooden Crate.obj" id="2_fl2uy"]
+[ext_resource type="AudioStream" uid="uid://cs1ragmqf0287" path="res://sound/807842__sabacky__complex-mechanism-short.wav" id="3_d66vr"]
+
+[node name="Transmission" type="Node3D"]
+script = ExtResource("1_cxw7m")
+weight = 50
+steering_type = 1
+metadata/_custom_type_script = "uid://bl3swy4vsqlcb"
+
+[node name="WoodenCrate" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.19999999, 0)
+mesh = ExtResource("2_fl2uy")
+
+[node name="Shift_Sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_d66vr")
+
+[node name="GearShift" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+ignore_time_scale = true

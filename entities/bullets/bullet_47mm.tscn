@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://h2t5jf1ecrpo"]
+
+[ext_resource type="Script" uid="uid://biy3mac1cjy8d" path="res://scripts/component_bullet.gd" id="1_ptjxm"]
+[ext_resource type="PackedScene" uid="uid://dmoiq370g87bh" path="res://vfx_ap_impact.tscn" id="2_0qchg"]
+[ext_resource type="ArrayMesh" uid="uid://bbverwqfj464x" path="res://meshes/Bullets/TracerCone.obj" id="2_ltllu"]
+[ext_resource type="ArrayMesh" uid="uid://8yjen3gi6gla" path="res://meshes/Bullets/APC.obj" id="3_0qchg"]
+[ext_resource type="Curve" uid="uid://gb0ioswwcbac" path="res://scripts/ballistic_curve_models/G1.tres" id="3_84mct"]
+[ext_resource type="Material" uid="uid://6ar5tl0s4pv6" path="res://materials/metals/BeatUpMetal3.tres" id="5_76uig"]
+[ext_resource type="Script" uid="uid://c6tb6emls276t" path="res://entities/bullets/debug_camera_tracker.gd" id="6_84mct"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r3q4v"]
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oobtr"]
+albedo_color = Color(18.892157, 2.3695173, 2.6448908, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ltllu"]
+size = Vector3(0.05, 0.05, 1)
+
+[node name="Bullet" type="Node3D" unique_id=898357207 node_paths=PackedStringArray("bullet_mesh", "tracer_mesh")]
+process_priority = -1
+process_physics_priority = -1
+top_level = true
+script = ExtResource("1_ptjxm")
+weight = 1.4
+diameter = 47.0
+muzzle_velocity = 50.0
+impact = ExtResource("2_0qchg")
+bullet_mesh = NodePath("Bullet_Tilt/Bullet_Spin/Apc")
+tracer_mesh = NodePath("Bullet_Tilt/Bullet_Spin/Apc/TracerCone")
+ballistic_curve = ExtResource("3_84mct")
+ballistic_coefficient = 1.0
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=1355439339]
+shape = SubResource("SphereShape3D_r3q4v")
+target_position = Vector3(0, 0, 0)
+max_results = 1
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=9465708]
+process_physics_priority = -1
+target_position = Vector3(0, 0, 0)
+hit_from_inside = true
+
+[node name="Lifetime" type="Timer" parent="." unique_id=1942364413]
+one_shot = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1542011867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.13123298)
+light_color = Color(0.64081544, 0.46674752, 0.14175484, 1)
+omni_range = 9.4
+
+[node name="Bullet_Tilt" type="Node3D" parent="." unique_id=1501087414]
+
+[node name="Bullet_Spin" type="Node3D" parent="Bullet_Tilt" unique_id=84445842]
+
+[node name="Apc" type="MeshInstance3D" parent="Bullet_Tilt/Bullet_Spin" unique_id=1531343728]
+transform = Transform3D(0.235, 0, 0, 0, -1.0272176e-08, 0.235, 0, -0.235, -1.0272176e-08, 0, 0, 0.13476501)
+mesh = ExtResource("3_0qchg")
+surface_material_override/0 = ExtResource("5_76uig")
+
+[node name="TracerCone" type="MeshInstance3D" parent="Bullet_Tilt/Bullet_Spin/Apc" unique_id=450143751]
+transform = Transform3D(0.6493943, 0, 0, 0, 0.6493943, 5.3290705e-15, 0, -5.3290705e-15, 0.6493943, 0, 0.003833579, 1.7467551e-08)
+mesh = ExtResource("2_ltllu")
+surface_material_override/0 = SubResource("StandardMaterial3D_oobtr")
+
+[node name="Label3D" type="Label3D" parent="Bullet_Tilt/Bullet_Spin/Apc" unique_id=2026570483]
+transform = Transform3D(0.11652566, 0, 0, 0, 0.11652566, 8.881784e-16, 0, -8.881784e-16, 0.11652566, 0, 0.24696817, 0.10075538)
+shaded = true
+double_sided = false
+text = "AP-PP
+4000
+PENOR
+ROUND"
+outline_size = 8
+line_spacing = -16.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bullet_Tilt/Bullet_Spin" unique_id=412492113]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.4937717e-09, 0.07992818)
+visible = false
+mesh = SubResource("BoxMesh_ltllu")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2104016871]
+transform = Transform3D(0.4388088, 0, -0.8985805, 0, 1, 0, 0.8985805, 0, 0.4388088, -0.7855778, 0, 0.49892598)
+top_level = true
+doppler_tracking = 1
+current = true
+fov = 40.0
+
+[node name="CameraTracker" type="Node3D" parent="Camera3D" unique_id=1065514160]
+script = ExtResource("6_84mct")
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

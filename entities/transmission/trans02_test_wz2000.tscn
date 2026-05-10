@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://d3my2fwxjwafd"]
+
+[ext_resource type="Script" uid="uid://bl3swy4vsqlcb" path="res://scripts/component_transmission.gd" id="1_1ufvc"]
+[ext_resource type="ArrayMesh" uid="uid://c7l7lxe5srysp" path="res://meshes/Wooden Crate.obj" id="2_fm6a8"]
+[ext_resource type="AudioStream" uid="uid://c1oenela3ho7s" path="res://sound/Transmission/shift01_1.wav" id="3_omshx"]
+[ext_resource type="AudioStream" uid="uid://cmr40j45pf4vf" path="res://sound/Transmission/shift01_2.wav" id="4_eqxu6"]
+[ext_resource type="AudioStream" uid="uid://dmniik0en4k8p" path="res://sound/Transmission/shift01_3.wav" id="5_r1ur8"]
+[ext_resource type="AudioStream" uid="uid://bg652mh8hplcx" path="res://sound/Transmission/shift01_4.wav" id="6_khles"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pnbie"]
+streams_count = 4
+stream_0/stream = ExtResource("3_omshx")
+stream_1/stream = ExtResource("4_eqxu6")
+stream_2/stream = ExtResource("5_r1ur8")
+stream_3/stream = ExtResource("6_khles")
+
+[node name="Transmission" type="Node3D" unique_id=135719996]
+script = ExtResource("1_1ufvc")
+weight = 25
+steering_type = 1
+gear_ratio = [3.62, 1.85, 1.24, 0.86]
+reverse_ratio = [3.62]
+final_ratio = 2.12
+metadata/_custom_type_script = "uid://bl3swy4vsqlcb"
+
+[node name="WoodenCrate" type="MeshInstance3D" parent="." unique_id=57813456]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.09999999, 0)
+mesh = ExtResource("2_fm6a8")
+
+[node name="Shift_Sound" type="AudioStreamPlayer3D" parent="." unique_id=225408542]
+stream = SubResource("AudioStreamRandomizer_pnbie")
+volume_db = -6.0
+
+[node name="GearShift" type="Timer" parent="." unique_id=1700318394]
+wait_time = 0.8
+one_shot = true
+ignore_time_scale = true

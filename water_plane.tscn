@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://dkar4jh70bd1c"]
+
+[ext_resource type="Material" uid="uid://wg53d50sy5tx" path="res://shaders/water.tres" id="1_xyhqs"]
+[ext_resource type="Script" uid="uid://dgvw86w4vk1b7" path="res://envr_water.gd" id="2_ngwyd"]
+[ext_resource type="AudioStream" uid="uid://dambt3upboth8" path="res://sound/environment/water/Sound_Ideas,_WATER,_LAKE_-_WAVES_COMING_IN,_LIGHT.ogg" id="2_olc7i"]
+[ext_resource type="Shader" uid="uid://dwefufp34gl8x" path="res://water_screen.gdshader" id="4_3vbxr"]
+[ext_resource type="Texture2D" uid="uid://4uhnc13hls8f" path="res://materials/maxresdefault.jpg" id="4_futy3"]
+[ext_resource type="Texture2D" uid="uid://b3kmyn6eiqcbc" path="res://icon.svg" id="5_6v3t5"]
+[ext_resource type="AudioStream" uid="uid://csyuqonk1p0wa" path="res://sound/environment/water/camera_water_enter.wav" id="7_tupgr"]
+[ext_resource type="AudioStream" uid="uid://dvvn0fnoouo33" path="res://sound/environment/water/camera_water_exit.wav" id="8_futy3"]
+[ext_resource type="AudioStream" uid="uid://bo2121658vqnv" path="res://sound/environment/water/Underwater_Designed_Ambience_Abyss.wav" id="8_tupgr"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_olc7i"]
+size = Vector2(2000, 2000)
+subdivide_width = 250
+subdivide_depth = 250
+orientation = 1
+
+[sub_resource type="Gradient" id="Gradient_futy3"]
+offsets = PackedFloat32Array(0, 0.6379822, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.2992, 0.68, 0.6355734, 0.78431374, 1, 1, 1, 0.78431374)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kqyxn"]
+resource_local_to_scene = true
+noise_type = 2
+fractal_type = 2
+fractal_gain = 0.7
+fractal_weighted_strength = 0.6
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_upv3t"]
+resource_local_to_scene = true
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_kqyxn")
+color_ramp = SubResource("Gradient_futy3")
+seamless = true
+normalize = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ngwyd"]
+size = Vector3(2000, 2075, 2000)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3vbxr"]
+noise_type = 2
+frequency = 0.002
+fractal_type = 2
+fractal_gain = 0.98
+fractal_weighted_strength = 0.73
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6v3t5"]
+noise = SubResource("FastNoiseLite_3vbxr")
+seamless = true
+seamless_blend_skirt = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_isu28"]
+shader = ExtResource("4_3vbxr")
+shader_parameter/color = Color(0.5301079, 0.9720592, 0.84427047, 1)
+shader_parameter/fast_noise = SubResource("NoiseTexture2D_6v3t5")
+shader_parameter/speed = Vector2(0.03, 0.07)
+shader_parameter/wave_strength = 2.0
+
+[node name="WaterPlane" type="MeshInstance3D" unique_id=1529010812]
+cast_shadow = 0
+mesh = SubResource("QuadMesh_olc7i")
+surface_material_override/0 = ExtResource("1_xyhqs")
+script = ExtResource("2_ngwyd")
+
+[node name="DecalHolder" type="Node3D" parent="." unique_id=1560807829]
+visible = false
+
+[node name="Decal" type="Decal" parent="DecalHolder" unique_id=777722442]
+size = Vector3(2000, 2000, 2000)
+texture_albedo = SubResource("NoiseTexture2D_upv3t")
+
+[node name="Decal2" type="Decal" parent="DecalHolder" unique_id=342668799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2000, 0, 0)
+size = Vector3(2000, 2000, 2000)
+texture_albedo = SubResource("NoiseTexture2D_upv3t")
+
+[node name="Water" type="AudioStreamPlayer3D" parent="." unique_id=1920413706]
+stream = ExtResource("2_olc7i")
+attenuation_model = 2
+unit_size = 100.0
+autoplay = true
+max_distance = 2000.0
+
+[node name="WaterArea" type="Area3D" parent="." unique_id=484197127]
+monitorable = false
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+gravity = 19.6
+linear_damp = 1000.0
+angular_damp = 1000.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaterArea" unique_id=745777211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1000, 0)
+shape = SubResource("BoxShape3D_ngwyd")
+
+[node name="Maxresdefault" type="Sprite2D" parent="." unique_id=322957841]
+visible = false
+position = Vector2(588, 318)
+texture = ExtResource("4_futy3")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2002097940]
+visible = false
+material = SubResource("ShaderMaterial_isu28")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("5_6v3t5")
+
+[node name="Sounds" type="Node" parent="." unique_id=477849173]
+
+[node name="CameraEntered" type="AudioStreamPlayer" parent="Sounds" unique_id=1996337278]
+stream = ExtResource("7_tupgr")
+bus = &"UI"
+
+[node name="CameraExited" type="AudioStreamPlayer" parent="Sounds" unique_id=1351945811]
+stream = ExtResource("8_futy3")
+bus = &"UI"
+
+[node name="Underwater" type="AudioStreamPlayer" parent="Sounds" unique_id=195146191]
+stream = ExtResource("8_tupgr")
+volume_db = -15.0
+bus = &"UI"
+
+[node name="AntiSpam" type="Timer" parent="Sounds" unique_id=1954012964]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="WaterArea" to="." method="_on_water_area_body_entered"]
+[connection signal="body_exited" from="WaterArea" to="." method="_on_water_area_body_exited"]

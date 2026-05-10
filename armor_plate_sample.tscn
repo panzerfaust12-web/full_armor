@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c8uy3m43s30l3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0gkfc"]
+size = Vector3(2.5, 2.5, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rymhp"]
+albedo_color = Color(0.75821775, 0.6857086, 0.62251574, 1)
+metallic = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_h8ume"]
+material = SubResource("StandardMaterial3D_rymhp")
+size = Vector3(2.5, 2.5, 0.05)
+
+[node name="ArmorPlateSample" type="CollisionShape3D" unique_id=1369379121]
+shape = SubResource("BoxShape3D_0gkfc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=803371822]
+mesh = SubResource("BoxMesh_h8ume")

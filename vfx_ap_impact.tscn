@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://dmoiq370g87bh"]
+
+[ext_resource type="Texture2D" uid="uid://b52a8fot66p1e" path="res://materials/Particles/MuzzleFlash01.png" id="1_70dmk"]
+[ext_resource type="Script" uid="uid://diabyrexbywgx" path="res://vfx_impact_basic.gd" id="1_c21id"]
+[ext_resource type="ArrayMesh" uid="uid://b5rfkwod3fcui" path="res://meshes/Bullets/AP.obj" id="3_o8i43"]
+[ext_resource type="Texture2D" uid="uid://dd220oqt5ls87" path="res://materials/Particles/bullet_hole_0.png" id="3_qkgnm"]
+[ext_resource type="AudioStream" uid="uid://ck3kqhntmu1xm" path="res://sound/Gun/bullet_impact_body_thump_02.wav" id="4_qkgnm"]
+[ext_resource type="Script" uid="uid://u3pqd2o8inn0" path="res://vfx_light_flash_fade.gd" id="6_o8i43"]
+
+[sub_resource type="Curve" id="Curve_70dmk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c21id"]
+curve = SubResource("Curve_70dmk")
+
+[sub_resource type="Curve" id="Curve_c21id"]
+_data = [Vector2(0, 1), 0.0, -2.2333097, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o8i43"]
+curve = SubResource("Curve_c21id")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_45pvh"]
+lifetime_randomness = 0.25
+particle_flag_align_y = true
+emission_shape_offset = Vector3(0, 0, -0.5)
+direction = Vector3(0, 0, 1)
+spread = 15.0
+initial_velocity_min = 25.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, -235.2, 0)
+damping_min = 100.00001
+damping_max = 100.00001
+scale_curve = SubResource("CurveTexture_o8i43")
+color = Color(0.96333474, 0.4782672, 7.70092e-07, 1)
+alpha_curve = SubResource("CurveTexture_c21id")
+hue_variation_min = -0.050000023
+hue_variation_max = 0.049999975
+collision_mode = 1
+collision_friction = 0.25
+collision_bounce = 1.0
+collision_use_scale = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pen00"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 2
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(18.892157, 18.892157, 18.892157, 1)
+albedo_texture = ExtResource("1_70dmk")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qftpq"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_pen00")
+size = Vector2(0.05, 0.5)
+orientation = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_v4ebl"]
+size = Vector3(0.1, 0.1, 50)
+
+[node name="vfx_AP_impact" type="Node3D" unique_id=2008407957]
+script = ExtResource("1_c21id")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=203043156]
+amount = 32
+lifetime = 0.5
+preprocess = 0.05
+explosiveness = 0.98
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_45pvh")
+draw_pass_1 = SubResource("QuadMesh_qftpq")
+
+[node name="Decal" type="Decal" parent="." unique_id=655089495]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+size = Vector3(0.5, 0.5, 0.5)
+texture_albedo = ExtResource("3_qkgnm")
+texture_orm = ExtResource("3_qkgnm")
+distance_fade_enabled = true
+distance_fade_begin = 100.0
+distance_fade_length = 50.0
+cull_mask = 1048573
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=924591286]
+stream = ExtResource("4_qkgnm")
+max_db = 6.0
+pitch_scale = 0.75
+autoplay = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=770229425]
+light_color = Color(0.7382879, 0.40360782, 5.7756904e-07, 1)
+light_energy = 16.0
+light_size = 1.0
+script = ExtResource("6_o8i43")
+
+[node name="Lifetime" type="Timer" parent="." unique_id=787514657]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=82988308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.812721)
+visible = false
+mesh = SubResource("BoxMesh_v4ebl")
+
+[node name="From_Carrier" type="Node3D" parent="." unique_id=1081258660]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="From_Carrier" unique_id=1885407854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.812721)
+visible = false
+mesh = SubResource("BoxMesh_v4ebl")
+
+[node name="Ap" type="MeshInstance3D" parent="From_Carrier" unique_id=1582972717]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 0, 5.758718e-09, 0.1317441)
+layers = 2
+mesh = ExtResource("3_o8i43")
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

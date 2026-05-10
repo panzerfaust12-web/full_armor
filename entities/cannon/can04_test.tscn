@@ -1,0 +1,274 @@
+[gd_scene format=3 uid="uid://c8i2gmq427ncc"]
+
+[ext_resource type="Script" uid="uid://cnb4jsu5smh10" path="res://scripts/component_gun.gd" id="1_ds7oa"]
+[ext_resource type="ArrayMesh" uid="uid://clb3bwi3co6ly" path="res://meshes/Guns/Cannon00.obj" id="2_bmcjy"]
+[ext_resource type="PackedScene" uid="uid://h2t5jf1ecrpo" path="res://entities/bullets/bullet_47mm.tscn" id="2_w8g25"]
+[ext_resource type="AudioStream" uid="uid://ssjmkyeup53l" path="res://sound/Gun/Explosion Military Tank Fire 01.wav" id="3_ds7oa"]
+[ext_resource type="Script" uid="uid://di7a0bgrpv3ca" path="res://entities/cannon/audio_play_once.gd" id="4_bmcjy"]
+[ext_resource type="Script" uid="uid://dmqm8jov1bnh" path="res://entities/cannon/debug_gun_disp.gd" id="6_gnh1r"]
+[ext_resource type="Script" uid="uid://fmojw4s0iybu" path="res://entities/cannon/effect_muzzle_flash.gd" id="7_lfesk"]
+[ext_resource type="Texture2D" uid="uid://dyp1yhgcw4cqx" path="res://materials/Particles/MuzzlePlane01.png" id="8_glb01"]
+[ext_resource type="ArrayMesh" uid="uid://uaboa6sn6gtt" path="res://meshes/Particles/MuzzlePlane01.obj" id="9_t45oc"]
+[ext_resource type="Texture2D" uid="uid://e7aqyghetilf" path="res://materials/Particles/MuzzleCone01.png" id="10_56b01"]
+[ext_resource type="ArrayMesh" uid="uid://b70kdrccammnp" path="res://meshes/Particles/MuzzleCone01.obj" id="11_r7hmk"]
+[ext_resource type="Texture2D" uid="uid://b52a8fot66p1e" path="res://materials/Particles/MuzzleFlash01.png" id="12_yw72f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8v71t"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("8_glb01")
+
+[sub_resource type="Curve" id="Curve_jam0n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ufdtk"]
+curve = SubResource("Curve_jam0n")
+
+[sub_resource type="Curve" id="Curve_tva3e"]
+_data = [Vector2(0, 0), 0.0, 2.4781897, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kqyj3"]
+curve = SubResource("Curve_tva3e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qryd4"]
+lifetime_randomness = 0.1
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_kqyj3")
+color = Color(1.6832789, 1.3441485, 0.9123984, 1)
+alpha_curve = SubResource("CurveTexture_ufdtk")
+hue_variation_min = -0.050000023
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bl0gg"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("10_56b01")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luvhf"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("12_yw72f")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_w5u4y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j7dkv"]
+curve = SubResource("Curve_w5u4y")
+
+[sub_resource type="Curve" id="Curve_6tlnc"]
+_data = [Vector2(0, 0), 0.0, 2.4781897, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8f37c"]
+curve = SubResource("Curve_6tlnc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g71se"]
+lifetime_randomness = 0.1
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_8f37c")
+color = Color(1.4369954, 1.1459137, 0.775335, 1)
+alpha_curve = SubResource("CurveTexture_j7dkv")
+hue_variation_min = -0.050000023
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="QuadMesh" id="QuadMesh_2pebl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xwgy"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("12_yw72f")
+
+[sub_resource type="Curve" id="Curve_2xw6k"]
+_data = [Vector2(0, 0.359375), 0.0, -0.359375, 0, 1, Vector2(1, 0), -0.359375, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f4uor"]
+curve = SubResource("Curve_2xw6k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uud46"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, -1)
+spread = 10.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+damping_min = 0.5
+damping_max = 0.8
+scale_min = 0.049999997
+scale_max = 0.29999998
+color = Color(3.2944162, 2.248599, 0.82927567, 1)
+alpha_curve = SubResource("CurveTexture_f4uor")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qndvk"]
+size = Vector2(0.1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lfesk"]
+size = Vector3(0.18432617, 0.20043945, 1.6149292)
+
+[node name="Cannon" type="Node3D" unique_id=206138512]
+script = ExtResource("1_ds7oa")
+width = 200
+depth = 200
+caliber = 47.0
+magazine_size = 500
+magazine_reload_time = 1.0
+dispersion_mil_horizontal = 0.25
+dispersion_mil_vertical = 0.25
+dispersion_time_to_bloom = 10.0
+dispension_time_to_center = 1.0
+debug = true
+bullet = ExtResource("2_w8g25")
+metadata/_custom_type_script = "uid://cnb4jsu5smh10"
+
+[node name="Cannon00" type="MeshInstance3D" parent="." unique_id=806027688]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
+mesh = ExtResource("2_bmcjy")
+
+[node name="BarrelExit" type="Node3D" parent="." unique_id=1386206589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1)
+
+[node name="Sound_Firing" type="AudioStreamPlayer3D" parent="." unique_id=2002775715]
+stream = ExtResource("3_ds7oa")
+unit_size = 25.0
+max_db = 6.0
+script = ExtResource("4_bmcjy")
+
+[node name="RateOfFire" type="Timer" parent="." unique_id=750688984]
+process_callback = 0
+one_shot = true
+
+[node name="FirstFire" type="Timer" parent="." unique_id=383991222]
+wait_time = 0.25
+one_shot = true
+
+[node name="Reload" type="Timer" parent="." unique_id=132358268]
+one_shot = true
+
+[node name="DebugDisplay" type="Node3D" parent="." unique_id=1008425299]
+transform = Transform3D(0.44208348, 0, 0, 0, 0.44208348, 0, 0, 0, 0.44208348, -0.27776048, 0.4037545, 0)
+script = ExtResource("6_gnh1r")
+
+[node name="Ammo" type="Label3D" parent="DebugDisplay" unique_id=87614826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+text = "Ammo Left:
+"
+horizontal_alignment = 0
+
+[node name="Reload" type="Label3D" parent="DebugDisplay" unique_id=31993882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10000001, 0)
+text = "Reload (s): "
+horizontal_alignment = 0
+
+[node name="Bloom" type="Label3D" parent="DebugDisplay" unique_id=1341130507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+text = "Bloom %:"
+horizontal_alignment = 0
+
+[node name="MuzzleFlash" type="Node3D" parent="." unique_id=238188931 node_paths=PackedStringArray("parent", "light", "emitters")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.15598)
+script = ExtResource("7_lfesk")
+parent = NodePath("")
+light = NodePath("OmniLight3D")
+emitters = [NodePath("MuzzleFlash"), NodePath("MuzzleCone"), NodePath("BeamFlash"), NodePath("Sparks"), NodePath("Sparks2")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MuzzleFlash" unique_id=892315425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3958904)
+visible = false
+light_color = Color(0.7488544, 0.5745385, 0.22149566, 1)
+light_energy = 16.0
+light_size = 1.0
+omni_range = 15.0
+omni_attenuation = 2.0
+
+[node name="MuzzleFlash" type="GPUParticles3D" parent="MuzzleFlash" unique_id=439865740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.062256277)
+material_override = SubResource("StandardMaterial3D_8v71t")
+amount = 1
+lifetime = 0.1
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_qryd4")
+draw_pass_1 = ExtResource("9_t45oc")
+
+[node name="MuzzleCone" type="GPUParticles3D" parent="MuzzleFlash" unique_id=183536975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0028967261)
+material_override = SubResource("StandardMaterial3D_bl0gg")
+amount = 1
+lifetime = 0.1
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_qryd4")
+draw_pass_1 = ExtResource("11_r7hmk")
+
+[node name="BeamFlash" type="GPUParticles3D" parent="MuzzleFlash" unique_id=1021644429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0028967261)
+material_override = SubResource("StandardMaterial3D_luvhf")
+amount = 1
+lifetime = 0.1
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_g71se")
+draw_pass_1 = SubResource("QuadMesh_2pebl")
+
+[node name="Sparks" type="GPUParticles3D" parent="MuzzleFlash" unique_id=944624108]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.0065071583)
+material_override = SubResource("StandardMaterial3D_7xwgy")
+amount = 2
+lifetime = 0.05
+explosiveness = 0.7
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_uud46")
+draw_pass_1 = SubResource("QuadMesh_qndvk")
+
+[node name="Sparks2" type="GPUParticles3D" parent="MuzzleFlash" unique_id=889984891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0065071583)
+material_override = SubResource("StandardMaterial3D_7xwgy")
+amount = 2
+lifetime = 0.05
+explosiveness = 0.7
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_uud46")
+draw_pass_1 = SubResource("QuadMesh_qndvk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1817609571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004760742, -0.013793945, -0.26901245)
+shape = SubResource("BoxShape3D_lfesk")
+
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]

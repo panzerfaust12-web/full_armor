@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://db7xmxx3e8v0b"]
+
+[ext_resource type="Script" uid="uid://cf71p20xjwuvm" path="res://scripts/tank_shell_generic.gd" id="1_5ub0v"]
+[ext_resource type="Material" uid="uid://dvtkwp4b7k00w" path="res://test.tres" id="1_hksdt"]
+[ext_resource type="Material" uid="uid://dek6mlwxm0g4l" path="res://red.tres" id="2_5ub0v"]
+[ext_resource type="AudioStream" uid="uid://6cvqbk0wgmsx" path="res://sound/barrel explode.wav" id="4_pyu7l"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pyu7l"]
+material = ExtResource("1_hksdt")
+top_radius = 0.075
+bottom_radius = 0.075
+height = 0.504
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_k6goc"]
+material = ExtResource("2_5ub0v")
+radius = 0.07
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nj6ik"]
+radius = 0.1
+height = 0.75
+
+[node name="TankShellGeneric" type="RigidBody3D"]
+top_level = true
+mass = 600.3
+can_sleep = false
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_5ub0v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.101504, 0.0127216)
+mesh = SubResource("CylinderMesh_pyu7l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.163782, 0.0127216)
+mesh = SubResource("CapsuleMesh_k6goc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0622784, 0.0127216)
+shape = SubResource("CapsuleShape3D_nj6ik")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Deadtimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="Splosion" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_pyu7l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Deadtimer" to="." method="_on_deadtimer_timeout"]

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bvfwrgddl1vnt"]
+
+[ext_resource type="Script" uid="uid://c5cv66t4jexdj" path="res://scripts/component_wheel.gd" id="1_evhu2"]
+[ext_resource type="Script" uid="uid://b1gwwakd2mit2" path="res://phys_wheel.gd" id="2_1gs1b"]
+[ext_resource type="ArrayMesh" uid="uid://dm08xwifmsmyd" path="res://meshes/Tanks/Test Tanks/tnk00_idler.obj" id="3_evhu2"]
+[ext_resource type="Material" uid="uid://6ar5tl0s4pv6" path="res://materials/metals/BeatUpMetal3.tres" id="4_5v1dx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4nwod"]
+resource_local_to_scene = true
+height = 0.25
+radius = 0.25
+
+[sub_resource type="Curve" id="Curve_7be3d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_gceed"]
+_data = [Vector2(0, 0), 0.0, 3.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.75), -2.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="BoxMesh" id="BoxMesh_gceed"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7be3d"]
+size = Vector3(0.5, 0.25, 0.1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gceed"]
+height = 0.25
+radius = 0.25
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7be3d"]
+size = Vector3(1, 0.25, 0.5)
+
+[node name="Wheel" type="Node3D" unique_id=1317562008]
+script = ExtResource("1_evhu2")
+
+[node name="Phys_Wheel" type="ShapeCast3D" parent="." unique_id=437283786]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_4nwod")
+target_position = Vector3(-0.5, 0, 0)
+max_results = 1
+debug_shape_custom_color = Color(0.5272715, 0.27082932, 1, 1)
+script = ExtResource("2_1gs1b")
+steering_enabled = false
+wheel_radius = 0.25
+wheel_thickness = 0.25
+traction_slip_ratio = SubResource("Curve_7be3d")
+traction_side_angle = SubResource("Curve_gceed")
+spring_length = 0.001
+spring_force_max = 1300.0
+spring_stiffness = 130000.0
+spring_dampening = 500.0
+metadata/_custom_type_script = "uid://b1gwwakd2mit2"
+
+[node name="Turning_Origin" type="Node3D" parent="Phys_Wheel" unique_id=1457812732]
+
+[node name="Wheel" type="MeshInstance3D" parent="Phys_Wheel/Turning_Origin" unique_id=775253418]
+transform = Transform3D(-1.845932e-08, -0.38, 0, 0.4223, -1.6610327e-08, 0, 0, 0, 0.38, 0, 0, 0)
+mesh = ExtResource("3_evhu2")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = ExtResource("4_5v1dx")
+metadata/_edit_lock_ = true
+
+[node name="Origin" type="MeshInstance3D" parent="Phys_Wheel" unique_id=953603618]
+mesh = SubResource("BoxMesh_gceed")
+
+[node name="SPRING" type="MeshInstance3D" parent="Phys_Wheel" unique_id=974448817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
+mesh = SubResource("BoxMesh_7be3d")
+
+[node name="Col_Zero" type="CollisionShape3D" parent="Phys_Wheel" unique_id=713866137]
+shape = SubResource("CylinderShape3D_gceed")
+
+[node name="Col_Illegal" type="CollisionShape3D" parent="Phys_Wheel" unique_id=370383330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+shape = SubResource("BoxShape3D_7be3d")

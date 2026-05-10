@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://3fe62llqr2l7"]
+
+[ext_resource type="Script" uid="uid://dvu0hwpe8ldcm" path="res://ctrl_vehicle.gd" id="1_2d52y"]
+[ext_resource type="PackedScene" uid="uid://bqxbc76uartwy" path="res://entities/hull/hull03_test_wv2000.tscn" id="1_eesq5"]
+[ext_resource type="PackedScene" uid="uid://103aqogyjqo8" path="res://entities/engine/engine03_test_wv2000.tscn" id="2_pf2mk"]
+[ext_resource type="PackedScene" uid="uid://c52sihbnsgwea" path="res://vehicles/test_vehicles/tw_wz2000.tscn" id="3_2d52y"]
+[ext_resource type="PackedScene" uid="uid://d3my2fwxjwafd" path="res://entities/transmission/trans02_test_wz2000.tscn" id="3_pf2mk"]
+[ext_resource type="Script" uid="uid://ddktfs6nkvlbi" path="res://scripts/player_controller.gd" id="3_shkjf"]
+[ext_resource type="PackedScene" uid="uid://dju2aoxj60xjk" path="res://PauseMenu.tscn" id="6_k21p2"]
+[ext_resource type="AudioStream" uid="uid://61sf2foi3pu3" path="res://sound/throttlefull.wav" id="7_lpexc"]
+[ext_resource type="AudioStream" uid="uid://dtnanf3y7i6jc" path="res://sound/throttlehalf.wav" id="8_r6na8"]
+[ext_resource type="AudioStream" uid="uid://bpxo5chh3ttia" path="res://sound/throttleidle.wav" id="9_2j2a0"]
+[ext_resource type="AudioStream" uid="uid://g8lhkjy1lwqs" path="res://sound/jixaw-metal-pipe-falling-sound.mp3" id="10_ehv16"]
+[ext_resource type="AudioStream" uid="uid://cx4h1ctq3rqa" path="res://sound/sonic-spring.mp3" id="11_10gm4"]
+[ext_resource type="AudioStream" uid="uid://cy6inc3rm1sll" path="res://sound/Hud_specialtric.mp3" id="12_8wo8s"]
+[ext_resource type="AudioStream" uid="uid://nogkhqk38l0t" path="res://sound/windup.wav" id="13_w3027"]
+[ext_resource type="AudioStream" uid="uid://bvjekxrdmcbje" path="res://sound/winddown.wav" id="14_sffod"]
+[ext_resource type="AudioStream" uid="uid://cs1ragmqf0287" path="res://sound/807842__sabacky__complex-mechanism-short.wav" id="15_1ooj3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pf2mk"]
+resource_local_to_scene = true
+height = 0.15
+radius = 0.26
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_shkjf"]
+resource_local_to_scene = true
+height = 0.15
+radius = 0.26
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2d52y"]
+resource_local_to_scene = true
+height = 0.15
+radius = 0.26
+
+[sub_resource type="SphereMesh" id="SphereMesh_opl4q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgsaf"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.47801316, 0.000874632, 0.61150765, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l4rn"]
+next_pass = SubResource("StandardMaterial3D_sgsaf")
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.47801316, 0.000874632, 0.61150765, 1)
+
+[node name="Vehicle" type="RigidBody3D" unique_id=453725484]
+script = ExtResource("1_2d52y")
+metadata/_custom_type_script = "uid://dvu0hwpe8ldcm"
+
+[node name="Hull" parent="." unique_id=609745220 instance=ExtResource("1_eesq5")]
+
+[node name="Engine" parent="Hull/Mount_Engine" parent_id_path=PackedInt32Array(609745220, 1121824574) index="0" unique_id=945426242 instance=ExtResource("2_pf2mk")]
+
+[node name="Phys_Wheel" parent="Hull/Mount_Wheel" parent_id_path=PackedInt32Array(609745220, 537338489) index="0" unique_id=437283786 instance=ExtResource("3_2d52y")]
+shape = SubResource("CylinderShape3D_pf2mk")
+
+[node name="Phys_Wheel" parent="Hull/Mount_Wheel2" parent_id_path=PackedInt32Array(609745220, 1755681109) index="0" unique_id=1385841866 instance=ExtResource("3_2d52y")]
+shape = SubResource("CylinderShape3D_shkjf")
+
+[node name="Phys_Wheel" parent="Hull/Mount_Wheel3" parent_id_path=PackedInt32Array(609745220, 1973457153) index="0" unique_id=1683838658 instance=ExtResource("3_2d52y")]
+shape = SubResource("CylinderShape3D_2d52y")
+
+[node name="Transmission" parent="Hull/Mount_Transmission" parent_id_path=PackedInt32Array(609745220, 413283399) index="0" unique_id=135719996 instance=ExtResource("3_pf2mk")]
+
+[node name="PlayerController" type="Node3D" parent="." unique_id=43998339]
+script = ExtResource("3_shkjf")
+
+[node name="CameraPivot" type="Node3D" parent="PlayerController" unique_id=1116481439]
+top_level = true
+
+[node name="MainCamera" type="Camera3D" parent="PlayerController/CameraPivot" unique_id=738601397]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 3.793)
+current = true
+fov = 37.849285
+
+[node name="Pause_Menu" parent="PlayerController" unique_id=1638997417 instance=ExtResource("6_k21p2")]
+visible = false
+
+[node name="SoundController" type="Node3D" parent="." unique_id=992753772]
+
+[node name="ThrottleFull" type="AudioStreamPlayer3D" parent="SoundController" unique_id=195987114]
+visible = false
+stream = ExtResource("7_lpexc")
+volume_db = -80.0
+autoplay = true
+
+[node name="ThrottleHalf" type="AudioStreamPlayer3D" parent="SoundController" unique_id=604443706]
+visible = false
+stream = ExtResource("8_r6na8")
+volume_db = -80.0
+autoplay = true
+
+[node name="ThrottleIdle" type="AudioStreamPlayer3D" parent="SoundController" unique_id=1940057199]
+visible = false
+stream = ExtResource("9_2j2a0")
+volume_db = -80.0
+autoplay = true
+
+[node name="Impact" type="AudioStreamPlayer3D" parent="SoundController" unique_id=1044948048]
+stream = ExtResource("10_ehv16")
+volume_db = -6.0
+
+[node name="Jumppu" type="AudioStreamPlayer3D" parent="SoundController" unique_id=1926381703]
+stream = ExtResource("11_10gm4")
+volume_db = -3.0
+
+[node name="Flippu" type="AudioStreamPlayer3D" parent="SoundController" unique_id=1095808821]
+stream = ExtResource("12_8wo8s")
+volume_db = -6.0
+
+[node name="WindUp" type="AudioStreamPlayer3D" parent="SoundController" unique_id=1159934708]
+stream = ExtResource("13_w3027")
+
+[node name="WindDown" type="AudioStreamPlayer3D" parent="SoundController" unique_id=1270809875]
+stream = ExtResource("14_sffod")
+
+[node name="GearS" type="AudioStreamPlayer3D" parent="SoundController" unique_id=2121291190]
+visible = false
+stream = ExtResource("15_1ooj3")
+volume_db = -8.0
+
+[node name="COM_Ball" type="MeshInstance3D" parent="." unique_id=468499247]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_opl4q")
+surface_material_override/0 = SubResource("StandardMaterial3D_3l4rn")
+
+[editable path="Hull"]

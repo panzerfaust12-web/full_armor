@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://vr8hl6emxn0a"]
+
+[ext_resource type="Script" uid="uid://biy3mac1cjy8d" path="res://scripts/component_bullet.gd" id="1_hsw3p"]
+[ext_resource type="ArrayMesh" uid="uid://bvvlo4rnho8eg" path="res://meshes/Bullets/Bullet-Rifle-FullMetal.obj" id="2_7drfw"]
+[ext_resource type="PackedScene" uid="uid://dmoiq370g87bh" path="res://vfx_ap_impact.tscn" id="2_8rxcl"]
+[ext_resource type="Curve" uid="uid://cefqmmfaih51y" path="res://scripts/ballistic_curve_models/G7.tres" id="3_826nr"]
+[ext_resource type="ArrayMesh" uid="uid://bbverwqfj464x" path="res://meshes/Bullets/TracerCone.obj" id="3_f3ihu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oobtr"]
+albedo_color = Color(18.892157, 12.764836, 7.271375, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r3q4v"]
+radius = 1.0
+
+[node name="Bullet" type="Node3D" unique_id=898357207 node_paths=PackedStringArray("bullet_mesh", "tracer_mesh")]
+process_priority = -1
+process_physics_priority = -1
+top_level = true
+script = ExtResource("1_hsw3p")
+muzzle_velocity = 859.536
+impact = ExtResource("2_8rxcl")
+bullet_mesh = NodePath("Bullet_Tilt/Bullet_Spin/BulletRifleFullMetal")
+tracer_mesh = NodePath("Bullet_Tilt/Bullet_Spin/BulletRifleFullMetal/TracerCone")
+ballistic_curve = ExtResource("3_826nr")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=9465708]
+process_priority = -1
+process_physics_priority = -1
+target_position = Vector3(0, 0, 0)
+
+[node name="Bullet_Tilt" type="Node3D" parent="." unique_id=648958627]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Bullet_Spin" type="Node3D" parent="Bullet_Tilt" unique_id=781135923]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+
+[node name="BulletRifleFullMetal" type="MeshInstance3D" parent="Bullet_Tilt/Bullet_Spin" unique_id=1181056782]
+transform = Transform3D(0.0635, 0, 0, 0, -5.5879354e-09, 0.0635, 0, -0.0635, -5.5879354e-09, 0, 0, 0.043718904)
+mesh = ExtResource("2_7drfw")
+
+[node name="TracerCone" type="MeshInstance3D" parent="Bullet_Tilt/Bullet_Spin/BulletRifleFullMetal" unique_id=450143751]
+transform = Transform3D(1.5464567, 0, 0, 0, 1.4173229, -7.1054274e-15, 0, 0, 1.5464567, 0, 0.045078456, 1.9704434e-09)
+mesh = ExtResource("3_f3ihu")
+surface_material_override/0 = SubResource("StandardMaterial3D_oobtr")
+
+[node name="Lifetime" type="Timer" parent="." unique_id=1942364413]
+one_shot = true
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=1355439339]
+shape = SubResource("SphereShape3D_r3q4v")
+target_position = Vector3(0, 0, 0)
+max_results = 1
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

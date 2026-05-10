@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://b5bawtb6v8ua3"]
+
+[ext_resource type="Script" uid="uid://tahccehwxiwt" path="res://scripts/component_engine.gd" id="1_r6nx7"]
+[ext_resource type="ArrayMesh" uid="uid://di6ylv7nk3fc0" path="res://meshes/Engines/BMW M78.obj" id="2_i05m6"]
+[ext_resource type="Material" uid="uid://br06tgy556tws" path="res://materials/metals/BeatUpMetal.tres" id="3_sbeyl"]
+[ext_resource type="Material" uid="uid://bxqbytu1v5vtg" path="res://materials/metals/TestMetal.tres" id="4_32kct"]
+[ext_resource type="AudioStream" uid="uid://bnlg7h0ybj6qo" path="res://sound/Engine/R975/R975-400.wav" id="5_r34ss"]
+[ext_resource type="AudioStream" uid="uid://g8tksis2fflc" path="res://sound/Engine/R975/R975-1000.wav" id="6_mw4o5"]
+[ext_resource type="AudioStream" uid="uid://cllqx2qjoxvcg" path="res://sound/Engine/R975/R975-1300.wav" id="7_crlfh"]
+[ext_resource type="AudioStream" uid="uid://bvjekxrdmcbje" path="res://sound/winddown.wav" id="7_hdjgj"]
+[ext_resource type="AudioStream" uid="uid://cbbyt8tsk0a8" path="res://sound/Engine/R975/R975-1600.wav" id="8_rvapv"]
+[ext_resource type="AudioStream" uid="uid://dw6f1fvmcvv4t" path="res://sound/Engine/R975/R975-1900.wav" id="9_ql05a"]
+[ext_resource type="AudioStream" uid="uid://cby4f72c0waiw" path="res://sound/Engine/R975/R975-2200.wav" id="10_keftr"]
+[ext_resource type="AudioStream" uid="uid://cm3rpaldb73fv" path="res://sound/Engine/R975/R975-2500.wav" id="11_gbsl0"]
+[ext_resource type="AudioStream" uid="uid://b560d61oneudr" path="res://sound/Engine/R975/start.wav" id="12_t22dr"]
+
+[sub_resource type="Curve" id="Curve_r34ss"]
+_data = [Vector2(0, 0.05), 0.0, 1.080137, 0, 1, Vector2(0.87951803, 1), 1.080137, -4.142917, 1, 1, Vector2(1, 0.5008532), -4.142917, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_gwmqh"]
+stream_count = 7
+stream_0/stream = ExtResource("5_r34ss")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("6_mw4o5")
+stream_1/volume = 0.0
+stream_2/stream = ExtResource("7_crlfh")
+stream_2/volume = 0.0
+stream_3/stream = ExtResource("8_rvapv")
+stream_3/volume = 0.0
+stream_4/stream = ExtResource("9_ql05a")
+stream_4/volume = 0.0
+stream_5/stream = ExtResource("10_keftr")
+stream_5/volume = 0.0
+stream_6/stream = ExtResource("11_gbsl0")
+stream_6/volume = 0.0
+
+[node name="Engine" type="Node3D" unique_id=380098967]
+script = ExtResource("1_r6nx7")
+description = "The Chrysler A57 Multibank is a 30-cylinder 1,253 cu in (20.5 L) engine that was created in 1941 as America entered World War II. It consists of five banks of inline-6 cylinder engines. It was born out of the necessity for a rear-mounted tank engine to be developed and produced in the shortest time possible for use in the M3A4 Lee medium tank and its successor M4A4 Sherman medium tank. Each had lengthened hulls to accommodate the A57."
+length = 1600
+width = 2000
+height = 1260
+weight = 100
+horsepower = 370.0
+power_curve = SubResource("Curve_r34ss")
+metadata/_custom_type_script = "uid://tahccehwxiwt"
+
+[node name="EngineMesh" type="MeshInstance3D" parent="." unique_id=428694392]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.58725655, 0)
+mesh = ExtResource("2_i05m6")
+surface_material_override/0 = ExtResource("3_sbeyl")
+surface_material_override/1 = ExtResource("4_32kct")
+
+[node name="Throttle_Mix" type="AudioStreamPlayer3D" parent="." unique_id=3703172]
+stream = SubResource("AudioStreamSynchronized_gwmqh")
+attenuation_model = 1
+
+[node name="Start" type="AudioStreamPlayer3D" parent="." unique_id=2062026870]
+stream = ExtResource("12_t22dr")
+
+[node name="Stop" type="AudioStreamPlayer3D" parent="." unique_id=1329738420]
+stream = ExtResource("7_hdjgj")

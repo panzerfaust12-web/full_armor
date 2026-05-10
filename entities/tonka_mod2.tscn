@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dxxn58gqtj7ui"]
+
+[ext_resource type="Script" uid="uid://cyvh5pyl3y5c2" path="res://scripts/zz_OLD_VehicleController.gd" id="1_dfjjk"]
+[ext_resource type="PackedScene" uid="uid://dwhvqhort3rjh" path="res://entities/hull/hull01b_test.tscn" id="2_dfjjk"]
+[ext_resource type="PackedScene" uid="uid://dsi2npt2iwdsv" path="res://entities/turret/turret01_test.tscn" id="3_wd2ee"]
+[ext_resource type="PackedScene" uid="uid://csbpw8q2wx44t" path="res://entities/cannon/can01_test.tscn" id="4_ixwg2"]
+[ext_resource type="PackedScene" uid="uid://cmvnynsmsfpnf" path="res://entities/suspension/sus01a_test.tscn" id="5_epykl"]
+
+[node name="tonka_mod" type="RigidBody3D"]
+mass = 5000.0
+center_of_mass_mode = 1
+script = ExtResource("1_dfjjk")
+
+[node name="Hull" parent="." instance=ExtResource("2_dfjjk")]
+
+[node name="Turret" parent="Hull/Mount_Turret" index="0" instance=ExtResource("3_wd2ee")]
+
+[node name="Cannon" parent="Hull/Mount_Turret/Turret/Mount_Cannon" index="0" instance=ExtResource("4_ixwg2")]
+
+[node name="Suspension" parent="Hull/Mount_Left_Suspension" index="0" instance=ExtResource("5_epykl")]
+
+[node name="Suspension" parent="Hull/Mount_Right_Suspension" index="0" instance=ExtResource("5_epykl")]
+
+[editable path="Hull"]
+[editable path="Hull/Mount_Turret/Turret"]

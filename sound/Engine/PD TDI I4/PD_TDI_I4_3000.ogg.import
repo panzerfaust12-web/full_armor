@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c4ak530fjs84i"
+path="res://.godot/imported/PD_TDI_I4_3000.ogg-740e2681ea9a4a3d57e082ebb0a4396c.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/Engine/PD TDI I4/PD_TDI_I4_3000.ogg"
+dest_files=["res://.godot/imported/PD_TDI_I4_3000.ogg-740e2681ea9a4a3d57e082ebb0a4396c.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

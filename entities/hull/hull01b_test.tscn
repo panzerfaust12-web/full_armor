@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwhvqhort3rjh"]
+
+[ext_resource type="ArrayMesh" uid="uid://xbc4wpyetl46" path="res://meshes/Tanks/Test Tanks/Basic/vk3.obj" id="1_gx6dk"]
+[ext_resource type="Script" uid="uid://c7ffgg58xal6b" path="res://scripts/component_hull.gd" id="1_t4ihf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bywxt"]
+albedo_color = Color(0.24384671, 0.29286093, 0.29180712, 1)
+
+[node name="Hull" type="Node3D"]
+script = ExtResource("1_t4ihf")
+long_name = "Gray Funny Boy"
+short_name = "GFB"
+description = "ypa ypa yap yap"
+
+[node name="HullMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0.8, 0, 0.18337524, 0)
+mesh = ExtResource("1_gx6dk")
+surface_material_override/0 = SubResource("StandardMaterial3D_bywxt")
+
+[node name="Mount_Turret" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6203576, -0.01225698)
+
+[node name="Mount_Engine" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.963293, 1.6458)
+
+[node name="Mount_Left_Suspension" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1.2731498, 0.32162717)
+
+[node name="Mount_Right_Suspension" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.2731498, 0.32162717)
+
+[node name="Mount_Left_Suspension2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0.90495, -0.007)
+
+[node name="Mount_Right_Suspension2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.90495, -0.007)

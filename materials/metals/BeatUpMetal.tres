@@ -1,0 +1,20 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://br06tgy556tws"]
+
+[ext_resource type="Texture2D" uid="uid://cwog2j00h10bi" path="res://materials/metals/BeatUpMetal_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bsfb33bvj4myg" path="res://materials/metals/BeatUpMetal_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dco652rm08hgc" path="res://materials/metals/BeatUpMetal_normal.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cienhb7iwmqky" path="res://materials/metals/BeatUpMetal_emission.png" id="5"]
+
+[resource]
+albedo_color = Color(0.50872517, 0.5457105, 0.5900031, 1)
+albedo_texture = ExtResource("1")
+orm_texture = ExtResource("2")
+emission_texture = ExtResource("5")
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("3")
+heightmap_enabled = true
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+uv1_scale = Vector3(12, 12, 12)

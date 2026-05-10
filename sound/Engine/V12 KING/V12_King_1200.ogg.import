@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://da4hgvbab7f2u"
+path="res://.godot/imported/V12_King_1200.ogg-5f127628977c932e6a73e3c7268d74dc.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/Engine/V12 KING/V12_King_1200.ogg"
+dest_files=["res://.godot/imported/V12_King_1200.ogg-5f127628977c932e6a73e3c7268d74dc.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c5exwlknadjg8"]
+
+[ext_resource type="Texture2D" uid="uid://cu1pm10fn32jw" path="res://meshes/Terrain/hilly_terrain_01_puresky_2k.exr" id="1_lcl4x"]
+
+[sub_resource type="Shader" id="Shader_y7354"]
+code = "
+// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's PanoramaSkyMaterial.
+
+shader_type sky;
+
+uniform sampler2D source_panorama : filter_linear, source_color, hint_default_black;
+uniform float speed = 0.002;
+uniform float exposure : hint_range(0, 128) = 1.0;
+
+void sky() {
+	vec2 skyCoords = vec2(SKY_COORDS.x + TIME * speed, SKY_COORDS.y);
+	COLOR = texture(source_panorama, SKY_COORDS).rgb * exposure;
+}
+"
+
+[resource]
+shader = SubResource("Shader_y7354")
+shader_parameter/source_panorama = ExtResource("1_lcl4x")
+shader_parameter/speed = 0.02
+shader_parameter/exposure = 1.0

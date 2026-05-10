@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://y3sp85mjm8tt"]
+
+[ext_resource type="Texture2D" uid="uid://b6y120uqjcy7l" path="res://meshes/Tanks/Tracks/T49_Color.png" id="1_aewds"]
+[ext_resource type="Texture2D" uid="uid://bbiewjwst1int" path="res://meshes/Tanks/Tracks/T49_Metallic_Map.png" id="2_1rk4c"]
+[ext_resource type="Texture2D" uid="uid://rxs5hqktd5vb" path="res://meshes/Tanks/Tracks/T49_Normal.png" id="3_qd8x6"]
+[ext_resource type="Texture2D" uid="uid://dkpv3tbolb8v" path="res://meshes/Tanks/Tracks/T49_Roughness.png" id="4_ayd4l"]
+
+[resource]
+albedo_texture = ExtResource("1_aewds")
+metallic = 1.0
+metallic_specular = 0.2
+metallic_texture = ExtResource("2_1rk4c")
+metallic_texture_channel = 4
+roughness_texture = ExtResource("4_ayd4l")
+roughness_texture_channel = 4
+emission = Color(1, 1, 1, 1)
+normal_enabled = true
+normal_texture = ExtResource("3_qd8x6")
+texture_filter = 0

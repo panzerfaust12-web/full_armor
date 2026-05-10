@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://cmf6dxpgj687s"]
+
+[ext_resource type="Script" uid="uid://c7ffgg58xal6b" path="res://scripts/component_hull.gd" id="1_p7pfy"]
+[ext_resource type="Script" uid="uid://be0ffafnlxhw3" path="res://scripts/component_mount.gd" id="2_13y8j"]
+[ext_resource type="Material" uid="uid://bicss3jsjuwh7" path="res://materials/PolyHaven/green_metal_rust.res" id="2_g4tjm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ef0e"]
+size = Vector3(1.35, 0.9, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vbecj"]
+size = Vector3(1.35, 1.2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_efu1q"]
+size = Vector3(1.35, 1.1, 1.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wfqxx"]
+size = Vector3(1.8, 0.3, 1.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tb30p"]
+size = Vector3(1.8, 0.3, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6apjw"]
+size = Vector3(1.35, 0.9, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p7pfy"]
+size = Vector3(1.35, 1.2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nftdl"]
+size = Vector3(1.35, 1.1, 1.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4d7ci"]
+size = Vector3(1.8, 0.3, 1.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p7yjp"]
+size = Vector3(1.8, 0.3, 2)
+
+[node name="Hull" type="Node3D" unique_id=609745220]
+script = ExtResource("1_p7pfy")
+weight = 15000
+long_name = "Shitbox Alpha4.1"
+short_name = "SA41"
+description = "My balls sag heavy."
+metadata/_custom_type_script = "uid://c7ffgg58xal6b"
+
+[node name="Mount_Turret" type="Node3D" parent="." unique_id=1791155537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6494383, 0)
+script = ExtResource("2_13y8j")
+accepts = "Turret"
+
+[node name="Mount_Left_Suspension" type="Node3D" parent="." unique_id=1290556644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.90000004, 0.100000024, 0)
+script = ExtResource("2_13y8j")
+accepts = "Suspension"
+
+[node name="Mount_Right_Suspension" type="Node3D" parent="." unique_id=1125790357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90000004, 0.100000024, 0)
+script = ExtResource("2_13y8j")
+accepts = "Suspension"
+
+[node name="Mount_Hull_MG" type="Node3D" parent="." unique_id=1716591772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58574516, 0.43973607, -1.33964)
+script = ExtResource("2_13y8j")
+accepts = "Suspension"
+
+[node name="Mount_Engine" type="Node3D" parent="." unique_id=1121824574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08170098, 1.3917894)
+script = ExtResource("2_13y8j")
+accepts = "Engine"
+
+[node name="Mount_Transmission" type="Node3D" parent="." unique_id=413283399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15404621, -1.6100881)
+script = ExtResource("2_13y8j")
+accepts = "Transmission"
+
+[node name="MockTank" type="Node3D" parent="." unique_id=991510056]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MockTank" unique_id=1968637919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15000004, -1.7)
+shape = SubResource("BoxShape3D_7ef0e")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MockTank" unique_id=1245872477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
+shape = SubResource("BoxShape3D_vbecj")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MockTank" unique_id=727512125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050000012, 1.4238)
+shape = SubResource("BoxShape3D_efu1q")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MockTank" unique_id=138423906]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0.3995, 1.431919)
+shape = SubResource("BoxShape3D_wfqxx")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="MockTank" unique_id=812544897]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0.5005, -0.20811898)
+shape = SubResource("BoxShape3D_tb30p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MockTank" unique_id=1131585758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15000004, -1.7)
+mesh = SubResource("BoxMesh_6apjw")
+surface_material_override/0 = ExtResource("2_g4tjm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MockTank" unique_id=243616122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
+mesh = SubResource("BoxMesh_p7pfy")
+surface_material_override/0 = ExtResource("2_g4tjm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MockTank" unique_id=2023378787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050000012, 1.4238)
+mesh = SubResource("BoxMesh_nftdl")
+surface_material_override/0 = ExtResource("2_g4tjm")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MockTank" unique_id=1401381188]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0.3995, 1.431919)
+mesh = SubResource("BoxMesh_4d7ci")
+surface_material_override/0 = ExtResource("2_g4tjm")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MockTank" unique_id=323236425]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0.5005, -0.20811898)
+mesh = SubResource("BoxMesh_p7yjp")
+surface_material_override/0 = ExtResource("2_g4tjm")

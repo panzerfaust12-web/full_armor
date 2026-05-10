@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bk5kudmrnak5l"]
+
+[ext_resource type="PackedScene" uid="uid://cja8xobqpbscb" path="res://meshes/Guns/BigTankTree2.glb" id="1_h642d"]
+
+[node name="BigTankTree2" unique_id=1828662256 instance=ExtResource("1_h642d")]
+
+[node name="13mm Gun 1" parent="." index="0" unique_id=374378989]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)

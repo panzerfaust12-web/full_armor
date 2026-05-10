@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh0ivuvqcccfk"]
+
+[ext_resource type="Script" uid="uid://x7w2tkoytak1" path="res://scripts/solo_component_holder.gd" id="1_s7h2s"]
+
+[node name="SoloComponentHolder" type="RigidBody3D"]
+can_sleep = false
+script = ExtResource("1_s7h2s")
+
+[node name="MountAnything" type="Node3D" parent="."]

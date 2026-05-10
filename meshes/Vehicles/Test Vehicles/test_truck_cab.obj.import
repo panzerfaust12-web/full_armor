@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c3olmqxail2to"
+path="res://.godot/imported/test_truck_cab.obj-8ed81d321eb5dc3554098b2c36b74bcd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/test_truck_cab.obj-8ed81d321eb5dc3554098b2c36b74bcd.mesh"]
+
+source_file="res://meshes/Vehicles/Test Vehicles/test_truck_cab.obj"
+dest_files=["res://.godot/imported/test_truck_cab.obj-8ed81d321eb5dc3554098b2c36b74bcd.mesh", "res://.godot/imported/test_truck_cab.obj-8ed81d321eb5dc3554098b2c36b74bcd.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

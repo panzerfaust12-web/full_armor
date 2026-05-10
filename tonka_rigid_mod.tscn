@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv10k4ddg386c"]
+
+[ext_resource type="PackedScene" uid="uid://b8reinovpsoyd" path="res://hull01_rigid_test.tscn" id="1_jo6mj"]
+[ext_resource type="PackedScene" uid="uid://cmdq2gvqpvqmr" path="res://sus01_rigid_test.tscn" id="2_1w0pu"]
+[ext_resource type="PackedScene" uid="uid://p2sxv626sguo" path="res://entities/turret/turret01_test_rigid.tscn" id="3_1w0pu"]
+
+[node name="tonka_rigid_mod" type="Node3D"]
+
+[node name="Hull" parent="." instance=ExtResource("1_jo6mj")]
+
+[node name="Suspension" parent="." instance=ExtResource("2_1w0pu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0.8, 0)
+mass = 500.0
+
+[node name="Suspension2" parent="." instance=ExtResource("2_1w0pu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0.8, 0)
+mass = 500.0
+
+[node name="Turret" parent="." instance=ExtResource("3_1w0pu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7167099, -0.3804392)
+mass = 500.0
+
+[editable path="Hull"]

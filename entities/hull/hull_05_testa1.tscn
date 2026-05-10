@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://dg3g7eu8fpy1j"]
+
+[ext_resource type="Script" uid="uid://c7ffgg58xal6b" path="res://scripts/component_hull.gd" id="1_gl68o"]
+[ext_resource type="Script" uid="uid://be0ffafnlxhw3" path="res://scripts/component_mount.gd" id="2_dp1ug"]
+[ext_resource type="Material" uid="uid://bicss3jsjuwh7" path="res://materials/PolyHaven/green_metal_rust.res" id="2_sr78r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p7pfy"]
+size = Vector3(1.35, 1.2, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nftdl"]
+size = Vector3(1.35, 1.1, 2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4d7ci"]
+size = Vector3(1.8, 0.3, 2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p7yjp"]
+size = Vector3(1.8, 0.3, 3)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o7m3s"]
+points = PackedVector3Array(0.675, 0.6, 1.5, 0.675, -0.6, 1.5, 0.675, 0.6, -1.5, -0.675, 0.6, 1.5, -0.675, -0.6, 1.5, 0.675, -0.6, -1.5, -0.675, 0.6, -1.5, -0.675, -0.6, -1.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l8w7f"]
+points = PackedVector3Array(0.675, 0.55, 1.25, 0.675, -0.55, 1.25, 0.675, 0.55, -1.25, -0.675, 0.55, 1.25, -0.675, -0.55, 1.25, 0.675, -0.55, -1.25, -0.675, 0.55, -1.25, -0.675, -0.55, -1.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d6it4"]
+points = PackedVector3Array(0.9, 0.15, 1.25, 0.9, -0.15, 1.25, 0.9, 0.15, -1.25, -0.9, 0.15, 1.25, -0.9, -0.15, 1.25, 0.9, -0.15, -1.25, -0.9, 0.15, -1.25, -0.9, -0.15, -1.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c0j6n"]
+points = PackedVector3Array(0.9, 0.15, 1.5, 0.9, -0.15, 1.5, 0.9, 0.15, -1.5, -0.9, 0.15, 1.5, -0.9, -0.15, 1.5, 0.9, -0.15, -1.5, -0.9, 0.15, -1.5, -0.9, -0.15, -1.5)
+
+[node name="Hull" type="Node3D" unique_id=609745220]
+script = ExtResource("1_gl68o")
+weight = 35000
+long_name = "Shitbox Alpha4.2"
+short_name = "SA42"
+description = "My balls sag heavy."
+metadata/_custom_type_script = "uid://c7ffgg58xal6b"
+
+[node name="Mount_Turret" type="Node3D" parent="." unique_id=1791155537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6494383, 1.1)
+script = ExtResource("2_dp1ug")
+accepts = "Turret"
+
+[node name="Mount_Turret2" type="Node3D" parent="." unique_id=286007400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5494383, -1.4999999)
+script = ExtResource("2_dp1ug")
+accepts = "Turret"
+
+[node name="Mount_Left_Suspension" type="Node3D" parent="." unique_id=1290556644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.90000004, 0.100000024, 0)
+script = ExtResource("2_dp1ug")
+accepts = "Suspension"
+
+[node name="Mount_Right_Suspension" type="Node3D" parent="." unique_id=1125790357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90000004, 0.100000024, 0)
+script = ExtResource("2_dp1ug")
+accepts = "Suspension"
+
+[node name="Mount_Engine" type="Node3D" parent="." unique_id=1121824574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08170098, -0.20821059)
+script = ExtResource("2_dp1ug")
+accepts = "Engine"
+
+[node name="Mount_Transmission" type="Node3D" parent="." unique_id=413283399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15404621, 2.289912)
+script = ExtResource("2_dp1ug")
+accepts = "Transmission"
+
+[node name="MockTank" type="Node3D" parent="." unique_id=991510056]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MockTank" unique_id=243616122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2221327)
+mesh = SubResource("BoxMesh_p7pfy")
+surface_material_override/0 = ExtResource("2_sr78r")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MockTank" unique_id=2023378787]
+transform = Transform3D(0.999, 0, 0, 0, 0.999, 0, 0, 0, 0.999, 0, -0.049775258, -1.5254512)
+mesh = SubResource("BoxMesh_nftdl")
+surface_material_override/0 = ExtResource("2_sr78r")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MockTank" unique_id=1401381188]
+transform = Transform3D(1.00899, 0, 0, 0, 1.00899, 0, 0, 0, 1.00899, 0, 0.39927524, -1.5173402)
+mesh = SubResource("BoxMesh_4d7ci")
+surface_material_override/0 = ExtResource("2_sr78r")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MockTank" unique_id=323236425]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0.5005, 1.2140138)
+mesh = SubResource("BoxMesh_p7yjp")
+surface_material_override/0 = ExtResource("2_sr78r")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MockTank" unique_id=224526055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2221327)
+shape = SubResource("ConvexPolygonShape3D_o7m3s")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MockTank" unique_id=1821103635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.050000012, -1.5254552)
+shape = SubResource("ConvexPolygonShape3D_l8w7f")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MockTank" unique_id=222292480]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0.3995, -1.5173361)
+shape = SubResource("ConvexPolygonShape3D_d6it4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MockTank" unique_id=504698149]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0.5005, 1.2140138)
+shape = SubResource("ConvexPolygonShape3D_c0j6n")

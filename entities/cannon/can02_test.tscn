@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cyk5nqdew5tti"]
+
+[ext_resource type="ArrayMesh" uid="uid://dlg7dkggb8wnu" path="res://meshes/Tanks/Test Tanks/tnk00_cannon.obj" id="2_k6few"]
+[ext_resource type="Material" uid="uid://bpnp4wrq6wa0q" path="res://entities/hull/green.tres" id="3_xfka4"]
+
+[node name="Cannon" type="Node3D" unique_id=60987853]
+
+[node name="Tnk00Cannon" type="MeshInstance3D" parent="." unique_id=1548805389]
+mesh = ExtResource("2_k6few")
+surface_material_override/0 = ExtResource("3_xfka4")

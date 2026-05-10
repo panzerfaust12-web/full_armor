@@ -1,0 +1,29 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://6ar5tl0s4pv6"]
+
+[ext_resource type="Texture2D" uid="uid://chfwq3lnwwx3b" path="res://materials/metals/BeatUpMetal3_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://0s5cr67l2bw5" path="res://materials/metals/BeatUpMetal3_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cwh2ggxh68mjv" path="res://materials/metals/BeatUpMetal3_normal.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dvdjptpcp8w2q" path="res://materials/metals/BeatUpMetal3_heightmap.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cw127ovlot6ra" path="res://materials/metals/BeatUpMetal3_emission.png" id="5"]
+
+[resource]
+albedo_texture = ExtResource("1")
+metallic = 1.0
+metallic_texture = ExtResource("2")
+roughness = 0.32
+roughness_texture = ExtResource("2")
+emission_enabled = true
+emission_texture = ExtResource("5")
+normal_enabled = true
+normal_scale = 0.55
+normal_texture = ExtResource("3")
+ao_enabled = true
+ao_texture = ExtResource("2")
+heightmap_enabled = true
+heightmap_scale = 6.5
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("4")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.20171115

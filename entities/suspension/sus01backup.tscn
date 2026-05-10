@@ -1,0 +1,479 @@
+[gd_scene load_steps=17 format=3 uid="uid://d3eqsofy6rj2f"]
+
+[ext_resource type="Script" uid="uid://cafu4afjrghpb" path="res://scripts/zz_OLD_component_suspension_.gd" id="1_s7bsn"]
+[ext_resource type="Script" uid="uid://7cybvxe4des4" path="res://scripts/PathPoint.gd" id="2_ifgvl"]
+[ext_resource type="ArrayMesh" uid="uid://bw6eavcrn1t55" path="res://meshes/Tanks/Tracks/T49.obj" id="3_s6rk5"]
+[ext_resource type="Material" uid="uid://y3sp85mjm8tt" path="res://entities/suspension/t49tex.tres" id="4_v3bqk"]
+[ext_resource type="Material" uid="uid://dek6mlwxm0g4l" path="res://red.tres" id="5_exql5"]
+[ext_resource type="Material" uid="uid://bpnp4wrq6wa0q" path="res://entities/hull/green.tres" id="6_ik1vp"]
+[ext_resource type="Script" uid="uid://c24e43hdq7dnu" path="res://scripts/zz_OLD_raycast_wheel.gd" id="7_u8583"]
+[ext_resource type="ArrayMesh" uid="uid://k5gvaau3xpk0" path="res://meshes/Tanks/Test Tanks/Basic/GearFixed.obj" id="8_n56eg"]
+[ext_resource type="ArrayMesh" uid="uid://ce4y6e31ddy3s" path="res://meshes/Tanks/Test Tanks/Basic/IdlerFixed.obj" id="9_mm1vf"]
+[ext_resource type="ArrayMesh" uid="uid://dudpl01rmwh2k" path="res://meshes/Tanks/Test Tanks/Basic/RoadwheelFixed.obj" id="10_wf5xa"]
+
+[sub_resource type="Curve3D" id="Curve3D_tistb"]
+resource_local_to_scene = true
+closed = true
+bake_interval = 512.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_m62lu"]
+size = Vector3(0.01, 0.2, 0.005)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3yaum"]
+size = Vector3(0.01, 0.01, 0.01)
+
+[sub_resource type="Curve" id="Curve_tistb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 0.75), 0.0, 0.0, 0, 0, Vector2(0.9638553, 0.20136523), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yaum"]
+albedo_color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tistb"]
+radius = 0.05
+
+[node name="Suspension" type="Node3D"]
+script = ExtResource("1_s7bsn")
+weight = 100
+
+[node name="PathContainer" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="PathPoint" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.95043e-06, -0.919101)
+script = ExtResource("2_ifgvl")
+Counter = true
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint2" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018328369, -0.174227)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint3" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018328369, 0.580492)
+script = ExtResource("2_ifgvl")
+Counter = true
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint4" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018328369, 1.29583)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint5" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018328369, 1.75512)
+script = ExtResource("2_ifgvl")
+Counter = true
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint6" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018328369, 2.13915)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint7" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018328369, 2.40494)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint8" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.033760585, 2.5568879)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint9" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08723742, 2.68386)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint10" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16083734, 2.771705)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint11" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2972464, 2.82496)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint12" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4207043, 2.8095279)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint13" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5531944, 2.74949)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint14" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6291685, 2.6604578)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint15" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7172634, 2.5362)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint16" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 0.9999992, -0.0012566367, 0, 0.0012566367, 0.9999992, 0, -0.9217304, 2.311606)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint17" type="Marker3D" parent="PathContainer" node_paths=PackedStringArray("Attachment")]
+transform = Transform3D(1, 0, 0, 0, 0.9999992, -0.0012566367, 0, 0.0012566367, 0.9999992, 0, -1.052, 1.8771963)
+script = ExtResource("2_ifgvl")
+Attachment = NodePath("../../Wheel")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint18" type="Marker3D" parent="PathContainer" node_paths=PackedStringArray("Attachment")]
+transform = Transform3D(1, 0, 0, 0, 0.9999992, -0.0012566367, 0, 0.0012566367, 0.9999992, 0, -1.0516402, 0.92694086)
+script = ExtResource("2_ifgvl")
+Attachment = NodePath("../../Wheel2")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint19" type="Marker3D" parent="PathContainer" node_paths=PackedStringArray("Attachment")]
+transform = Transform3D(1, 0, 0, 0, 0.9999992, -0.0012566367, 0, 0.0012566367, 0.9999992, 0, -1.0507313, 0.20371741)
+script = ExtResource("2_ifgvl")
+Attachment = NodePath("../../Wheel3")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint20" type="Marker3D" parent="PathContainer" node_paths=PackedStringArray("Attachment")]
+transform = Transform3D(1, 0, 0, 0, 0.9999992, -0.0012566367, 0, 0.0012566367, 0.9999992, 0, -1.0497854, -0.54897094)
+script = ExtResource("2_ifgvl")
+Attachment = NodePath("../../Wheel4")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint21" type="Marker3D" parent="PathContainer" node_paths=PackedStringArray("Attachment")]
+transform = Transform3D(1, 0, 0, 0, 0.9999992, -0.0012566367, 0, 0.0012566367, 0.9999992, 0, -1.0488188, -1.3182005)
+script = ExtResource("2_ifgvl")
+Attachment = NodePath("../../Wheel5")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint22" type="Marker3D" parent="PathContainer" node_paths=PackedStringArray("Attachment")]
+transform = Transform3D(1, 0, 0, 0, 0.9999992, -0.0012566367, 0, 0.0012566367, 0.9999992, 0, -1.0478729, -2.2088869)
+script = ExtResource("2_ifgvl")
+Attachment = NodePath("../../Wheel6")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint23" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0020638, -2.4614038)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint24" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8041027, -2.60852)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint25" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.57250637, -2.8215)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint26" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4775388, -2.8867903)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint27" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3739944, -2.90628)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint28" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26003334, -2.9039059)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint29" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19057073, -2.8787916)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint30" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08848056, -2.7885725)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint31" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0348714, -2.69123)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint32" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018328369, -2.48031)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint33" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0036679506, -2.21976)
+script = ExtResource("2_ifgvl")
+Counter = true
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="PathPoint34" type="Marker3D" parent="PathContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018328369, -1.71935)
+script = ExtResource("2_ifgvl")
+metadata/_custom_type_script = "uid://7cybvxe4des4"
+
+[node name="Path" type="Path3D" parent="."]
+curve = SubResource("Curve3D_tistb")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 0.999978, 0, 0, 0, 0.999978, 0, 0, 0)
+cubic_interp = false
+tilt_enabled = false
+
+[node name="TrackMesh" type="MeshInstance3D" parent="Path/PathFollow3D"]
+transform = Transform3D(-1, 8.742275e-08, 0, -8.7422755e-08, -0.9999995, 0, 0, 0, 0.9999995, 0, 0.036036935, 0.12197119)
+mesh = ExtResource("3_s6rk5")
+surface_material_override/0 = ExtResource("4_v3bqk")
+
+[node name="TrackMesh2" type="MeshInstance3D" parent="Path/PathFollow3D"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.742278e-08, -0.9999998, 0, 0, 0, 0.9999998, 0, -0.00027517832, 5.932282e-05)
+visible = false
+mesh = SubResource("BoxMesh_m62lu")
+surface_material_override/0 = ExtResource("5_exql5")
+
+[node name="TrackMesh3" type="MeshInstance3D" parent="Path/PathFollow3D"]
+transform = Transform3D(-1, 8.742279e-08, 0, -3.284056e-15, 4.3711378e-08, 0.9999997, 8.742276e-08, 0.9999997, -4.3711378e-08, 0, -0.0002751783, 5.9322818e-05)
+visible = false
+mesh = SubResource("BoxMesh_m62lu")
+surface_material_override/0 = ExtResource("5_exql5")
+
+[node name="TrackMesh4" type="MeshInstance3D" parent="Path/PathFollow3D"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.742277e-08, -0.99999976, 0, 0, 0, 0.99999976, 0, 0.05343372, 0.050649643)
+visible = false
+mesh = SubResource("BoxMesh_3yaum")
+surface_material_override/0 = ExtResource("6_ik1vp")
+
+[node name="Sprocket" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.351967, -2.60991)
+target_position = Vector3(0, 0, 0)
+hit_back_faces = false
+script = ExtResource("7_u8583")
+spring_strength = 8000.0
+spring_damping = 250.0
+rest_dist = 0.3
+wheel_radius = 0.35
+z_traction = 0.005
+grip_curve = SubResource("Curve_tistb")
+
+[node name="Wheel" type="MeshInstance3D" parent="Sprocket"]
+transform = Transform3D(-0.0021468, 0.999998, 0, -0.999998, -0.0021468, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("8_n56eg")
+skeleton = NodePath("../../HullShapeMainWeight")
+surface_material_override/0 = SubResource("StandardMaterial3D_3yaum")
+metadata/_edit_lock_ = true
+
+[node name="Idler" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.339748, 2.51608)
+target_position = Vector3(0, 0, 0)
+hit_back_faces = false
+script = ExtResource("7_u8583")
+spring_strength = 10000.0
+spring_damping = 250.0
+rest_dist = 0.3
+wheel_radius = 0.35
+z_traction = 0.005
+grip_curve = SubResource("Curve_tistb")
+
+[node name="Wheel" type="MeshInstance3D" parent="Idler"]
+transform = Transform3D(-0.0021468, 0.999998, 0, -0.999998, -0.0021468, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("9_mm1vf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_3yaum")
+metadata/_edit_lock_ = true
+
+[node name="Wheel" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.798512, 1.69601)
+target_position = Vector3(0, 0, 0)
+hit_back_faces = false
+script = ExtResource("7_u8583")
+spring_strength = 10000.0
+spring_damping = 500.0
+rest_dist = 0.25
+wheel_radius = 0.25
+z_traction = 0.005
+grip_curve = SubResource("Curve_tistb")
+is_suspension = true
+
+[node name="Wheel" type="MeshInstance3D" parent="Wheel"]
+transform = Transform3D(-0.00214676, 0.999998, 0, -0.999998, -0.00214676, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("10_wf5xa")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_3yaum")
+metadata/_edit_lock_ = true
+
+[node name="Wheel2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.798512, 0.946009)
+target_position = Vector3(0, 0, 0)
+hit_back_faces = false
+script = ExtResource("7_u8583")
+spring_strength = 10000.0
+spring_damping = 500.0
+rest_dist = 0.25
+wheel_radius = 0.25
+z_traction = 0.005
+grip_curve = SubResource("Curve_tistb")
+is_suspension = true
+
+[node name="Wheel" type="MeshInstance3D" parent="Wheel2"]
+transform = Transform3D(-0.0021468, 0.999998, 0, -0.999998, -0.0021468, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("10_wf5xa")
+skeleton = NodePath("../../HullShapeMainWeight")
+surface_material_override/0 = SubResource("StandardMaterial3D_3yaum")
+metadata/_edit_lock_ = true
+
+[node name="Wheel3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.798512, 0.217606)
+target_position = Vector3(0, 0, 0)
+hit_back_faces = false
+script = ExtResource("7_u8583")
+spring_strength = 10000.0
+spring_damping = 500.0
+rest_dist = 0.25
+wheel_radius = 0.25
+z_traction = 0.005
+grip_curve = SubResource("Curve_tistb")
+is_suspension = true
+
+[node name="Wheel" type="MeshInstance3D" parent="Wheel3"]
+transform = Transform3D(-0.0021468, 0.999998, 0, -0.999998, -0.0021468, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("10_wf5xa")
+skeleton = NodePath("../../HullShapeMainWeight")
+surface_material_override/0 = SubResource("StandardMaterial3D_3yaum")
+metadata/_edit_lock_ = true
+
+[node name="Wheel4" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.798273, -0.532394)
+target_position = Vector3(0, 0, 0)
+hit_back_faces = false
+script = ExtResource("7_u8583")
+spring_strength = 10000.0
+spring_damping = 500.0
+rest_dist = 0.25
+wheel_radius = 0.25
+z_traction = 0.005
+grip_curve = SubResource("Curve_tistb")
+is_suspension = true
+
+[node name="Wheel" type="MeshInstance3D" parent="Wheel4"]
+transform = Transform3D(-0.0021468, 0.999998, 0, -0.999998, -0.0021468, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("10_wf5xa")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_3yaum")
+metadata/_edit_lock_ = true
+
+[node name="Wheel5" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.798512, -1.30039)
+target_position = Vector3(0, 0, 0)
+hit_back_faces = false
+script = ExtResource("7_u8583")
+spring_strength = 10000.0
+spring_damping = 500.0
+rest_dist = 0.25
+wheel_radius = 0.25
+z_traction = 0.005
+grip_curve = SubResource("Curve_tistb")
+is_suspension = true
+
+[node name="Wheel" type="MeshInstance3D" parent="Wheel5"]
+transform = Transform3D(-0.0021468, 0.999998, 0, -0.999998, -0.0021468, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("10_wf5xa")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_3yaum")
+metadata/_edit_lock_ = true
+
+[node name="Wheel6" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.798512, -2.05039)
+target_position = Vector3(0, 0, 0)
+hit_back_faces = false
+script = ExtResource("7_u8583")
+spring_strength = 10000.0
+spring_damping = 500.0
+rest_dist = 0.25
+wheel_radius = 0.25
+z_traction = 0.005
+grip_curve = SubResource("Curve_tistb")
+is_suspension = true
+
+[node name="Wheel" type="MeshInstance3D" parent="Wheel6"]
+transform = Transform3D(-0.00154472, 0.999999, -0.000780082, -0.999998, -0.00154356, 0.00148239, 0.00148118, 0.00078237, 0.999999, 0, 0, 0)
+mesh = ExtResource("10_wf5xa")
+skeleton = NodePath("../../HullShapeMainWeight")
+surface_material_override/0 = SubResource("StandardMaterial3D_3yaum")
+metadata/_edit_lock_ = true
+
+[node name="Previewer" type="Node3D" parent="."]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="Previewer"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6453122, 0.0046558976, 0)
+projection = 1
+size = 4.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Previewer"]
+transform = Transform3D(0.8660254, -2.1855694e-08, 0.5, -0.5, -3.7855173e-08, 0.8660254, 0, -1, -4.371139e-08, 1.1, 0.7143094, 0)
+light_energy = 7.702
+light_specular = 0.0
+sky_mode = 1
+
+[node name="HUD" type="Control" parent="Previewer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Previewer/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.0347222
+anchor_bottom = 0.0617284
+offset_right = 473.0
+offset_bottom = 472.0
+
+[node name="SubViewport" type="SubViewport" parent="Previewer/HUD/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(512, 274)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="Previewer/HUD/SubViewportContainer/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="Previewer/HUD/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.6190589, -0.28567523, -2.573823)
+projection = 1
+fov = 60.0
+size = 0.7
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="Previewer/HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -512.0
+offset_bottom = 472.0
+grow_horizontal = 0
+
+[node name="SubViewport" type="SubViewport" parent="Previewer/HUD/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(512, 274)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="Previewer/HUD/SubViewportContainer2/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="Previewer/HUD/SubViewportContainer2/SubViewport/Node3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.6190589, -0.28567523, 2.3044686)
+projection = 1
+fov = 60.0
+size = 0.7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_tistb")

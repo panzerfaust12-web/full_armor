@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://din4kc7ywn4jf"
+path="res://.godot/imported/terrainz.obj-f0e120fe4477ca1b76628ebe9740c6eb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/terrainz.obj-f0e120fe4477ca1b76628ebe9740c6eb.mesh"]
+
+source_file="res://meshes/Terrain/terrainz.obj"
+dest_files=["res://.godot/imported/terrainz.obj-f0e120fe4477ca1b76628ebe9740c6eb.mesh", "res://.godot/imported/terrainz.obj-f0e120fe4477ca1b76628ebe9740c6eb.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

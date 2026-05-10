@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://bn1phu0iv1rwl"]
+
+[ext_resource type="Script" uid="uid://c5cv66t4jexdj" path="res://scripts/component_wheel.gd" id="1_1dll4"]
+[ext_resource type="Script" uid="uid://b1gwwakd2mit2" path="res://phys_wheel.gd" id="2_vppf6"]
+[ext_resource type="ArrayMesh" uid="uid://55j47xwfad0a" path="res://meshes/Vehicles/Test Vehicles/test_wz2000_tire.obj" id="3_6xws5"]
+[ext_resource type="Texture2D" uid="uid://cmrsly13jgyaa" path="res://meshes/Vehicles/Test Vehicles/Tire3.png" id="4_dferj"]
+[ext_resource type="AudioStream" uid="uid://tvy0yfv3d4p7" path="res://sound/tires/skiddingtires01.wav" id="5_dferj"]
+[ext_resource type="AudioStream" uid="uid://c1e4ao3lbtja0" path="res://sound/tires/suspension_full_compress01.wav" id="6_ks3by"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ks3by"]
+resource_local_to_scene = true
+height = 0.15
+radius = 0.26
+
+[sub_resource type="Curve" id="Curve_7be3d"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.28198433, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_gceed"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 3.0, 0, 0, Vector2(0.6997389, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhbil"]
+albedo_texture = ExtResource("4_dferj")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_gceed"]
+size = Vector3(0.1, 0.5, 0.1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gceed"]
+height = 0.15
+radius = 0.26
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7be3d"]
+size = Vector3(0.5, 0.15, 0.52)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o1l20"]
+resource_local_to_scene = true
+random_pitch = 1.122462
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("6_ks3by")
+
+[node name="Wheel" type="Node3D" unique_id=1317562008]
+script = ExtResource("1_1dll4")
+weight = 10
+
+[node name="Phys_Wheel" type="ShapeCast3D" parent="." unique_id=437283786]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_ks3by")
+target_position = Vector3(-0.1, 0, 0)
+max_results = 1
+debug_shape_custom_color = Color(0.5272715, 0.27082932, 1, 1)
+script = ExtResource("2_vppf6")
+wheel_radius = 0.26
+wheel_thickness = 0.15
+wheel_steering_angle_max = 0.7853981633974483
+traction_slip_ratio = SubResource("Curve_7be3d")
+traction_side_angle = SubResource("Curve_gceed")
+spring_length = 0.1
+spring_force_max = 2300.0
+spring_stiffness = 16666.0
+spring_dampening = 500.0
+brakes_force = 500.0
+metadata/_custom_type_script = "uid://b1gwwakd2mit2"
+
+[node name="Turning_Origin" type="Node3D" parent="Phys_Wheel" unique_id=1457812732]
+
+[node name="Wheel" type="MeshInstance3D" parent="Phys_Wheel/Turning_Origin" unique_id=582711890]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("3_6xws5")
+surface_material_override/0 = SubResource("StandardMaterial3D_dhbil")
+
+[node name="Origin" type="MeshInstance3D" parent="Phys_Wheel" unique_id=953603618]
+visible = false
+mesh = SubResource("BoxMesh_gceed")
+
+[node name="Col_Zero" type="CollisionShape3D" parent="Phys_Wheel" unique_id=713866137]
+shape = SubResource("CylinderShape3D_gceed")
+
+[node name="Col_Illegal" type="CollisionShape3D" parent="Phys_Wheel" unique_id=370383330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26, 0, 0)
+shape = SubResource("BoxShape3D_7be3d")
+
+[node name="Audio" type="Node3D" parent="Phys_Wheel" unique_id=1134151525]
+
+[node name="Skidding" type="AudioStreamPlayer3D" parent="Phys_Wheel/Audio" unique_id=1988377254]
+stream = ExtResource("5_dferj")
+volume_db = -80.0
+autoplay = true
+
+[node name="Compress" type="AudioStreamPlayer3D" parent="Phys_Wheel/Audio" unique_id=2008675456]
+stream = SubResource("AudioStreamRandomizer_o1l20")
+unit_size = 1.5
+pitch_scale = 1.5
+
+[node name="CompressTimer" type="Timer" parent="Phys_Wheel/Audio" unique_id=1021587411]
+one_shot = true
+autostart = true

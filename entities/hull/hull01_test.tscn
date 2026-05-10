@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgbpjriby1b4x"]
+
+[ext_resource type="ArrayMesh" uid="uid://ci6f2u45n74vk" path="res://meshes/Tanks/Test Tanks/Basic/tankhullUV.obj" id="1_7fov0"]
+[ext_resource type="Script" uid="uid://c7ffgg58xal6b" path="res://scripts/component_hull.gd" id="1_w24ko"]
+[ext_resource type="Material" uid="uid://bpnp4wrq6wa0q" path="res://entities/hull/green.tres" id="2_7fov0"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w24ko"]
+points = PackedVector3Array(-2.5027, -3.097195, 2.09977, -2.5022101, -3.9909775, 2.09977, -2.1920674, -2.0004053, 3.4, -2.5027, -2.0004053, 2.09977, -2.2, -0.5, 0.8, -2.2, -3.001, 0.8, -1.6001993, -4.000163, 0.7998165, -1.6001993, -4.484257, 1.7762334, -2.3611026, -3.0962763, 2.6898787, 2.1915777, -2.0004053, 3.4, -2.1920674, -0.90085983, 3.4, -2.3978493, 4.7649684, 2.5383418, -2.5022101, 4.8494782, 2.09977, -2.2, 2.4, 0.8, 2.2, -0.5, 0.8, 2.2, -3.001, 0.8, 1.5997097, -4.000163, 0.7998165, 1.5997097, -4.484257, 1.7762334, 2.360123, -3.0962763, 2.6898787, 2.1915777, -0.90085983, 3.4, 2.5017207, -3.9909775, 2.09977, 2.5022104, -3.097195, 2.09977, -1.2003944, 1.6996522, 3.4, -0.9005407, 4.759456, 2.8997626, -1.6001993, 4.9, 1.7997382, -1.6001993, 3.69941, 0.7998165, 2.2, 2.4, 0.8, 2.5022104, -2.0004053, 2.09977, 2.3973596, 4.7649684, 2.5383418, 1.1999049, 1.6996522, 3.4, 0.89956117, 4.759456, 2.8997626, 1.5997097, 4.9, 1.7997382, 1.5997097, 3.69941, 0.7998165, 2.5017207, 4.8494782, 2.09977)
+
+[node name="Hull" type="Node3D" unique_id=609745220]
+script = ExtResource("1_w24ko")
+weight = 20000
+metadata/_custom_type_script = "uid://c7ffgg58xal6b"
+
+[node name="HullMesh" type="MeshInstance3D" parent="." unique_id=683943663]
+transform = Transform3D(-0.6, 5.24537e-08, 2.29282e-15, 0, -2.62268e-08, 0.6, 5.24537e-08, 0.6, 2.62268e-08, 0, -0.3, 0)
+mesh = ExtResource("1_7fov0")
+surface_material_override/0 = ExtResource("2_7fov0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1616910804]
+transform = Transform3D(-0.6, 5.24537e-08, 2.29282e-15, 0, -2.62268e-08, 0.6, 5.24537e-08, 0.6, 2.62268e-08, 0, -0.3, 0)
+shape = SubResource("ConvexPolygonShape3D_w24ko")
+
+[node name="Mount_Turret" type="Node3D" parent="." unique_id=1791155537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73654, -0.312257)
+
+[node name="Mount_Left_Suspension" type="Node3D" parent="." unique_id=1290556644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.846834, -0.00744697)
+
+[node name="Mount_Right_Suspension" type="Node3D" parent="." unique_id=1125790357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.846834, -0.00744697)
+
+[node name="Mount_Hull_MG" type="Node3D" parent="." unique_id=1716591772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.14001, -2.0493)
+
+[node name="Mount_Engine" type="Node3D" parent="." unique_id=1121824574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.663293, 1.6458)
+
+[node name="Mount_Transmission" type="Node3D" parent="." unique_id=413283399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -2)

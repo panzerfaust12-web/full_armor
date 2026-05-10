@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://33vvxxj5bnm4"]
+
+[ext_resource type="PackedScene" uid="uid://dtegfjfrfl2of" path="res://entities/hud/parts/hud_part_snapshotter.tscn" id="1_nu4wb"]
+[ext_resource type="Script" uid="uid://crkwspu756cei" path="res://entities/hud/hud_part_button.gd" id="1_rd6s1"]
+[ext_resource type="Script" uid="uid://cdhefehc5tplm" path="res://entities/hud/parts/hud_font_scaler_rich_text.gd" id="2_fs4r8"]
+[ext_resource type="FontFile" uid="uid://c1gen8gei3sfe" path="res://fonts/GGBotNet Fonts CC0/Jupiteroid/Web Open Font Format (.woff)/Jupiteroid-Bold.woff" id="2_yk14b"]
+[ext_resource type="Script" uid="uid://yn0ofi6v1bp6" path="res://entities/hud/parts/hud_scrollbar_marquee.gd" id="4_iqocn"]
+
+[sub_resource type="World3D" id="World3D_pxmpc"]
+resource_local_to_scene = true
+
+[node name="PartIcon" type="MarginContainer" unique_id=1266580319]
+clip_contents = true
+anchors_preset = -1
+anchor_right = 0.31635803
+anchor_bottom = 0.31635803
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_rd6s1")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1717290274]
+layout_mode = 2
+color = Color(0.3025683, 0.37490135, 0, 0.4117647)
+metadata/_edit_use_anchors_ = true
+
+[node name="PartSnapshotter" parent="." unique_id=287784651 instance=ExtResource("1_nu4wb")]
+clip_contents = true
+layout_mode = 2
+
+[node name="SubViewport" parent="PartSnapshotter/AspectRatioContainer/SubViewportContainer" parent_id_path=PackedInt32Array(287784651, 2131454602) index="0" unique_id=6969767]
+world_3d = SubResource("World3D_pxmpc")
+size = Vector2i(364, 364)
+
+[node name="Camera3D" parent="PartSnapshotter/AspectRatioContainer/SubViewportContainer/SubViewport" index="2" unique_id=870072728]
+current = true
+
+[node name="PartDescriptionContainer2" type="ScrollContainer" parent="." unique_id=805475062]
+layout_mode = 2
+mouse_filter = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="PartDescription" type="RichTextLabel" parent="PartDescriptionContainer2" unique_id=1788840479]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_yk14b")
+theme_override_font_sizes/normal_font_size = 16
+text = "Part Name - Blah Blah Blah Blah AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+vertical_alignment = 2
+
+[node name="RTL_Font_Scaler" type="Node" parent="PartDescriptionContainer2/PartDescription" unique_id=1060027028]
+script = ExtResource("2_fs4r8")
+extra_parent_up = true
+
+[node name="Scrollbar_Marquee_Auto" type="Node" parent="PartDescriptionContainer2" unique_id=1235493484]
+script = ExtResource("4_iqocn")
+
+[node name="HiddenSizer" type="RichTextLabel" parent="." unique_id=1742887209]
+visible = false
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_yk14b")
+theme_override_font_sizes/normal_font_size = 64
+text = "A"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RTL_Font_Scaler" type="Node" parent="HiddenSizer" unique_id=586840653]
+script = ExtResource("2_fs4r8")
+
+[node name="Button" type="Button" parent="." unique_id=534043031]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+
+[editable path="PartSnapshotter"]

@@ -1,0 +1,59 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://wg53d50sy5tx"]
+
+[ext_resource type="Shader" uid="uid://7rs6jwlnwymb" path="res://shaders/water.gdshader" id="1_243dc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_243dc"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_phhhr"]
+noise = SubResource("FastNoiseLite_243dc")
+seamless = true
+as_normal_map = true
+bump_strength = 3.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_phhhr"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5w6nj"]
+noise = SubResource("FastNoiseLite_phhhr")
+seamless = true
+as_normal_map = true
+bump_strength = 10.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5w6nj"]
+resource_local_to_scene = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wjwk1"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_5w6nj")
+seamless = true
+normalize = false
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_243dc")
+shader_parameter/albedo = Color(0.007090577, 0.09005486, 0.11137331, 1)
+shader_parameter/albedo2 = Color(0, 0.5543493, 0.30151182, 1)
+shader_parameter/color_deep = Color(0.008378654, 0.110588394, 0, 1)
+shader_parameter/color_shallow = Color(1.1070073e-06, 0.44148105, 0.42493427, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.02
+shader_parameter/wave = SubResource("NoiseTexture2D_wjwk1")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_phhhr")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_5w6nj")
+shader_parameter/wave_time = 0.0
+shader_parameter/wave_direction = Vector2(8, 0)
+shader_parameter/wave_direction2 = Vector2(0, 4)
+shader_parameter/time_scale = 0.005
+shader_parameter/wave_speed = 2.0
+shader_parameter/noise_scale = 512.0
+shader_parameter/height_scale = 15.0
+shader_parameter/beers_law = 0.1
+shader_parameter/depth_offset = -10.0
+shader_parameter/edge_scale = 0.1
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bw6eavcrn1t55"
+path="res://.godot/imported/T49.obj-b9fcd0d9425e72cc7f18529b145e4fa5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/T49.obj-b9fcd0d9425e72cc7f18529b145e4fa5.mesh"]
+
+source_file="res://meshes/Tanks/Tracks/T49.obj"
+dest_files=["res://.godot/imported/T49.obj-b9fcd0d9425e72cc7f18529b145e4fa5.mesh", "res://.godot/imported/T49.obj-b9fcd0d9425e72cc7f18529b145e4fa5.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(0.26, 0.26, 0.26)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
