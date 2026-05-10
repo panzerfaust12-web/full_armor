@@ -2,7 +2,9 @@
 ### Dream Game - Not Gonna Happen
 
 Placeholder online repo of game that I'm working on in Godot. For more info, visit:
+
 https://knockout.chat/thread/78974/1
+
 
 Not looking for collaberators of any kind. Don't have enough time as it is. I don't have money to pay anyone.
 
@@ -11,6 +13,8 @@ Currently, there is no executable. You will need to download and set it up as Go
 
 warld.tscn contains the current test world.
 Explore other files for other things - not going to provide any further guide until this is in a better state.
+
+I take no responsibility for the nature of assets or vulgarity in code comments or print-debugs.
 
 
 ## Feedback, Bugs, Suggestions, Ideas
