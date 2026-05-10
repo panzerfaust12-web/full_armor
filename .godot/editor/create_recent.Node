@@ -1,0 +1,15 @@
+res://scripts/component_mount.gd
+StaticBody3D
+RigidBody3D
+Node3D
+MeshInstance3D
+Label3D
+Camera3D
+CollisionShape3D
+Timer
+OmniLight3D
+DirectionalLight3D
+AudioStreamPlayer3D
+Decal
+GPUParticles3D
+Area3D
