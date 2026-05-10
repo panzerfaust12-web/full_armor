@@ -11,4 +11,6 @@ var component_name: String = "Turret"
 @export var short_name: String = "I'm Biting You(tm)"
 @export var description: String = "error res entities tonka mod gd 5 parse error could not find component turret in current scope lmao fuckin gottem"
 
+@export var debug_enabled: bool = false
+
 var parent: Node3D

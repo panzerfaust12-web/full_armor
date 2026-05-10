@@ -152,6 +152,7 @@ func engine_sounds(delta):
 
 
 func debug_controls():
+	return
 	if not debug_enabled:
 		return
 		

@@ -164,6 +164,9 @@ func get_components():
 	all_components.append_array(wheels)
 	all_components.append_array(guns)
 	
+	for component in all_components:
+		if debug_enabled: component.debug_enabled = true
+	
 	null_component_check()
 	if null_components: return
 	

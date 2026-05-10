@@ -16,6 +16,8 @@ var component_name: String = "Wheel"
 @export_custom(PROPERTY_HINT_NONE, "suffix:kg") var maximum_weight: int = 200
 @export var engine_driven: bool = false
 
+@export var debug_enabled: bool = false
+
 # PUT SOME EXPORT VARS HERE TO INFORM THE USER ABOUT MAXIMUM WEIGHT AND SUCH.
 
 var RPM_engine_incoming: float = 0.0

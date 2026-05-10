@@ -1,4 +1,5 @@
-res://scripts/component_mount.gd
+Sky3D
+Terrain3D
 StaticBody3D
 RigidBody3D
 Node3D
@@ -12,4 +13,3 @@ DirectionalLight3D
 AudioStreamPlayer3D
 Decal
 GPUParticles3D
-Area3D

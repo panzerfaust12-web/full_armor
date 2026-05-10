@@ -15,4 +15,6 @@ var component_name: String = "Hull"
 @export var short_name: String = "BAGS01"
 @export var description: String = "This would be about the 40-50th hour I've spent looking at this fucking thing."
 
+@export var debug_enabled: bool = false
+
 var parent: Node3D

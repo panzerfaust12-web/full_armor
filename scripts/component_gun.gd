@@ -32,7 +32,7 @@ var dispersion: Vector2 = Vector2.ZERO #Calculated from vert and horz
 var dispersion_bloomed: Vector2 = Vector2.ZERO
 var dispersion_bloom_percent: float = 0
 var dispersion_bloom_shot_impact: float = 0
-@export var debug: bool = false
+@export var debug_enabled: bool = false
 
 
 #this shit moved to bullet?
@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 	if not reloaded:
 		return
 	
-	if debug:
+	if debug_enabled:
 		if firing_type == 1:
 			if Input.is_key_pressed(debug_key) and not fired:
 				fire()

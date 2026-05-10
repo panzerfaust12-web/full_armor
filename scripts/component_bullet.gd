@@ -27,6 +27,8 @@ var exception: Node3D = null
 
 var life: float = 0
 
+@export var debug_enabled: bool = false
+
 #Drag Stuff
 @onready var drag_a:float = PI * ((diameter * 0.5 / 1000.0) ** 2)
 @onready var drag_k:float = 0.5 * 1.2250 * drag_a / weight  #1.2250 Air Density - kg/m^3

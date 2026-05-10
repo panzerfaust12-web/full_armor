@@ -253,8 +253,9 @@ func _physics_process(delta: float) -> void:
 		
 		collider = get_collider(0)
 		if collider is RigidBody3D or StaticBody3D:
-			if collider.physics_material_override != null:
-				collider_friction = collider.physics_material_override.friction
+			if collider is not Terrain3D:
+				if collider.physics_material_override != null:
+					collider_friction = collider.physics_material_override.friction
 			else: collider_friction = 1.0
 	
 	suspension()

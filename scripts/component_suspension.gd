@@ -32,7 +32,7 @@ var brakes_on: bool = false
 var is_left: bool = false
 var is_colliding: bool = false
 
-var debug: bool = false
+@export var debug_enabled: bool = false
 
 var sprocket_radius: float = 0.5
 
@@ -110,7 +110,7 @@ func update_children():
 	contacts = max(1.0, contacts)
 		
 	var modified_engine_force: float = engine_max_force / contacts
-	if debug: DebugDraw2D.set_text("modified_engine_force",modified_engine_force)
+	if debug_enabled: DebugDraw2D.set_text("modified_engine_force",modified_engine_force)
 	
 	#if is_left and turn_left:
 		#brakes_on = true
