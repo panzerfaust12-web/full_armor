@@ -24,6 +24,6 @@ Don't.
 
 
 ## Permissions
-Feel free to steal any code from this project as it's worked on. Most of it is stolen from other tutorials, guides, repos, etc. Don't steal audio/textures from this as I'm not always sure where I got them, and they will be in constant flux. Most are CC0, but not all. For assets clearly made for the game, contact me, but there will be non-negoiable clause of no AI use.
+Feel free to steal any code from this project as it's worked on. Most of it is stolen from other tutorials, guides, repos, etc. Don't steal audio/textures/models from this as I'm not always sure where I got them, and they will be in constant flux. Most are CC0, but not all. For assets clearly made for the game, contact me, but there will be non-negoiable clause of no AI use.
 
 No license being provided is not permission open license, royalty free, etc. If in doubt, don't.
