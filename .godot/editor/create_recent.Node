@@ -1,3 +1,5 @@
+OmniLight3D
+SpotLight3D
 Sky3D
 Terrain3D
 StaticBody3D
@@ -8,8 +10,5 @@ Label3D
 Camera3D
 CollisionShape3D
 Timer
-OmniLight3D
 DirectionalLight3D
 AudioStreamPlayer3D
-Decal
-GPUParticles3D

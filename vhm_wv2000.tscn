@@ -242,32 +242,13 @@ autowrap_mode = 0
 visible = false
 
 [node name="Cannon" parent="." unique_id=579937528 instance=ExtResource("12_c6kib")]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 1.2837027, -0.3722008)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 1.2837027, -0.3722008)
 weight = 1
 debug_key = 49
 
 [node name="Cannon3" parent="." unique_id=2036977193 instance=ExtResource("14_xbwsi")]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0.12520769, 1.2854649, -0.0834617)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.12520769, 1.2854649, -0.0834617)
 weight = 1
-debug = true
-debug_key = 51
-
-[node name="Cannon4" parent="." unique_id=60987853 instance=ExtResource("14_xbwsi")]
-transform = Transform3D(1, 0, 0, 0, 0.81915206, -0.57357645, 0, 0.57357645, 0.81915206, 0.26910135, 1.2854649, -0.0834617)
-weight = 1
-debug = true
-debug_key = 51
-
-[node name="Cannon5" parent="." unique_id=1896851940 instance=ExtResource("14_xbwsi")]
-transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.42261827, 0, 0.42261827, 0.90630776, 0.4286351, 1.2854649, -0.0834617)
-weight = 1
-debug = true
-debug_key = 51
-
-[node name="Cannon6" parent="." unique_id=1614435725 instance=ExtResource("14_xbwsi")]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0.5948074, 1.2854649, -0.0834617)
-weight = 1
-debug = true
 debug_key = 51
 
 [node name="Cannon2" parent="." unique_id=384716883 instance=ExtResource("13_rlc40")]
@@ -276,7 +257,6 @@ weight = 1
 caliber = 12.7
 dispersion_mil_horizontal = 2.0
 dispersion_mil_vertical = 2.0
-debug = true
 debug_key = 50
 
 [editable path="Hull"]

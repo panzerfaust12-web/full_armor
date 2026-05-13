@@ -46,6 +46,7 @@ func _ready() -> void:
 	if owner != null: await owner.ready
 	if parent == null:
 		parent = GlobalFunctions.grab_rigid_parent(self)
+	$Phys_Wheel.debug_enabled = debug_enabled
 	$Phys_Wheel.parent = parent
 	if get_child(0).is_class("Phys_Wheel"):
 		print("PHYS WHEEL NOT ASSIGNED TO COMPONENT WHEEL")

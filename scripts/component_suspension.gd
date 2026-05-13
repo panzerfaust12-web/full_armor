@@ -62,9 +62,10 @@ func _ready() -> void:
 	idler.parent = parent
 	for wheel in suspension_wheels:
 		wheel.parent = parent
+		wheel.debug_enabled = debug_enabled
 	for wheel in hidden_wheels:
 		wheel.parent = parent
-	
+		wheel.debug_enabled = debug_enabled
 	if sprocket == null:
 		print("NO SPROCKET ASSIGNED IN SUSPENSION")
 		print(self)

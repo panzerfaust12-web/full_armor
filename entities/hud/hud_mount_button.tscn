@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://cvyykatdf4v80"]
+
+[ext_resource type="Script" uid="uid://cnmwso4ak61ky" path="res://entities/hud/hud_mount_button.gd" id="1_hchjf"]
+[ext_resource type="FontFile" uid="uid://c1gen8gei3sfe" path="res://fonts/GGBotNet Fonts CC0/Jupiteroid/Web Open Font Format (.woff)/Jupiteroid-Bold.woff" id="3_bunok"]
+[ext_resource type="Script" uid="uid://cdhefehc5tplm" path="res://entities/hud/parts/hud_font_scaler_rich_text.gd" id="4_nevo6"]
+[ext_resource type="Script" uid="uid://be0ffafnlxhw3" path="res://scripts/component_mount.gd" id="5_hchjf"]
+[ext_resource type="Script" uid="uid://yn0ofi6v1bp6" path="res://entities/hud/parts/hud_scrollbar_marquee.gd" id="5_l1cq2"]
+
+[node name="MountIcon" type="MarginContainer" unique_id=1266580319]
+clip_contents = true
+anchors_preset = -1
+anchor_right = 0.31635803
+anchor_bottom = 0.31635803
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_hchjf")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1717290274]
+layout_mode = 2
+color = Color(0.37, 0, 0, 0.4117647)
+metadata/_edit_use_anchors_ = true
+
+[node name="PartDescriptionContainer" type="ScrollContainer" parent="." unique_id=805475062]
+layout_mode = 2
+mouse_filter = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="PartDescription" type="RichTextLabel" parent="PartDescriptionContainer" unique_id=1788840479]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_bunok")
+theme_override_font_sizes/normal_font_size = 16
+text = "Part Name - Blah Blah Blah Blah AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+vertical_alignment = 2
+
+[node name="RTL_Font_Scaler" type="Node" parent="PartDescriptionContainer/PartDescription" unique_id=1060027028]
+script = ExtResource("4_nevo6")
+extra_parent_up = true
+
+[node name="PartLimits" type="RichTextLabel" parent="PartDescriptionContainer" unique_id=43939298]
+visible = false
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_bunok")
+theme_override_font_sizes/normal_font_size = 16
+text = "SIZE LIMIT
+WEIGHT LIMIT"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 2
+
+[node name="RTL_Font_Scaler" type="Node" parent="PartDescriptionContainer/PartLimits" unique_id=406323503]
+script = ExtResource("4_nevo6")
+extra_parent_up = true
+
+[node name="Scrollbar_Marquee_Auto" type="Node" parent="PartDescriptionContainer" unique_id=1235493484]
+script = ExtResource("5_l1cq2")
+
+[node name="HiddenSizer" type="RichTextLabel" parent="." unique_id=1742887209]
+visible = false
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_bunok")
+theme_override_font_sizes/normal_font_size = 64
+text = "A"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RTL_Font_Scaler" type="Node" parent="HiddenSizer" unique_id=586840653]
+script = ExtResource("4_nevo6")
+
+[node name="Button" type="Button" parent="." unique_id=534043031]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Mount_Hull" type="Node3D" parent="." unique_id=1971997085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -1.0000001)
+script = ExtResource("5_hchjf")
+accepts = "Hull"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
