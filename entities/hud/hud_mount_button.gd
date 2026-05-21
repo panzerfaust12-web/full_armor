@@ -1,4 +1,5 @@
 extends MarginContainer
+class_name HUD_Mount_Button
 @onready var button = $Button
 signal mount_selected(mount)
 
@@ -13,8 +14,12 @@ func _ready() -> void:
 
 func _on_button_button_down() -> void:
 	if mount_load != null:
-		print(mount_load)
-		mount_selected.emit(mount_load)
+		AudioController.play_sound("ButtonClick")
+		print("THE BUTTON WAS PUSHED, " + str(self.name) + " | "+str(mount_load.accepts))
+		mount_selected.emit(self, mount_load.accepts)
+	else:
+		AudioController.play_sound("ButtonError")
+		print("ERROR: No mount loaded to mount_button at " + str(self))
 	pass #show/hide available parts?
 
 func load_mount(mount: Component_Mount):

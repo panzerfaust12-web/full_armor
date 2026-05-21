@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://2iuatrlw3qnh"
+path="res://.godot/imported/Interface Arp Reveal Down Long.ogg-e400311832021568f24f426ee734b88a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/UI/Interface Arp Reveal Down Long.ogg"
+dest_files=["res://.godot/imported/Interface Arp Reveal Down Long.ogg-e400311832021568f24f426ee734b88a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

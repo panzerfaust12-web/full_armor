@@ -7,21 +7,19 @@
 [ext_resource type="Script" uid="uid://yn0ofi6v1bp6" path="res://entities/hud/parts/hud_scrollbar_marquee.gd" id="5_l1cq2"]
 
 [node name="MountIcon" type="MarginContainer" unique_id=1266580319]
-clip_contents = true
 anchors_preset = -1
 anchor_right = 0.31635803
 anchor_bottom = 0.31635803
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 7
+size_flags_vertical = 7
 script = ExtResource("1_hchjf")
-metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1717290274]
 layout_mode = 2
-color = Color(0.37, 0, 0, 0.4117647)
+color = Color(0.37, 0, 0, 0.74509805)
 metadata/_edit_use_anchors_ = true
 
 [node name="PartDescriptionContainer" type="ScrollContainer" parent="." unique_id=805475062]
@@ -36,7 +34,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("3_bunok")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 24
 text = "Part Name - Blah Blah Blah Blah AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 scroll_active = false
 autowrap_mode = 0
@@ -54,9 +52,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("3_bunok")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 24
 text = "SIZE LIMIT
-WEIGHT LIMIT"
+WEIGHT LIMIT
+
+
+
+
+
+
+
+
+
+
+A"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
@@ -70,14 +79,16 @@ extra_parent_up = true
 script = ExtResource("5_l1cq2")
 
 [node name="HiddenSizer" type="RichTextLabel" parent="." unique_id=1742887209]
-visible = false
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("3_bunok")
-theme_override_font_sizes/normal_font_size = 64
-text = "A"
+theme_override_font_sizes/normal_font_size = 24
+text = " 
+ 
+ "
+fit_content = true
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false

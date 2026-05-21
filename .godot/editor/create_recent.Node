@@ -1,3 +1,6 @@
+AudioStreamPlayer
+Node
+ItemList
 OmniLight3D
 SpotLight3D
 Sky3D
@@ -10,5 +13,3 @@ Label3D
 Camera3D
 CollisionShape3D
 Timer
-DirectionalLight3D
-AudioStreamPlayer3D

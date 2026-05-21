@@ -41,7 +41,7 @@ var w4 = load("res://entities/wheel/wheel03_wz_sprocket.tscn")
 var w5 = load("res://entities/wheel/wheel03_wz_tracked.tscn")
 
 @onready var engines: Array = [e1,e2,e3,e4,e5]
-@onready var guns: Array = [c3,c4]
+@onready var guns: Array = [c3,c4,c5]
 @onready var hulls: Array = [h1,h2,h3,h4,h5,h6,h7]
 @onready var turrets: Array = [t1,t2]
 @onready var suspensions: Array = [s3]
@@ -59,27 +59,45 @@ var categories: Array[String] = ["Engine","Gun","Hull","Turret","Suspension"]
 
 
 func _ready() -> void:
-	populate_parts()
+	connect_mounts()
 	if active_thing == null:
 		$PartWindow/PartSpinner.part_load = e1
 		active_thing = $PartWindow/PartSpinner.part
 		
-	
 
-func populate_parts():
-	for i in engines:
+func clear_parts(powner):
+	for part in find_children("*","",1,0):
+		if part is HUD_Part_Button:
+			if part.is_connected("part_selected",update_thing):
+				print("part found that was connected")
+				part.disconnect("part_selected",update_thing)
+			part.queue_free()
+
+func populate_parts(location:Node, type:String):
+	var array = null
+	clear_parts(location)
+	print("Location " + str(location.name))
+	if type == "Engine": array = engines
+	if type == "Hull": array = hulls
+	if type == "Turret": array = turrets
+	if type == "Transmission": array = transmissions
+	if type == "Suspension": array = suspensions
+	if type == "Gun": array = guns
+	if array == null: return
+	for i in array:
 		var new_button = part_button.instantiate()
 		new_button.part_load = i
 		new_button.part_selected.connect(update_thing)
-		$ScrollContainer/GridContainer.add_child(new_button)
+		location.add_sibling(new_button)
 		
 		
 func connect_mounts():
 	for mount in find_children("*"):
-		if mount is Component_Mount:
+		if mount is HUD_Mount_Button:
 			mount.mount_selected.connect(populate_mounts)	
 
-func populate_mounts():
+func populate_mounts(mount: Node, type: String):
+	populate_parts(mount, type)
 	pass
 
 func update_thing(value):

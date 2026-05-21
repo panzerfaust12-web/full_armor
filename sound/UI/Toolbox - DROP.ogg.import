@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cvrr1eighvcua"
+path="res://.godot/imported/Toolbox - DROP.ogg-7d16ed33c3bcb842e12e8e4a9f642144.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/UI/Toolbox - DROP.ogg"
+dest_files=["res://.godot/imported/Toolbox - DROP.ogg-7d16ed33c3bcb842e12e8e4a9f642144.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b780caachsoyc"]
+
+[ext_resource type="Script" uid="uid://bcxg6tjwo82g" path="res://global_audio_controller.gd" id="1_onihc"]
+[ext_resource type="AudioStream" uid="uid://cj0sqd7vj7f5q" path="res://sound/UI/UI_Mechanical_Move_40.ogg" id="2_5vlka"]
+[ext_resource type="AudioStream" uid="uid://wdpaaashphma" path="res://sound/UI/Interface Deny Low Fat Dark.ogg" id="3_v71t8"]
+[ext_resource type="AudioStream" uid="uid://cvrr1eighvcua" path="res://sound/UI/Toolbox - DROP.ogg" id="4_o084s"]
+
+[node name="AudioController" type="Node" unique_id=1350785822]
+script = ExtResource("1_onihc")
+
+[node name="UI" type="Node" parent="." unique_id=2037381077]
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="UI" unique_id=1187581477]
+stream = ExtResource("2_5vlka")
+bus = &"UI"
+
+[node name="ButtonError" type="AudioStreamPlayer" parent="UI" unique_id=1115111522]
+stream = ExtResource("3_v71t8")
+bus = &"UI"
+
+[node name="ButtonEquip" type="AudioStreamPlayer" parent="UI" unique_id=931319218]
+stream = ExtResource("4_o084s")
+bus = &"UI"

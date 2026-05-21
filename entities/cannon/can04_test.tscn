@@ -139,6 +139,9 @@ size = Vector3(0.18432617, 0.20043945, 1.6149292)
 script = ExtResource("1_ds7oa")
 width = 200
 depth = 200
+long_name = "Ribaldi 47/32 1902"
+short_name = "47 R1902"
+description = "hon hon hon hon hon"
 caliber = 47.0
 magazine_size = 500
 magazine_reload_time = 1.0
@@ -146,7 +149,6 @@ dispersion_mil_horizontal = 0.25
 dispersion_mil_vertical = 0.25
 dispersion_time_to_bloom = 10.0
 dispension_time_to_center = 1.0
-debug = true
 bullet = ExtResource("2_w8g25")
 metadata/_custom_type_script = "uid://cnb4jsu5smh10"
 
@@ -194,10 +196,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 text = "Bloom %:"
 horizontal_alignment = 0
 
-[node name="MuzzleFlash" type="Node3D" parent="." unique_id=238188931 node_paths=PackedStringArray("parent", "light", "emitters")]
+[node name="MuzzleFlash" type="Node3D" parent="." unique_id=238188931 node_paths=PackedStringArray("light", "emitters")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.15598)
 script = ExtResource("7_lfesk")
-parent = NodePath("")
 light = NodePath("OmniLight3D")
 emitters = [NodePath("MuzzleFlash"), NodePath("MuzzleCone"), NodePath("BeamFlash"), NodePath("Sparks"), NodePath("Sparks2")]
 

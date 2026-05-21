@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c3fybru8twfsy" path="res://entities/hud/parts/samplebuildmenu.gd" id="1_vdgxl"]
 [ext_resource type="Texture2D" uid="uid://b6yf0gt15k7rr" path="res://hud/Armored Core - Last Raven_SLUS-21338_20260405104913.png" id="2_f6kri"]
+[ext_resource type="Texture2D" uid="uid://dqbq3gh8y2bnk" path="res://hud/769b71f7-630c-4dcb-8318-5caaacbb5fa1.jpg" id="3_0pt18"]
 [ext_resource type="PackedScene" uid="uid://cvyykatdf4v80" path="res://entities/hud/hud_mount_button.tscn" id="3_f6kri"]
 [ext_resource type="PackedScene" uid="uid://be7hr5qo32h0e" path="res://entities/hud/parts/hud_vehicle_spinner.tscn" id="4_dw6pp"]
 [ext_resource type="PackedScene" uid="uid://dii6wnp14t8q6" path="res://entities/hud/parts/hud_part_spinner.tscn" id="5_nl10n"]
@@ -13,7 +14,7 @@
 [ext_resource type="Script" uid="uid://dmyyqmaujxk73" path="res://entities/hud/parts/samplepartsbuttonmaster.gd" id="11_2a7v8"]
 [ext_resource type="PackedScene" uid="uid://da61yfu3c1nov" path="res://ctrl_vehicle_base.tscn" id="12_f6kri"]
 
-[node name="Control" type="Control" unique_id=759303387]
+[node name="SampleBuildMenu" type="Control" unique_id=759303387]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,6 +40,21 @@ layout_mode = 2
 texture = ExtResource("2_f6kri")
 expand_mode = 1
 
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=555898188]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=863057904]
+modulate = Color(0.12591085, 0.12591085, 0.12591082, 1)
+layout_mode = 2
+texture = ExtResource("3_0pt18")
+expand_mode = 1
+
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=262586340]
 layout_mode = 1
 anchors_preset = -1
@@ -51,13 +67,44 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="GridContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1021427845]
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer" unique_id=888404699]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.74509805)
+metadata/_edit_use_anchors_ = true
+
+[node name="BoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1021427845]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MountIcon" parent="ScrollContainer/GridContainer" unique_id=1266580319 instance=ExtResource("3_f6kri")]
+[node name="MountIcon" parent="ScrollContainer/BoxContainer" unique_id=1266580319 instance=ExtResource("3_f6kri")]
 layout_mode = 2
+
+[node name="MountIcon2" parent="ScrollContainer/BoxContainer" unique_id=100647003 instance=ExtResource("3_f6kri")]
+layout_mode = 2
+
+[node name="Mount_Hull" parent="ScrollContainer/BoxContainer/MountIcon2" index="4" unique_id=1971997085]
+accepts = "Engine"
+
+[node name="MountIcon3" parent="ScrollContainer/BoxContainer" unique_id=359663077 instance=ExtResource("3_f6kri")]
+layout_mode = 2
+
+[node name="Mount_Hull" parent="ScrollContainer/BoxContainer/MountIcon3" index="4" unique_id=1971997085]
+accepts = "Turret"
+
+[node name="MountIcon4" parent="ScrollContainer/BoxContainer" unique_id=433386249 instance=ExtResource("3_f6kri")]
+layout_mode = 2
+
+[node name="Mount_Hull" parent="ScrollContainer/BoxContainer/MountIcon4" index="4" unique_id=1971997085]
+accepts = "Transmission"
+
+[node name="MountIcon5" parent="ScrollContainer/BoxContainer" unique_id=1612856294 instance=ExtResource("3_f6kri")]
+layout_mode = 2
+
+[node name="Mount_Hull" parent="ScrollContainer/BoxContainer/MountIcon5" index="4" unique_id=1971997085]
+accepts = "Gun"
 
 [node name="VehicleWindow" type="MarginContainer" parent="." unique_id=299033964]
 clip_contents = true
@@ -68,6 +115,11 @@ anchor_top = 0.12345679
 anchor_right = 0.9652778
 anchor_bottom = 0.61728394
 pivot_offset_ratio = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="VehicleWindow" unique_id=318905183]
+layout_mode = 2
+color = Color(0, 0, 0, 0.74509805)
 metadata/_edit_use_anchors_ = true
 
 [node name="VehicleSpinner" parent="VehicleWindow" unique_id=287784651 instance=ExtResource("4_dw6pp")]
@@ -81,6 +133,11 @@ anchor_top = 0.18364197
 anchor_right = 0.5355903
 anchor_bottom = 0.48919752
 pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="ColorRect" type="ColorRect" parent="PartWindow" unique_id=964489777]
+layout_mode = 2
+color = Color(0, 0, 0, 0.74509805)
+metadata/_edit_use_anchors_ = true
 
 [node name="PartSpinner" parent="PartWindow" unique_id=2034532537 instance=ExtResource("5_nl10n")]
 layout_mode = 2
@@ -118,6 +175,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "PART NAME - YEEN1231aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 autowrap_mode = 0
 vertical_alignment = 1
@@ -142,6 +200,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "This is a sample part description. It is a modified version of the Part Name description. Blah blah. Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen.  Yeen. Yeen. "
 fit_content = true
 scroll_active = false
@@ -167,6 +226,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "VALUE"
 autowrap_mode = 0
 vertical_alignment = 1
@@ -186,6 +246,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "VALUE"
 autowrap_mode = 0
 vertical_alignment = 1
@@ -205,6 +266,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "VALUE"
 autowrap_mode = 0
 vertical_alignment = 1
@@ -225,6 +287,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "VALUE"
 autowrap_mode = 0
 vertical_alignment = 1
@@ -244,6 +307,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "VALUE"
 autowrap_mode = 0
 vertical_alignment = 1
@@ -264,6 +328,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "100"
 autowrap_mode = 0
 horizontal_alignment = 2
@@ -284,6 +349,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "100"
 autowrap_mode = 0
 horizontal_alignment = 2
@@ -304,6 +370,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "100"
 autowrap_mode = 0
 horizontal_alignment = 2
@@ -325,6 +392,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "100"
 autowrap_mode = 0
 horizontal_alignment = 2
@@ -345,6 +413,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("8_6uspu")
+theme_override_font_sizes/normal_font_size = 32
 text = "100"
 autowrap_mode = 0
 horizontal_alignment = 2
@@ -391,3 +460,8 @@ freeze = true
 [connection signal="pressed" from="Engine_Toggle" to="ButtonMaster" method="_on_engine_toggle_pressed"]
 [connection signal="button_down" from="Engine_Rev" to="ButtonMaster" method="_on_engine_rev_button_down"]
 [connection signal="button_up" from="Engine_Rev" to="ButtonMaster" method="_on_engine_rev_button_up"]
+
+[editable path="ScrollContainer/BoxContainer/MountIcon2"]
+[editable path="ScrollContainer/BoxContainer/MountIcon3"]
+[editable path="ScrollContainer/BoxContainer/MountIcon4"]
+[editable path="ScrollContainer/BoxContainer/MountIcon5"]

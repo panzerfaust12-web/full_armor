@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ciqmwybjth5fy"
+path="res://.godot/imported/ERROR 13.ogg-1f0ca48cf0de21bcc1cb8b33cfda47d0.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/UI/ERROR 13.ogg"
+dest_files=["res://.godot/imported/ERROR 13.ogg-1f0ca48cf0de21bcc1cb8b33cfda47d0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

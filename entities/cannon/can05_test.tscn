@@ -149,6 +149,9 @@ script = ExtResource("1_6hmu7")
 length = 700
 width = 100
 depth = 150
+long_name = "Whikir 79-1 Machine Gun"
+short_name = "W79-1"
+description = "holy fuck i'm sto tired it's 5/20/2026 and i had a really nice black tea yum yum"
 rate_of_fire = 2400.0
 firing_type = 3
 caliber = 7.62
@@ -186,10 +189,9 @@ one_shot = true
 [node name="Reload" type="Timer" parent="." unique_id=1160909871]
 one_shot = true
 
-[node name="MuzzleFlash" type="Node3D" parent="." unique_id=1677818186 node_paths=PackedStringArray("parent", "light", "emitters")]
+[node name="MuzzleFlash" type="Node3D" parent="." unique_id=1677818186 node_paths=PackedStringArray("light", "emitters")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.39838067)
 script = ExtResource("10_j3m17")
-parent = NodePath("")
 light = NodePath("OmniLight3D")
 emitters = [NodePath("MuzzleFlash"), NodePath("MuzzleCone"), NodePath("BeamFlash"), NodePath("Sparks"), NodePath("Sparks2")]
 

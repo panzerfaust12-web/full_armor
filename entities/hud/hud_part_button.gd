@@ -1,4 +1,6 @@
 extends MarginContainer
+class_name HUD_Part_Button
+
 var part_load
 @onready var button = $Button
 signal part_selected(part)
@@ -13,4 +15,5 @@ func _ready() -> void:
 
 func _on_button_button_down() -> void:
 	part_selected.emit($PartSnapshotter.part)
+	AudioController.play_sound("ButtonClick")
 	pass # Replace with function body.
