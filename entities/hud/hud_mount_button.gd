@@ -6,7 +6,6 @@ signal mount_selected(mount)
 var mount_load = null
 
 func _ready() -> void:
-	mount_load = $Mount_Hull
 	if mount_load == null:
 		print("BUTTON LOADED NULL")
 		return

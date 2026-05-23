@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c3fybru8twfsy" path="res://entities/hud/parts/samplebuildmenu.gd" id="1_vdgxl"]
 [ext_resource type="Texture2D" uid="uid://b6yf0gt15k7rr" path="res://hud/Armored Core - Last Raven_SLUS-21338_20260405104913.png" id="2_f6kri"]
 [ext_resource type="Texture2D" uid="uid://dqbq3gh8y2bnk" path="res://hud/769b71f7-630c-4dcb-8318-5caaacbb5fa1.jpg" id="3_0pt18"]
-[ext_resource type="PackedScene" uid="uid://cvyykatdf4v80" path="res://entities/hud/hud_mount_button.tscn" id="3_f6kri"]
 [ext_resource type="PackedScene" uid="uid://be7hr5qo32h0e" path="res://entities/hud/parts/hud_vehicle_spinner.tscn" id="4_dw6pp"]
 [ext_resource type="PackedScene" uid="uid://dii6wnp14t8q6" path="res://entities/hud/parts/hud_part_spinner.tscn" id="5_nl10n"]
 [ext_resource type="FontFile" uid="uid://do8xfhdfdryjo" path="res://fonts/GGBotNet Fonts CC0/Public Pixel/OpenType (.otf)/PublicPixel.otf" id="6_la140"]
@@ -11,7 +10,6 @@
 [ext_resource type="FontFile" uid="uid://b0vey4ih8ff7y" path="res://fonts/GGBotNet Fonts CC0/Delta Block/OpenType (.otf)/DeltaBlock-Regular.otf" id="8_6uspu"]
 [ext_resource type="Script" uid="uid://yn0ofi6v1bp6" path="res://entities/hud/parts/hud_scrollbar_marquee.gd" id="9_d137q"]
 [ext_resource type="Script" uid="uid://cvixswa30x438" path="res://entities/hud/parts/button_font_scaler.gd" id="10_ohmlr"]
-[ext_resource type="Script" uid="uid://dmyyqmaujxk73" path="res://entities/hud/parts/samplepartsbuttonmaster.gd" id="11_2a7v8"]
 [ext_resource type="PackedScene" uid="uid://da61yfu3c1nov" path="res://ctrl_vehicle_base.tscn" id="12_f6kri"]
 
 [node name="SampleBuildMenu" type="Control" unique_id=759303387]
@@ -78,33 +76,6 @@ metadata/_edit_use_anchors_ = true
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="MountIcon" parent="ScrollContainer/BoxContainer" unique_id=1266580319 instance=ExtResource("3_f6kri")]
-layout_mode = 2
-
-[node name="MountIcon2" parent="ScrollContainer/BoxContainer" unique_id=100647003 instance=ExtResource("3_f6kri")]
-layout_mode = 2
-
-[node name="Mount_Hull" parent="ScrollContainer/BoxContainer/MountIcon2" index="4" unique_id=1971997085]
-accepts = "Engine"
-
-[node name="MountIcon3" parent="ScrollContainer/BoxContainer" unique_id=359663077 instance=ExtResource("3_f6kri")]
-layout_mode = 2
-
-[node name="Mount_Hull" parent="ScrollContainer/BoxContainer/MountIcon3" index="4" unique_id=1971997085]
-accepts = "Turret"
-
-[node name="MountIcon4" parent="ScrollContainer/BoxContainer" unique_id=433386249 instance=ExtResource("3_f6kri")]
-layout_mode = 2
-
-[node name="Mount_Hull" parent="ScrollContainer/BoxContainer/MountIcon4" index="4" unique_id=1971997085]
-accepts = "Transmission"
-
-[node name="MountIcon5" parent="ScrollContainer/BoxContainer" unique_id=1612856294 instance=ExtResource("3_f6kri")]
-layout_mode = 2
-
-[node name="Mount_Hull" parent="ScrollContainer/BoxContainer/MountIcon5" index="4" unique_id=1971997085]
-accepts = "Gun"
 
 [node name="VehicleWindow" type="MarginContainer" parent="." unique_id=299033964]
 clip_contents = true
@@ -426,10 +397,10 @@ script = ExtResource("7_kc7uo")
 [node name="Engine_Toggle" type="Button" parent="." unique_id=1711709461]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.43055555
+anchor_left = 0.175
 anchor_top = 0.43209878
-anchor_right = 0.5303819
-anchor_bottom = 0.47993827
+anchor_right = 0.27482635
+anchor_bottom = 0.47993824
 pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "Toggle"
 metadata/_edit_use_anchors_ = true
@@ -440,9 +411,9 @@ script = ExtResource("10_ohmlr")
 [node name="Engine_Rev" type="Button" parent="." unique_id=1878402988]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.43055555
+anchor_left = 0.175
 anchor_top = 0.38271606
-anchor_right = 0.5303819
+anchor_right = 0.27482635
 anchor_bottom = 0.43055555
 pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "Rev Engine"
@@ -451,17 +422,28 @@ metadata/_edit_use_anchors_ = true
 [node name="Button_Font_Scaler" type="Node" parent="Engine_Rev" unique_id=786679570]
 script = ExtResource("10_ohmlr")
 
-[node name="ButtonMaster" type="Node" parent="." unique_id=891030301]
-script = ExtResource("11_2a7v8")
+[node name="Equip" type="Button" parent="." unique_id=1512506585]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42916667
+anchor_top = 0.43209878
+anchor_right = 0.528993
+anchor_bottom = 0.47993824
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Equip
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_Font_Scaler" type="Node" parent="Equip" unique_id=2093367795]
+script = ExtResource("10_ohmlr")
 
 [node name="Vehicle" parent="." unique_id=1053722670 instance=ExtResource("12_f6kri")]
 freeze = true
+debug_enabled = false
 
-[connection signal="pressed" from="Engine_Toggle" to="ButtonMaster" method="_on_engine_toggle_pressed"]
-[connection signal="button_down" from="Engine_Rev" to="ButtonMaster" method="_on_engine_rev_button_down"]
-[connection signal="button_up" from="Engine_Rev" to="ButtonMaster" method="_on_engine_rev_button_up"]
+[connection signal="pressed" from="Engine_Toggle" to="." method="_on_engine_toggle_pressed"]
+[connection signal="button_down" from="Engine_Rev" to="." method="_on_engine_rev_button_down"]
+[connection signal="button_up" from="Engine_Rev" to="." method="_on_engine_rev_button_up"]
+[connection signal="pressed" from="Equip" to="." method="_on_equip_pressed"]
 
-[editable path="ScrollContainer/BoxContainer/MountIcon2"]
-[editable path="ScrollContainer/BoxContainer/MountIcon3"]
-[editable path="ScrollContainer/BoxContainer/MountIcon4"]
-[editable path="ScrollContainer/BoxContainer/MountIcon5"]
+[editable path="Vehicle"]

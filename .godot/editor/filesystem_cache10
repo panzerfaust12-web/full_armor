@@ -1,13 +1,15 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1779322460
+::res://::1779545250
 armoria_2025-12-06-10-18-51.png::CompressedTexture2D::2035508714831871644::1765122528::1765122536::1::::<><><>0<>0<>49ad786ca76e4ebf10b2a738e29fa2a6<>res://.godot/imported/armoria_2025-12-06-10-18-51.png-e56916f7ad30b71de3adefe94ad04852.s3tc.ctex::
 armor_plate_sample.tscn::PackedScene::7131868648955104054::1776814172::0::1::::<><><>0<>0<><>::
+audio_controller.tscn::PackedScene::4702109642502031018::1779324607::0::1::::<><><>0<>0<><>::uid://bcxg6tjwo82g::::res://global_audio_controller.gd<>uid://cj0sqd7vj7f5q::::res://sound/UI/UI_Mechanical_Move_40.ogg<>uid://wdpaaashphma::::res://sound/UI/Interface Deny Low Fat Dark.ogg<>uid://cvrr1eighvcua::::res://sound/UI/Toolbox - DROP.ogg
 basebulletshader.gdshader::Shader::811202715502655277::1776643229::0::1::::<><><>0<>0<><>::
 ctrl_vehicle.gd::GDScript::8676046926847720708::1778441578::0::1::::Controller_Vehicle<>RigidBody3D<><>0<>0<><>::
 ctrl_vehicle_base.tscn::PackedScene::7224879557109542805::1778346718::0::1::::<><><>0<>0<><>::uid://dvu0hwpe8ldcm::::res://ctrl_vehicle.gd<>uid://be0ffafnlxhw3::::res://scripts/component_mount.gd
 default_bus_layout.tres::AudioBusLayout::1465651711101982022::1779319509::0::1::::<><><>0<>0<><>::
 envr_water.gd::GDScript::7625143414338141674::1770580883::0::1::::<>MeshInstance3D<><>0<>0<><>::
 generic_crate.tscn::PackedScene::4859773412638921962::1768795554::0::1::::<><><>0<>0<><>::uid://cha3alvwjjtqp::::res://phys_obj.gd<>uid://c7l7lxe5srysp::::res://meshes/Wooden Crate.obj
+global_audio_controller.gd::GDScript::75726462757255888::1779324607::0::1::::<>Node<><>0<>0<><>::
 global_functions.gd::GDScript::6692760423718730326::1775410529::0::1::::GlobalFunctions<>Node3D<><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::4373124276951073004::1761171496::1761171496::1::::<><><>0<>0<>41738d1ba563d535b6572fc0a904c04e<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 logo.png::CompressedTexture2D::8147929097843611261::1778440213::1778441158::1::::<><><>0<>0<>d98cecce81e5b0e61697a87423d13a8d<>res://.godot/imported/logo.png-cca8726399059c8d4f806e28e356b14d.ctex::
@@ -21,8 +23,6 @@ placeholder_chase_cam.gd::GDScript::1572115782758438770::1771190642::0::1::::<>C
 PLACEHOLDER_DELETE_racemap.tscn::PackedScene::3798816707220109899::1771189538::0::1::::<><><>0<>0<><>::uid://croqf1d61c723::::res://meshes/Placeholders/map_qms.glb
 README.md::TextFile::-1::1778440391::0::1::::<><><>0<>0<><>::
 red.tres::StandardMaterial3D::7462565472279239653::1761171496::0::1::::<><><>0<>0<><>::
-global_audio_controller.gd::GDScript::75726462757255888::1779322126::0::1::::<>Node<><>0<>0<><>::
-audio_controller.tscn::PackedScene::4702109642502031018::1779322460::0::1::::<><><>0<>0<><>::uid://bcxg6tjwo82g::::res://global_audio_controller.gd<>uid://cj0sqd7vj7f5q::::res://sound/UI/UI_Mechanical_Move_40.ogg<>uid://wdpaaashphma::::res://sound/UI/Interface Deny Low Fat Dark.ogg<>uid://cvrr1eighvcua::::res://sound/UI/Toolbox - DROP.ogg
 simple_cam.gd::GDScript::5770862966691210303::1769368745::0::1::::<>Camera3D<><>0<>0<><>::
 skybox.gdshader::Shader::6434162142540623744::1762909380::0::1::::<><><>0<>0<><>::
 skybox_controller.gd::GDScript::7917320197008321018::1765748644::0::1::::<>WorldEnvironment<><>0<>1<><>::
@@ -58,7 +58,7 @@ debug_draw_3d.gdextension::GDExtension::1307723806687219837::1762617856::0::1:::
 README.md::TextFile::-1::1762617856::0::1::::<><><>0<>0<><>::
 ::res://addons/polyhaven-downloader/::1776814574
 blueprint.tres::ORMMaterial3D::3421570437113183679::1735667005::0::1::::<><><>0<>0<><>::
-polyhaven_downloader.gd::GDScript::3954102068490851337::1735667005::0::1::::<>Node<><>0<>1<><>::
+polyhaven_downloader.gd::GDScript::3954102068490851337::1735667005::0::1::::<>Node<>res://addons/polyhaven-downloader/polyhaven_icon.png<>0<>1<><>::
 polyhaven_downloader.tscn::PackedScene::4387827769897310881::1763334132::0::1::::<><><>0<>0<><>::uid://bwlnqo1ib8d0t::::res://addons/polyhaven-downloader/polyhaven_downloader.gd
 polyhaven_icon.png::CompressedTexture2D::8584824912995956712::1735667005::1776814574::1::::<><><>0<>0<>a48a65360213e7dc635d329cfc216b72<>res://.godot/imported/polyhaven_icon.png-98f80200aba4df96b3a23bb7c30844e5.s3tc.ctex::
 ::res://addons/sky_3d/::1778148111
@@ -101,7 +101,7 @@ LICENSE.txt::TextFile::-1::1751047170::0::1::::<><><>0<>0<><>::
 plugin.cfg::TextFile::-1::1751047170::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1751047170::0::1::::<><><>0<>0<><>::
 terrain.gdextension::GDExtension::2625506675569593757::1751047170::0::1::::<><><>0<>0<><>::
-::res://addons/terrain_3d/bin/::1779319503
+::res://addons/terrain_3d/bin/::1779545248
 ::res://addons/terrain_3d/bin/libterrain.macos.debug.framework/::1778441965
 ::res://addons/terrain_3d/bin/libterrain.macos.release.framework/::1778441965
 ::res://addons/terrain_3d/extras/::1778441966
@@ -210,12 +210,12 @@ engine02_test.tscn::PackedScene::327050576203157225::1776009417::0::1::::<><><>0
 engine03_test_wv2000.tscn::PackedScene::1878220316543718853::1776451529::0::1::::<><><>0<>0<><>::uid://tahccehwxiwt::::res://scripts/component_engine.gd<>uid://be74ock6d2s32::::res://meshes/Engines/AuburnV12.obj<>uid://br06tgy556tws::::res://materials/metals/BeatUpMetal.tres<>uid://cdtsoypr5cjec::::res://meshes/Engines/AuburnV12f.obj<>uid://cgbxe0mkfjs8u::::res://sound/Engine/WV2000 SHITBOX/300.wav<>uid://dy1mhyl0i5h3r::::res://sound/Engine/WV2000 SHITBOX/600.wav<>uid://qypkmep04ryr::::res://sound/Engine/WV2000 SHITBOX/1000.wav<>uid://c03h16hu07lgf::::res://sound/Engine/WV2000 SHITBOX/1400.wav<>uid://bqicu2dfrfpbr::::res://sound/Engine/WV2000 SHITBOX/start.wav<>uid://dujn4xcgjpnrd::::res://sound/Engine/WV2000 SHITBOX/stop.wav
 engine04_test.tscn::PackedScene::6825059394256277910::1776011832::0::1::::<><><>0<>0<><>::uid://tahccehwxiwt::::res://scripts/component_engine.gd<>uid://di6ylv7nk3fc0::::res://meshes/Engines/BMW M78.obj<>uid://br06tgy556tws::::res://materials/metals/BeatUpMetal.tres<>uid://bxqbytu1v5vtg::::res://materials/metals/TestMetal.tres<>uid://ba4fq8ahu20n1::::res://sound/Engine/2X SEAGULL/2X_Seagull_Radial_1000.ogg<>uid://dc7sl8p1br2gx::::res://sound/Engine/2X SEAGULL/2X_Seagull_Radial_1500.ogg<>uid://bxg5rj5m8wtkg::::res://sound/Engine/2X SEAGULL/2X_Seagull_Radial_2000.ogg<>uid://dq5e83nyg2fqp::::res://sound/Engine/2X SEAGULL/2X_Seagull_Radial_2500.ogg<>uid://cqs7eg0tbmwrp::::res://sound/Engine/2X SEAGULL/2X_Seagull_Radial_3000.ogg<>uid://d4gmtfobq7x62::::res://sound/Engine/2X SEAGULL/2X_Seagull_Radial_4000.ogg<>uid://bifbec1k0vp21::::res://sound/Engine/2X SEAGULL/2X_Seagull_Radial_5000.ogg<>uid://db4x0x8v7evdg::::res://sound/Engine/2X SEAGULL/2X_Seagull_Radial_Start.ogg<>uid://cjvvev8ld63rc::::res://sound/Engine/2X SEAGULL/2X_Seagull_Radial_Stop.ogg
 engine05_test.tscn::PackedScene::1948305162018401271::1776011852::0::1::::<><><>0<>0<><>::uid://tahccehwxiwt::::res://scripts/component_engine.gd<>uid://di6ylv7nk3fc0::::res://meshes/Engines/BMW M78.obj<>uid://br06tgy556tws::::res://materials/metals/BeatUpMetal.tres<>uid://bxqbytu1v5vtg::::res://materials/metals/TestMetal.tres<>uid://cxpf5fbwcie03::::res://sound/Engine/V12 KING/V12_King_400.ogg<>uid://3bi8tkaekuwo::::res://sound/Engine/V12 KING/V12_King_600.ogg<>uid://ux6v20ssjllf::::res://sound/Engine/V12 KING/V12_King_900.ogg<>uid://da4hgvbab7f2u::::res://sound/Engine/V12 KING/V12_King_1200.ogg<>uid://l7yiv3ymy8ah::::res://sound/Engine/V12 KING/V12_King_1500.ogg<>uid://bxvgdou2v3qkk::::res://sound/Engine/V12 KING/V12_King_1800.ogg<>uid://cs3llacue0ojm::::res://sound/Engine/V12 KING/V12_King_2100.ogg<>uid://b3onhucm70gmy::::res://sound/Engine/V12 KING/V12_King_2400.ogg<>uid://jrssaio17iaa::::res://sound/Engine/V12 KING/V12_King_Start.ogg<>uid://c0st0q22hv16u::::res://sound/Engine/V12 KING/V12_King_Stop.ogg
-::res://entities/hud/::1779323592
+::res://entities/hud/::1779323818
 hud_mount_button.gd::GDScript::5711437566001333036::1779322370::0::1::::HUD_Mount_Button<>MarginContainer<><>0<>0<><>::
-hud_mount_button.tscn::PackedScene::6297827245143197991::1779323592::0::1::::<><><>0<>0<><>::uid://cnmwso4ak61ky::::res://entities/hud/hud_mount_button.gd<>uid://c1gen8gei3sfe::::res://fonts/GGBotNet Fonts CC0/Jupiteroid/Web Open Font Format (.woff)/Jupiteroid-Bold.woff<>uid://cdhefehc5tplm::::res://entities/hud/parts/hud_font_scaler_rich_text.gd<>uid://be0ffafnlxhw3::::res://scripts/component_mount.gd<>uid://yn0ofi6v1bp6::::res://entities/hud/parts/hud_scrollbar_marquee.gd
+hud_mount_button.tscn::PackedScene::6297827245143197991::1779323811::0::1::::<><><>0<>0<><>::uid://cnmwso4ak61ky::::res://entities/hud/hud_mount_button.gd<>uid://c1gen8gei3sfe::::res://fonts/GGBotNet Fonts CC0/Jupiteroid/Web Open Font Format (.woff)/Jupiteroid-Bold.woff<>uid://cdhefehc5tplm::::res://entities/hud/parts/hud_font_scaler_rich_text.gd<>uid://be0ffafnlxhw3::::res://scripts/component_mount.gd<>uid://yn0ofi6v1bp6::::res://entities/hud/parts/hud_scrollbar_marquee.gd
 hud_part_button.gd::GDScript::5988064225146085744::1779322371::0::1::::HUD_Part_Button<>MarginContainer<><>0<>0<><>::
-hud_part_button.tscn::PackedScene::2024404001515297585::1779323577::0::1::::<><><>0<>0<><>::uid://dtegfjfrfl2of::::res://entities/hud/parts/hud_part_snapshotter.tscn<>uid://crkwspu756cei::::res://entities/hud/hud_part_button.gd<>uid://cdhefehc5tplm::::res://entities/hud/parts/hud_font_scaler_rich_text.gd<>uid://c1gen8gei3sfe::::res://fonts/GGBotNet Fonts CC0/Jupiteroid/Web Open Font Format (.woff)/Jupiteroid-Bold.woff<>uid://yn0ofi6v1bp6::::res://entities/hud/parts/hud_scrollbar_marquee.gd
-::res://entities/hud/parts/::1779323651
+hud_part_button.tscn::PackedScene::2024404001515297585::1779323818::0::1::::<><><>0<>0<><>::uid://dtegfjfrfl2of::::res://entities/hud/parts/hud_part_snapshotter.tscn<>uid://crkwspu756cei::::res://entities/hud/hud_part_button.gd<>uid://cdhefehc5tplm::::res://entities/hud/parts/hud_font_scaler_rich_text.gd<>uid://c1gen8gei3sfe::::res://fonts/GGBotNet Fonts CC0/Jupiteroid/Web Open Font Format (.woff)/Jupiteroid-Bold.woff<>uid://yn0ofi6v1bp6::::res://entities/hud/parts/hud_scrollbar_marquee.gd
+::res://entities/hud/parts/::1779323904
 button_font_scaler.gd::GDScript::6264751897761519125::1775748941::0::1::::<>Node<><>0<>0<><>::
 hud_font_scaler_rich_text.gd::GDScript::4998110560558064950::1775762689::0::1::::<>Node<><>0<>0<><>::
 hud_part_loader.gd::GDScript::823913063592446663::1776128214::0::1::::<>Control<><>0<>0<><>::
@@ -227,7 +227,7 @@ hud_vehicle_loader.gd::GDScript::1593772102129267591::1778345921::0::1::::<>Cont
 hud_vehicle_spinner.gd::GDScript::778878913202705255::1778344338::0::1::::<>Node3D<><>0<>0<><>::
 hud_vehicle_spinner.tscn::PackedScene::2733693124912850378::1778347308::0::1::::<><><>0<>0<><>::uid://wybgt476o4dn::::res://entities/hud/parts/hud_vehicle_loader.gd<>uid://3fe62llqr2l7::::res://vhm_wv2000.tscn<>uid://bw7m3gystp5bj::::res://materials/PolyHaven/asphalt_01.res
 samplebuildmenu.gd::GDScript::6749910796960379024::1779323134::0::1::::<>Control<><>0<>0<><>::
-samplebuildmenu.tscn::PackedScene::2543833131500299415::1779323651::0::1::::<><><>0<>0<><>::uid://c3fybru8twfsy::::res://entities/hud/parts/samplebuildmenu.gd<>uid://b6yf0gt15k7rr::::res://hud/Armored Core - Last Raven_SLUS-21338_20260405104913.png<>uid://cvyykatdf4v80::::res://entities/hud/hud_mount_button.tscn<>uid://be7hr5qo32h0e::::res://entities/hud/parts/hud_vehicle_spinner.tscn<>uid://dii6wnp14t8q6::::res://entities/hud/parts/hud_part_spinner.tscn<>uid://do8xfhdfdryjo::::res://fonts/GGBotNet Fonts CC0/Public Pixel/OpenType (.otf)/PublicPixel.otf<>uid://cdhefehc5tplm::::res://entities/hud/parts/hud_font_scaler_rich_text.gd<>uid://b0vey4ih8ff7y::::res://fonts/GGBotNet Fonts CC0/Delta Block/OpenType (.otf)/DeltaBlock-Regular.otf<>uid://yn0ofi6v1bp6::::res://entities/hud/parts/hud_scrollbar_marquee.gd<>uid://cvixswa30x438::::res://entities/hud/parts/button_font_scaler.gd<>uid://dmyyqmaujxk73::::res://entities/hud/parts/samplepartsbuttonmaster.gd<>uid://da61yfu3c1nov::::res://ctrl_vehicle_base.tscn
+samplebuildmenu.tscn::PackedScene::2543833131500299415::1779323904::0::1::::<><><>0<>0<><>::uid://c3fybru8twfsy::::res://entities/hud/parts/samplebuildmenu.gd<>uid://b6yf0gt15k7rr::::res://hud/Armored Core - Last Raven_SLUS-21338_20260405104913.png<>uid://dqbq3gh8y2bnk::::res://hud/769b71f7-630c-4dcb-8318-5caaacbb5fa1.jpg<>uid://cvyykatdf4v80::::res://entities/hud/hud_mount_button.tscn<>uid://be7hr5qo32h0e::::res://entities/hud/parts/hud_vehicle_spinner.tscn<>uid://dii6wnp14t8q6::::res://entities/hud/parts/hud_part_spinner.tscn<>uid://do8xfhdfdryjo::::res://fonts/GGBotNet Fonts CC0/Public Pixel/OpenType (.otf)/PublicPixel.otf<>uid://cdhefehc5tplm::::res://entities/hud/parts/hud_font_scaler_rich_text.gd<>uid://b0vey4ih8ff7y::::res://fonts/GGBotNet Fonts CC0/Delta Block/OpenType (.otf)/DeltaBlock-Regular.otf<>uid://yn0ofi6v1bp6::::res://entities/hud/parts/hud_scrollbar_marquee.gd<>uid://cvixswa30x438::::res://entities/hud/parts/button_font_scaler.gd<>uid://dmyyqmaujxk73::::res://entities/hud/parts/samplepartsbuttonmaster.gd<>uid://da61yfu3c1nov::::res://ctrl_vehicle_base.tscn
 samplepartmenu.gd::GDScript::6547876283923723604::1778343922::0::1::::<>Control<><>0<>0<><>::
 samplepartmenu.tscn::PackedScene::3146428776263593704::1778348063::0::1::::<><><>0<>0<><>::uid://c0j3th83dig1y::::res://entities/hud/parts/samplepartmenu.gd<>uid://b6yf0gt15k7rr::::res://hud/Armored Core - Last Raven_SLUS-21338_20260405104913.png<>uid://dii6wnp14t8q6::::res://entities/hud/parts/hud_part_spinner.tscn<>uid://cdhefehc5tplm::::res://entities/hud/parts/hud_font_scaler_rich_text.gd<>uid://33vvxxj5bnm4::::res://entities/hud/hud_part_button.tscn<>uid://b0vey4ih8ff7y::::res://fonts/GGBotNet Fonts CC0/Delta Block/OpenType (.otf)/DeltaBlock-Regular.otf<>uid://be7hr5qo32h0e::::res://entities/hud/parts/hud_vehicle_spinner.tscn<>uid://do8xfhdfdryjo::::res://fonts/GGBotNet Fonts CC0/Public Pixel/OpenType (.otf)/PublicPixel.otf<>uid://yn0ofi6v1bp6::::res://entities/hud/parts/hud_scrollbar_marquee.gd<>uid://cvixswa30x438::::res://entities/hud/parts/button_font_scaler.gd<>uid://dmyyqmaujxk73::::res://entities/hud/parts/samplepartsbuttonmaster.gd
 samplepartsbuttonmaster.gd::GDScript::8052559652563853772::1776126058::0::1::::<>Node<><>0<>0<><>::
@@ -1044,7 +1044,7 @@ Undead Pixel 11.ttf::FontFile::5799461506061899911::1743180728::1775419651::1:::
 ::res://gardener/::1761171503
 greenhouse.tres::Resource::8191253543124170806::1761171503::0::1::::<><><>0<>0<><>::uid://cjsirac1827tg::::res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse.gd
 toolshed.tres::Resource::1920019959370512974::1761171503::0::1::::<><><>0<>0<><>::uid://bfhkwdyxi414f::::res://addons/dreadpon.spatial_gardener/toolshed/toolshed_brush.gd<>uid://y06d0rwxy11x::::res://addons/dreadpon.spatial_gardener/toolshed/toolshed.gd
-::res://hud/::1779323759
+::res://hud/::1779323761
 769b71f7-630c-4dcb-8318-5caaacbb5fa1.jpg::CompressedTexture2D::8285369728641717248::1779323759::1779323761::1::::<><><>0<>0<>ba5a850bdecd07137b868cb5c11872ec<>res://.godot/imported/769b71f7-630c-4dcb-8318-5caaacbb5fa1.jpg-52b7df5fd67dec277611edb888cbdefd.ctex::
 Armored Core - Last Raven_SLUS-21338_20260405104913.png::CompressedTexture2D::4612168478094220803::1775409650::1775409652::1::::<><><>0<>0<>37da42c17bad2abbf893d56eb44db5d3<>res://.godot/imported/Armored Core - Last Raven_SLUS-21338_20260405104913.png-271ea78e3c1712e205f65409c1dd7aec.ctex::
 hud.png::CompressedTexture2D/CompressedTexture2D::7367746901556038470::1761171503::1761171503::1::::<><><>0<>0<>7951d57fcc8ef7ec5696d9d05e782f49<>res://.godot/imported/hud.png-f342d0580f7acd0d097e93c1146ab763.ctex::

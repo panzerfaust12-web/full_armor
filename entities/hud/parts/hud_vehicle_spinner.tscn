@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://be7hr5qo32h0e"]
 
 [ext_resource type="Script" uid="uid://wybgt476o4dn" path="res://entities/hud/parts/hud_vehicle_loader.gd" id="1_ljgt4"]
-[ext_resource type="PackedScene" uid="uid://3fe62llqr2l7" path="res://vhm_wv2000.tscn" id="2_gajgy"]
 [ext_resource type="Material" uid="uid://bw7m3gystp5bj" path="res://materials/PolyHaven/asphalt_01.res" id="3_1nxo2"]
 
 [sub_resource type="Environment" id="Environment_jwbas"]
@@ -47,13 +46,8 @@ msaa_3d = 1
 screen_space_aa = 1
 mesh_lod_threshold = 0.0
 audio_listener_enable_3d = true
+size = Vector2i(853, 853)
 render_target_update_mode = 4
-
-[node name="Vehicleadssd" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=453725484 instance=ExtResource("2_gajgy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6929985, 0)
-axis_lock_linear_x = true
-axis_lock_linear_z = true
-axis_lock_angular_y = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1009758380]
 environment = SubResource("Environment_jwbas")

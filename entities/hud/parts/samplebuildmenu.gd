@@ -3,6 +3,8 @@ extends Control
 var active_thing = null:
 	set(thing):
 		define_thing(thing)
+		
+var active_thing_holder = null
 
 var mounts: Array[Component_Mount] = []
 @onready var active_vehicle:Controller_Vehicle = $Vehicle
@@ -50,6 +52,7 @@ var w5 = load("res://entities/wheel/wheel03_wz_tracked.tscn")
 
 
 var part_button = load("res://entities/hud/hud_part_button.tscn")
+var mount_button = load("res://entities/hud/hud_mount_button.tscn")
 
 var part_snapshotter
 
@@ -59,10 +62,11 @@ var categories: Array[String] = ["Engine","Gun","Hull","Turret","Suspension"]
 
 
 func _ready() -> void:
+	refresh_mounts($Vehicle)
 	connect_mounts()
 	if active_thing == null:
 		$PartWindow/PartSpinner.part_load = e1
-		active_thing = $PartWindow/PartSpinner.part
+		active_thing_holder = $PartWindow/PartSpinner.part
 		
 
 func clear_parts(powner):
@@ -75,13 +79,14 @@ func clear_parts(powner):
 
 func populate_parts(location:Node, type:String):
 	var array = null
-	clear_parts(location)
+	clear_parts(location.get_parent())
 	print("Location " + str(location.name))
 	if type == "Engine": array = engines
 	if type == "Hull": array = hulls
 	if type == "Turret": array = turrets
 	if type == "Transmission": array = transmissions
 	if type == "Suspension": array = suspensions
+	if type == "Wheel": array = wheels
 	if type == "Gun": array = guns
 	if array == null: return
 	for i in array:
@@ -96,6 +101,29 @@ func connect_mounts():
 		if mount is HUD_Mount_Button:
 			mount.mount_selected.connect(populate_mounts)	
 
+func refresh_mounts(vehicle: Node3D):
+	for mount in find_children("*","HUD_Mount_Button",1,0):
+		if mount is HUD_Mount_Button:
+			clear_parts(clear_parts)
+			mount.mount_selected.disconnect(populate_mounts)
+			remove_child(mount)
+			mount.queue_free()
+	
+	await get_tree().process_frame
+	
+	for mount in vehicle.find_children("*"):
+		if mount is Component_Mount:
+			var copied_mount = mount.duplicate(DUPLICATE_SCRIPTS)
+			var new_button = mount_button.instantiate()
+			new_button.add_child(copied_mount)
+			new_button.mount_load = copied_mount
+			new_button.mount_selected.connect(populate_mounts)
+			$ScrollContainer/BoxContainer.add_child(new_button)
+			
+			
+
+	connect_mounts()
+
 func populate_mounts(mount: Node, type: String):
 	populate_parts(mount, type)
 	pass
@@ -104,8 +132,7 @@ func update_thing(value):
 	var thingupdate = load(value.scene_file_path)
 	$PartWindow/PartSpinner.part_load = thingupdate
 	active_thing = $PartWindow/PartSpinner.part
-	print(value)
-	pass
+	active_thing_holder = $PartWindow/PartSpinner.part
 
 func define_thing(thing):
 	$PartName.text = thing.long_name
@@ -113,20 +140,24 @@ func define_thing(thing):
 	
 	$Header.text = thing.component_name
 	$PartStatName1.text = "Weight"
-	$PartStatValue1.text = thousands_sep(thing.weight) + "kg"
+	$PartStatValue1.text = GlobalFunctions.thousands_sep(thing.weight) + "kg"
 	$PartStatName2.text = "Dimensions"
-	$PartStatValue2.text = thousands_sep(thing.length) + "l + " + thousands_sep(thing.width) + "w + " + thousands_sep(thing.depth) + "h"
+	$PartStatValue2.text = GlobalFunctions.thousands_sep(thing.length) + "l + " + GlobalFunctions.thousands_sep(thing.width) + "w + " + GlobalFunctions.thousands_sep(thing.depth) + "h"
+	
+	#clear all buttons
+	$Engine_Rev.visible = false
+	$Engine_Toggle.visible = false
 	
 	
 	if thing is Component_Engine:
+		$Engine_Toggle.visible = true
 		$PartStatName3.text = "Horsepower"
 		$PartStatValue3.text = str(thing.horsepower)
 		$PartStatName4.text = "RPM Idle / RPM Max"
 		$PartStatValue4.text = str(thing.RPM_idle) + " / " + str(thing.RPM_max)
 		$PartStatName5.text = "RPM Up / RPM Down"
 		$PartStatValue5.text = str(thing.RPM_shift_up) + " / " + str(thing.RPM_shift_down)
-	
-	$ButtonMaster.thing = thing
+
 
 func define_vehicle(vehicle):
 	vehicle.instantiate()
@@ -136,19 +167,62 @@ func get_mounts():
 func blank_mounts():
 	mounts = []
 	
-func thousands_sep(number, prefix=''):
-	number = int(number)
-	var neg = false
-	if number < 0:
-		number = -number
-		neg = true
-	var string = str(number)
-	var mod = string.length() % 3
-	var res = ""
-	for i in range(0, string.length()):
-		if i != 0 && i % 3 == mod:
-			res += ","
-		res += string[i]
-	if neg: res = '-'+prefix+res
-	else: res = prefix+res
-	return res
+	
+
+func thing_type_visiblity(thing):
+	if thing is Component_Engine:
+		$PartStatName3.text = "Horsepower"
+		$PartStatValue3.text = str(thing.horsepower)
+		$PartStatName4.text = "RPM Idle / RPM Max"
+		$PartStatValue4.text = str(thing.RPM_idle) + " / " + str(thing.RPM_max)
+		$PartStatName5.text = "RPM Up / RPM Down"
+		$PartStatValue5.text = str(thing.RPM_shift_up) + " / " + str(thing.RPM_shift_down)
+	
+	
+## BUTTONS 
+func _on_engine_toggle_pressed() -> void:
+	if active_thing_holder != null and active_thing_holder is Component_Engine:
+		AudioController.play_sound("ButtonClick")
+		active_thing_holder.on = not active_thing_holder.on
+		if active_thing_holder.on == true:
+			$Engine_Rev.visible = true
+		else: $Engine_Rev.visible = false
+	else:
+		AudioController.play_sound("ButtonError")
+
+func _on_engine_rev_button_up() -> void:
+	if active_thing_holder != null and active_thing_holder is Component_Engine:
+		AudioController.play_sound("ButtonClick")
+		active_thing_holder.throttle = 0.0
+	else: AudioController.play_sound("ButtonError")
+
+func _on_engine_rev_button_down() -> void:
+	if active_thing_holder != null and active_thing_holder is Component_Engine:
+		AudioController.play_sound("ButtonClick")
+		active_thing_holder.throttle = 1.0
+	else: AudioController.play_sound("ButtonError")
+
+func _on_equip_pressed() -> void:
+	if active_thing_holder != null:
+		AudioController.play_sound("ButtonEquip")
+		$Vehicle.add_component($Vehicle/Mount_Hull, load(active_thing_holder.get_scene_file_path()))
+		$VehicleWindow/VehicleSpinner.vehicle_load = $Vehicle
+		refresh_mounts($Vehicle)
+	else: AudioController.play_sound("ButtonError")
+	
+#func thousands_sep(number, prefix=''):
+	#number = int(number)
+	#var neg = false
+	#if number < 0:
+		#number = -number
+		#neg = true
+	#var string = str(number)
+	#var mod = string.length() % 3
+	#var res = ""
+	#for i in range(0, string.length()):
+		#if i != 0 && i % 3 == mod:
+			#res += ","
+		#res += string[i]
+	#if neg: res = '-'+prefix+res
+	#else: res = prefix+res
+	#return res

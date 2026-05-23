@@ -1,8 +1,8 @@
 extends Control
 
-var part_load = null:
+var vehicle_load = null:
 	set(value):
-		update_part(value)
+		update_vehicle(value)
 var vehicle = null
 @onready var loadto = $AspectRatioContainer/SubViewportContainer/SubViewport/VehicleSpawn
 @onready var camera = $AspectRatioContainer/SubViewportContainer/SubViewport/CameraPivot/Camera3D
@@ -19,15 +19,18 @@ func _process(delta) -> void:
 	camera.look_at(Vector3.ZERO)
 
 
-func update_part(value):
+func update_vehicle(value):
 	if loadto.get_children() != []:
 		for n in loadto.get_children():
 			loadto.remove_child(n)
 			n.queue_free()
-	vehicle = value.instantiate()
+	await get_tree().process_frame
+	vehicle = value.duplicate(DUPLICATE_SCRIPTS)
 	loadto.add_child(vehicle)
+	vehicle.freeze = false
 	var modifier = 1.5
-	camera.position.z = vehicle.length * modifier / 1000
-	camera.position.x = vehicle.width * modifier / 1000
-	camera.position.y = vehicle.depth * modifier / 1000
+	loadto.get_child(0).regenerate_collisions()
+#	camera.position.z = vehicle.length * modifier / 1000
+#	camera.position.x = vehicle.width * modifier / 1000
+#	camera.position.y = vehicle.depth * modifier / 1000
 	camera.look_at(Vector3.ZERO)

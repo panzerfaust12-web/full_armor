@@ -218,6 +218,10 @@ func regenerate_collisions():
 
 #func get_mounts(): NOT NEEDED - GET COMPONENTS DOES THIS
 func add_component(mount:Component_Mount,component: PackedScene):
+	for m in mount.get_children():
+		print(m)
+		remove_child(m)
+		m.queue_free()
 	if mount == null:
 		print("TRIED TO ADD TO NULL MOUNT")
 		print(self)
@@ -238,52 +242,14 @@ func add_component(mount:Component_Mount,component: PackedScene):
 
 func add_component_DEBUG():
 	if name != "Vehicle": return #This is debug stuff
+	return
 	add_component($Mount_Hull,load("res://entities/hull/hull03_test_wv2000.tscn"))
 	add_component(wheel_mounts[0],load("res://entities/wheel/wheel02_wz2000.tscn"))
 	add_component(wheel_mounts[1],load("res://entities/wheel/wheel02_wz2000.tscn"))
 	add_component(wheel_mounts[2],load("res://entities/hull/hull03_test_wv2000.tscn"))
 	add_component(engine_mounts[0],load("res://entities/engine/engine03_test_wv2000.tscn"))
 	add_component(transmission_mounts[0],load("res://entities/transmission/trans01_test.tscn"))
-	
-	
-	
-# NEED CODE FOR WHEELS TO RE-GENERATED PARENT WHEELS? OR PARENT DOES THIS AND CALLS BACK?
-func add_component_DEBUG1(): #mount: Component_Mount, component: PackedScene
-	var component = load("res://entities/hull/hull03_test_wv2000.tscn")
-	var mount = get_node_or_null("Mount_Hull")
-	if mount == null: return
-	var mounted = component.instantiate()
-	mount.add_child(mounted)
-	mounted.owner = mounted.get_parent()
-	mounted.parent = self
-	
-	component = load("res://entities/wheel/wheel02_wz2000.tscn")
-	var mmounts = find_children("Mount_Wheel*")
-	mounted = component.instantiate()
-	for m in mmounts:
-		mounted = component.instantiate()
-		m.add_child(mounted)
-		mounted.owner = mounted.get_parent()
-		mounted.parent = self
-		
-	component = load("res://entities/engine/engine03_test_wv2000.tscn")
-	mmounts = find_children("Mount_Engine*")
-	mounted = component.instantiate()
-	for m in mmounts:
-		mounted = component.instantiate()
-		m.add_child(mounted)
-		mounted.owner = mounted.get_parent()
-		mounted.parent = self
-	
-	component = load("res://entities/transmission/trans01_test.tscn")
-	mmounts = find_children("Mount_Transmission*")
-	mounted = component.instantiate()
-	for m in mmounts:
-		mounted = component.instantiate()
-		m.add_child(mounted)
-		mounted.owner = mounted.get_parent()
-		mounted.parent = self
-	
+
 
 func air_resis():
 	var r: float = 1.2250 #Air Density - kg/m^3

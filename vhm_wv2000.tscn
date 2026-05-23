@@ -94,6 +94,7 @@ weight = 200
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.1, -1.1000001)
 
 [node name="Wheel" parent="Hull/Mount_Wheel2" index="0" unique_id=1317562008 instance=ExtResource("4_7w5sl")]
+engine_driven = true
 
 [node name="Phys_Wheel" parent="Hull/Mount_Wheel2/Wheel" index="0" unique_id=437283786]
 shape = SubResource("CylinderShape3D_xbwsi")
@@ -113,6 +114,7 @@ stream = SubResource("AudioStreamRandomizer_shkjf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.1, -1.1000001)
 
 [node name="Wheel" parent="Hull/Mount_Wheel3" index="0" unique_id=1738284918 instance=ExtResource("4_7w5sl")]
+engine_driven = true
 
 [node name="Phys_Wheel" parent="Hull/Mount_Wheel3/Wheel" index="0" unique_id=437283786]
 shape = SubResource("CylinderShape3D_2d52y")
@@ -132,10 +134,10 @@ stream = SubResource("AudioStreamRandomizer_lpexc")
 [node name="Transmission" parent="Hull/Mount_Transmission" parent_id_path=PackedInt32Array(609745220, 1322130413) index="0" unique_id=135719996 instance=ExtResource("3_pf2mk")]
 
 [node name="Suspension" parent="Hull" unique_id=492383474 instance=ExtResource("5_2s0wa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.5, 0.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.4, 0.9)
 
 [node name="Suspension2" parent="Hull" unique_id=1020662400 instance=ExtResource("5_2s0wa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.5, 0.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.4, 0.9)
 
 [node name="COM_Ball" type="MeshInstance3D" parent="." unique_id=468499247]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

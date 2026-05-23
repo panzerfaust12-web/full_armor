@@ -24,6 +24,7 @@ func _enter_tree():
 	parent.resized.connect(set_text_size)
 
 func _exit_tree():
+	if parent == null: return
 	parent.resized.disconnect(set_text_size)
 
 func set_text_size():

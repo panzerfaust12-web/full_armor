@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cnmwso4ak61ky" path="res://entities/hud/hud_mount_button.gd" id="1_hchjf"]
 [ext_resource type="FontFile" uid="uid://c1gen8gei3sfe" path="res://fonts/GGBotNet Fonts CC0/Jupiteroid/Web Open Font Format (.woff)/Jupiteroid-Bold.woff" id="3_bunok"]
 [ext_resource type="Script" uid="uid://cdhefehc5tplm" path="res://entities/hud/parts/hud_font_scaler_rich_text.gd" id="4_nevo6"]
-[ext_resource type="Script" uid="uid://be0ffafnlxhw3" path="res://scripts/component_mount.gd" id="5_hchjf"]
 [ext_resource type="Script" uid="uid://yn0ofi6v1bp6" path="res://entities/hud/parts/hud_scrollbar_marquee.gd" id="5_l1cq2"]
 
 [node name="MountIcon" type="MarginContainer" unique_id=1266580319]
@@ -101,11 +100,5 @@ script = ExtResource("4_nevo6")
 [node name="Button" type="Button" parent="." unique_id=534043031]
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="Mount_Hull" type="Node3D" parent="." unique_id=1971997085]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -1.0000001)
-script = ExtResource("5_hchjf")
-accepts = "Hull"
-metadata/_custom_type_script = "uid://be0ffafnlxhw3"
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

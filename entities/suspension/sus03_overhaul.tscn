@@ -128,7 +128,7 @@ radius = 0.25
 
 [node name="Suspension" type="Node3D" unique_id=492383474]
 script = ExtResource("1_7c1t0")
-weight = 250.0
+weight = 50.0
 
 [node name="Sprocket" type="ShapeCast3D" parent="." unique_id=437283786]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.1, -1.1)
