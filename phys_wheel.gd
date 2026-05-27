@@ -139,7 +139,7 @@ func return_RPM_free():
 	return (r_speed * 60) / (PI * (wheel_radius + wheel_radius))
 
 func _ready() -> void:
-	await owner.ready
+	#await owner.ready
 	#Grab nodes.
 	wheel_mesh = get_node_or_null("Turning_Origin/Wheel")
 	wheel_mesh.rotation.y += deg_to_rad(randf_range(0, 360)) # Rotate the damn wheel, CJ.
@@ -161,6 +161,7 @@ func _ready() -> void:
 	#Get the parent and parent wheels.
 	if parent == null:
 		parent = GlobalFunctions.grab_rigid_parent(self)
+	if parent == null: return #lmao what
 	parent_wheels = parent.find_children("*","Phys_Wheel",1,1).size()
 	if parent_wheels == 0:
 		print(self)

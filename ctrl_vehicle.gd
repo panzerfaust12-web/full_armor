@@ -59,7 +59,7 @@ var combined_wheel_RPM: float = 0.0
 
 #Owner
 var ai: bool = false
-var player: bool = true
+@export var player: bool = true
 
 @export var debug_enabled: bool = false
 
@@ -76,9 +76,12 @@ var hull_wheelbase: float = 2100 #mm
 var steering_type: int = 1 #"Clutch:1","Differential:2","Twin Transmission:3","Double Differential:4","Electric:5"
 
 func _ready() -> void:
-	#await owner.ready
+	if owner == null:
+		owner = get_parent()
+		for a in find_children("*","*",1,0):
+			a.owner = self
 	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
-	add_component_DEBUG()
+	#add_component_DEBUG()
 	get_components()
 	assign_component_values()
 	regenerate_collisions()
@@ -91,6 +94,7 @@ func _physics_process(delta: float) -> void:
 	grab_speeds()
 	air_resis()
 	if null_components: return
+	if not player and not ai: return
 	human_inputs()
 	ai_inputs()
 	detect_requests()
@@ -205,23 +209,32 @@ func assign_component_values():
 
 func regenerate_collisions():
 	var owned_collisions: Array = find_children("*","CollisionShape3D",0,0) # Nuke any direct collisions still existing.
+	#var owned_collisions: Array = find_children("*")
+	#var owned_collisions: Array = get_children(0)
+	print("OC" + str(owned_collisions))
 	for ow in owned_collisions:
-		ow.queue_free()
+		if ow is CollisionShape3D and ow.get_parent():
+			ow.queue_free()
 
-	var collisions: Array = find_children("*","CollisionShape3D",1,0) # Find all collisions, duplicate them in place (without adding to array), steal originals.
+	var collisions: Array = find_children("*","CollisionShape3D",1,1) # Find all collisions, duplicate them in place (without adding to array), steal originals.
+	print("NC" + str(collisions))
 	for cm in collisions:
-		cm.get_parent().add_child(cm.duplicate())
-		cm.reparent(self, 1)
+		var copy = cm.duplicate(7)
+		#var offset = cm.global_position - global_position
+		cm.add_sibling(copy)
+		copy.reparent(self, 1)
+		
+		#var offset = cm.global_position - global_position
+		#var copied_collision = cm.duplicate(7)
+		#copied_collision.global_rotation = cm.global_rotation - global_rotation
+		#copied_collision.global_position = cm.global_position - global_position
+		#add_child(copied_collision)
 
 
 
 
 #func get_mounts(): NOT NEEDED - GET COMPONENTS DOES THIS
 func add_component(mount:Component_Mount,component: PackedScene):
-	for m in mount.get_children():
-		print(m)
-		remove_child(m)
-		m.queue_free()
 	if mount == null:
 		print("TRIED TO ADD TO NULL MOUNT")
 		print(self)
@@ -230,6 +243,10 @@ func add_component(mount:Component_Mount,component: PackedScene):
 		print("TRIED TO ADD NULL TO MOUNT")
 		print(self)
 		return
+	for m in mount.get_children():
+		print(m)
+		mount.remove_child(m)
+		m.queue_free()
 	var mounted = component.instantiate()
 	if mount.accepts != mounted.component_name:
 		print("TRIED TO ASSIGN WRONG PART TO WRONG MOUNT, DIPSHIT LMAO, FUCKIN GOTTEM")
@@ -238,7 +255,22 @@ func add_component(mount:Component_Mount,component: PackedScene):
 	mounted.owner = mounted.get_parent()
 	mounted.parent = self
 	get_components()
+	assign_component_values()
+	regenerate_collisions()
 
+
+#how would you save all the components any where they go?
+#func save_build():
+	#var build_array: Array = []
+	#for a in get_children():
+		#if a is Component_Mount:
+			#if a.get_children().size() > 0:
+				#build_array.append([a, a.get_child(0)])
+	#return build_array
+	#
+#func load_build(Array):
+	#for a in build_array:
+		#
 
 func add_component_DEBUG():
 	if name != "Vehicle": return #This is debug stuff

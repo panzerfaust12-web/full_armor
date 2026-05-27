@@ -24,7 +24,8 @@ var h6 = load("res://entities/hull/hull_05_testa1.tscn")
 var h7 = load("res://entities/hull/hull_06_testa1.tscn")
 
 var t1 = load("res://entities/turret/turret01_test.tscn")
-var t2 = load("res://entities/turret/turret02_test.tscn")
+var t2 = load("res://entities/turret/turret03_testa1.tscn")
+var t3 = load("res://entities/turret/turret04_testa1.tscn")
 
 var tr1 = load("res://entities/transmission/trans01_test.tscn")
 var tr2 = load("res://entities/transmission/trans02_test_wz2000.tscn")
@@ -40,7 +41,7 @@ var w5 = load("res://entities/wheel/wheel03_wz_tracked.tscn")
 @onready var engines: Array = [e1,e2,e3,e4,e5,c3,c4,h1,h2,h3,h4,h5,h6,h7,t1,t2,w1,w2,w3,w4,w5,e1,e2,e3,e4,e5,e1,e2,e3,e4,e5,tr1,tr2]
 @onready var guns: Array = [c3,c4]
 @onready var hulls: Array = [h1,h2,h3,h4,h5,h6,h7]
-@onready var turrets: Array = [t1,t2]
+@onready var turrets: Array = [t1,t2,t3]
 @onready var suspensions: Array = [s3]
 @onready var wheels: Array = [w1,w2,w3,w4,w5]
 @onready var transmissions: Array = [tr1,tr2]

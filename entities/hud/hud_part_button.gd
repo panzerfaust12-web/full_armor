@@ -3,7 +3,8 @@ class_name HUD_Part_Button
 
 var part_load
 @onready var button = $Button
-signal part_selected(part)
+signal part_selected(part,mount)
+var referenced_mount: Component_Mount = null
 
 func _ready() -> void:
 	if part_load == null:
@@ -14,6 +15,9 @@ func _ready() -> void:
 
 
 func _on_button_button_down() -> void:
-	part_selected.emit($PartSnapshotter.part)
+	if referenced_mount == null:
+		print("BUTTON WITH NO MOUNT REFERENCE")
+		return
+	part_selected.emit($PartSnapshotter.part,referenced_mount)
 	AudioController.play_sound("ButtonClick")
 	pass # Replace with function body.

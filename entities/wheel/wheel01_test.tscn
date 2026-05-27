@@ -75,8 +75,8 @@ script = ExtResource("2_4nwod")
 traction_slip_ratio = SubResource("Curve_7be3d")
 traction_side_angle = SubResource("Curve_gceed")
 spring_length = 1.0
-spring_force_max = 10.0
-spring_stiffness = 10.0
+spring_force_max = 2500.0
+spring_stiffness = 2500.0
 spring_dampening = 10.0
 metadata/_custom_type_script = "uid://b1gwwakd2mit2"
 

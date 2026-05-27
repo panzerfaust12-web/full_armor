@@ -6,6 +6,7 @@ var active_thing = null:
 		
 var active_thing_holder = null
 
+var live_mount = null
 var mounts: Array[Component_Mount] = []
 @onready var active_vehicle:Controller_Vehicle = $Vehicle
 
@@ -29,7 +30,8 @@ var h6 = load("res://entities/hull/hull_05_testa1.tscn")
 var h7 = load("res://entities/hull/hull_06_testa1.tscn")
 
 var t1 = load("res://entities/turret/turret01_test.tscn")
-var t2 = load("res://entities/turret/turret02_test.tscn")
+var t2 = load("res://entities/turret/turret03_testa1.tscn")
+var t3 = load("res://entities/turret/turret04_testa1.tscn")
 
 var tr1 = load("res://entities/transmission/trans01_test.tscn")
 var tr2 = load("res://entities/transmission/trans02_test_wz2000.tscn")
@@ -45,7 +47,7 @@ var w5 = load("res://entities/wheel/wheel03_wz_tracked.tscn")
 @onready var engines: Array = [e1,e2,e3,e4,e5]
 @onready var guns: Array = [c3,c4,c5]
 @onready var hulls: Array = [h1,h2,h3,h4,h5,h6,h7]
-@onready var turrets: Array = [t1,t2]
+@onready var turrets: Array = [t1,t2,t3]
 @onready var suspensions: Array = [s3]
 @onready var wheels: Array = [w1,w2,w3,w4,w5]
 @onready var transmissions: Array = [tr1,tr2]
@@ -67,17 +69,17 @@ func _ready() -> void:
 	if active_thing == null:
 		$PartWindow/PartSpinner.part_load = e1
 		active_thing_holder = $PartWindow/PartSpinner.part
+	$Vehicle.reparent($VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport/VehicleSpawn)
 		
 
 func clear_parts(powner):
 	for part in find_children("*","",1,0):
 		if part is HUD_Part_Button:
 			if part.is_connected("part_selected",update_thing):
-				print("part found that was connected")
 				part.disconnect("part_selected",update_thing)
 			part.queue_free()
 
-func populate_parts(location:Node, type:String):
+func populate_parts(location:Node, type:String, ref_mount:Component_Mount):
 	var array = null
 	clear_parts(location.get_parent())
 	print("Location " + str(location.name))
@@ -92,6 +94,7 @@ func populate_parts(location:Node, type:String):
 	for i in array:
 		var new_button = part_button.instantiate()
 		new_button.part_load = i
+		new_button.referenced_mount = ref_mount
 		new_button.part_selected.connect(update_thing)
 		location.add_sibling(new_button)
 		
@@ -106,7 +109,7 @@ func refresh_mounts(vehicle: Node3D):
 		if mount is HUD_Mount_Button:
 			clear_parts(clear_parts)
 			mount.mount_selected.disconnect(populate_mounts)
-			remove_child(mount)
+			mount.get_parent().remove_child(mount)
 			mount.queue_free()
 	
 	await get_tree().process_frame
@@ -117,6 +120,7 @@ func refresh_mounts(vehicle: Node3D):
 			var new_button = mount_button.instantiate()
 			new_button.add_child(copied_mount)
 			new_button.mount_load = copied_mount
+			new_button.referenced_mount = mount
 			new_button.mount_selected.connect(populate_mounts)
 			$ScrollContainer/BoxContainer.add_child(new_button)
 			
@@ -124,15 +128,18 @@ func refresh_mounts(vehicle: Node3D):
 
 	connect_mounts()
 
-func populate_mounts(mount: Node, type: String):
-	populate_parts(mount, type)
+func populate_mounts(mount: Node, type: String, ref_mount:Component_Mount):
+	$VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport/Mount_Ball.global_position = ref_mount.global_position
+	populate_parts(mount, type, ref_mount)
 	pass
 
-func update_thing(value):
+func update_thing(value, ref_mount):
 	var thingupdate = load(value.scene_file_path)
 	$PartWindow/PartSpinner.part_load = thingupdate
 	active_thing = $PartWindow/PartSpinner.part
 	active_thing_holder = $PartWindow/PartSpinner.part
+	live_mount = ref_mount
+	
 
 func define_thing(thing):
 	$PartName.text = thing.long_name
@@ -157,10 +164,6 @@ func define_thing(thing):
 		$PartStatValue4.text = str(thing.RPM_idle) + " / " + str(thing.RPM_max)
 		$PartStatName5.text = "RPM Up / RPM Down"
 		$PartStatValue5.text = str(thing.RPM_shift_up) + " / " + str(thing.RPM_shift_down)
-
-
-func define_vehicle(vehicle):
-	vehicle.instantiate()
 	
 func get_mounts():
 	mounts = active_vehicle.mounts
@@ -204,10 +207,16 @@ func _on_engine_rev_button_down() -> void:
 
 func _on_equip_pressed() -> void:
 	if active_thing_holder != null:
+		var vehicle = $VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport/VehicleSpawn/Vehicle
 		AudioController.play_sound("ButtonEquip")
-		$Vehicle.add_component($Vehicle/Mount_Hull, load(active_thing_holder.get_scene_file_path()))
-		$VehicleWindow/VehicleSpinner.vehicle_load = $Vehicle
-		refresh_mounts($Vehicle)
+		vehicle.add_component(live_mount, load(active_thing_holder.get_scene_file_path()))
+		refresh_mounts(vehicle)
+		vehicle.global_position = Vector3(0,2.0,0)
+		vehicle.global_rotation = Vector3(0,0,0)
+		vehicle.linear_velocity = Vector3(0,0,0)
+		vehicle.angular_velocity = Vector3(0,0,0)
+		vehicle.freeze = false
+		#$VehicleWindow/VehicleSpinner.vehicle_load = $Vehicle
 	else: AudioController.play_sound("ButtonError")
 	
 #func thousands_sep(number, prefix=''):

@@ -10,7 +10,32 @@
 [ext_resource type="FontFile" uid="uid://b0vey4ih8ff7y" path="res://fonts/GGBotNet Fonts CC0/Delta Block/OpenType (.otf)/DeltaBlock-Regular.otf" id="8_6uspu"]
 [ext_resource type="Script" uid="uid://yn0ofi6v1bp6" path="res://entities/hud/parts/hud_scrollbar_marquee.gd" id="9_d137q"]
 [ext_resource type="Script" uid="uid://cvixswa30x438" path="res://entities/hud/parts/button_font_scaler.gd" id="10_ohmlr"]
+[ext_resource type="Material" uid="uid://bw7m3gystp5bj" path="res://materials/PolyHaven/asphalt_01.res" id="12_0pt18"]
 [ext_resource type="PackedScene" uid="uid://da61yfu3c1nov" path="res://ctrl_vehicle_base.tscn" id="12_f6kri"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_f6kri"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pt18"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dw6pp"]
+next_pass = SubResource("StandardMaterial3D_0pt18")
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.47801316, 0.000874632, 0.61150765, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dw6pp"]
+size = Vector3(15, 1, 15)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nl10n"]
+points = PackedVector3Array(-7.5, -0.5, -7.5, -7.5, 0.5, -7.5, 7.499999, -0.5, -7.5, -7.5, -0.5, 7.499999, -7.5, 0.5, 7.499999, 7.499999, 0.5, -7.5, 7.499999, -0.5, 7.499999, 7.499999, 0.5, 7.499999)
 
 [node name="SampleBuildMenu" type="Control" unique_id=759303387]
 layout_mode = 3
@@ -95,6 +120,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VehicleSpinner" parent="VehicleWindow" unique_id=287784651 instance=ExtResource("4_dw6pp")]
 layout_mode = 2
+
+[node name="SubViewport" parent="VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer" parent_id_path=PackedInt32Array(287784651, 2131454602) index="0" unique_id=6969767]
+size = Vector2i(533, 533)
+
+[node name="Mount_Ball" type="MeshInstance3D" parent="VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport" index="5" unique_id=752127253]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_f6kri")
+surface_material_override/0 = SubResource("StandardMaterial3D_dw6pp")
 
 [node name="PartWindow" type="MarginContainer" parent="." unique_id=638860011]
 clip_contents = true
@@ -439,11 +472,22 @@ script = ExtResource("10_ohmlr")
 
 [node name="Vehicle" parent="." unique_id=1053722670 instance=ExtResource("12_f6kri")]
 freeze = true
-debug_enabled = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1949228459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=872093820]
+transparency = 1.0
+mesh = SubResource("BoxMesh_dw6pp")
+surface_material_override/0 = ExtResource("12_0pt18")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=514396814]
+shape = SubResource("ConvexPolygonShape3D_nl10n")
 
 [connection signal="pressed" from="Engine_Toggle" to="." method="_on_engine_toggle_pressed"]
 [connection signal="button_down" from="Engine_Rev" to="." method="_on_engine_rev_button_down"]
 [connection signal="button_up" from="Engine_Rev" to="." method="_on_engine_rev_button_up"]
 [connection signal="pressed" from="Equip" to="." method="_on_equip_pressed"]
 
+[editable path="VehicleWindow/VehicleSpinner"]
 [editable path="Vehicle"]

@@ -9,7 +9,7 @@ points = PackedVector3Array(-1.5108011, 0.1997, 3.3999999, -1.3960418, -0.652555
 
 [node name="Turret" type="Node3D" unique_id=1793241976]
 script = ExtResource("1_8agoy")
-weight = 2000
+weight = 100
 length = 2000
 width = 2000
 depth = 800

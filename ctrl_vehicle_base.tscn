@@ -5,7 +5,7 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_qkvuq"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgsaf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvuq"]
 render_priority = 1
 transparency = 1
 no_depth_test = true
@@ -17,14 +17,14 @@ stencil_compare = 5
 metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tr68t"]
-next_pass = SubResource("StandardMaterial3D_sgsaf")
+next_pass = SubResource("StandardMaterial3D_qkvuq")
 stencil_mode = 2
 stencil_flags = 2
 stencil_color = Color(0.47801316, 0.000874632, 0.61150765, 1)
 
 [node name="Vehicle" type="RigidBody3D" unique_id=1053722670]
 script = ExtResource("1_qkvuq")
-debug_enabled = null
+player = false
 
 [node name="Mount_Hull" type="Node3D" parent="." unique_id=1599081847]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -1.0000001)
