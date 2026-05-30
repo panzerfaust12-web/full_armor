@@ -22,11 +22,13 @@ metadata/_custom_type_script = "uid://j35dlsy8ypog"
 [node name="Mount_Cannon" type="Node3D" parent="." unique_id=210722283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30981037, -0.7412008)
 script = ExtResource("2_ysl58")
+accepts = "Gun"
 metadata/_custom_type_script = "uid://be0ffafnlxhw3"
 
 [node name="Mount_MG" type="Node3D" parent="." unique_id=1952345354]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.423841, 0.3051146, -0.7537511)
 script = ExtResource("2_ysl58")
+accepts = "Gun"
 metadata/_custom_type_script = "uid://be0ffafnlxhw3"
 
 [node name="MainCameraPivot" type="Node3D" parent="." unique_id=387022979]

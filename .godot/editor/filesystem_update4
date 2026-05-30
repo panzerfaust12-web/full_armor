@@ -1,4 +1,5 @@
-res://entities/hud/parts/samplebuildmenu.tscn
+res://default_bus_layout.tres
+res://entities/turret/turret03_testa1.tscn
 res://skybox_sun_and_moon.gdshader
 res://test_generic_stone.tres
 res://shaders/water.gdshader
@@ -8,16 +9,4 @@ res://test_phys_rocket.gdshader
 res://skybox_simple_overcast.gdshader
 res://test_bullet_shader.gdshader
 res://test_decal_shader.gdshader
-res://entities/hud/parts/samplebuildmenu.gd
-res://entities/hud/hud_mount_button.gd
-res://entities/hud/hud_part_button.gd
-res://phys_wheel.gd
-res://ctrl_vehicle.gd
-res://ctrl_vehicle_base.tscn
-res://entities/hud/parts/hud_vehicle_loader.gd
-res://entities/hud/parts/hud_part_loader.gd
 res://entities/turret/turret04_testa1.tscn
-res://entities/hud/parts/samplepartmenu.gd
-res://entities/hull/hull_06_testa1.tscn
-res://entities/wheel/wheel01_test.tscn
-res://entities/turret/turret01_test.tscn
