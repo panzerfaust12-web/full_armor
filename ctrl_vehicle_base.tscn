@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dvu0hwpe8ldcm" path="res://ctrl_vehicle.gd" id="1_qkvuq"]
 [ext_resource type="Script" uid="uid://be0ffafnlxhw3" path="res://scripts/component_mount.gd" id="2_tr68t"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qkvuq"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_qkvuq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkvuq"]
@@ -23,6 +25,7 @@ stencil_flags = 2
 stencil_color = Color(0.47801316, 0.000874632, 0.61150765, 1)
 
 [node name="Vehicle" type="RigidBody3D" unique_id=1053722670]
+physics_material_override = SubResource("PhysicsMaterial_qkvuq")
 script = ExtResource("1_qkvuq")
 player = false
 

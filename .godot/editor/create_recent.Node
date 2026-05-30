@@ -1,3 +1,4 @@
+Label
 AudioStreamPlayer
 Node
 ItemList
@@ -12,4 +13,3 @@ MeshInstance3D
 Label3D
 Camera3D
 CollisionShape3D
-Timer

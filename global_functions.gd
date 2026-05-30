@@ -1,6 +1,5 @@
 extends Node3D
 class_name GlobalFunctions
-#var parent: Node3D = null
 
 static func grab_rigid_parent(child): # Looks three layers up for first RigidBody3D. If none found, report and kill self.
 	# Probably a way smarter way of doing this.

@@ -20,6 +20,7 @@ render_priority = 1
 transparency = 1
 no_depth_test = true
 shading_mode = 0
+albedo_color = Color(0.47801316, 0.000874632, 0.61150765, 1)
 stencil_mode = 3
 stencil_flags = 1
 stencil_compare = 5
@@ -38,6 +39,7 @@ size = Vector3(15, 1, 15)
 points = PackedVector3Array(-7.5, -0.5, -7.5, -7.5, 0.5, -7.5, 7.499999, -0.5, -7.5, -7.5, -0.5, 7.499999, -7.5, 0.5, 7.499999, 7.499999, 0.5, -7.5, 7.499999, -0.5, 7.499999, 7.499999, 0.5, 7.499999)
 
 [node name="SampleBuildMenu" type="Control" unique_id=759303387]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -470,6 +472,35 @@ metadata/_edit_use_anchors_ = true
 [node name="Button_Font_Scaler" type="Node" parent="Equip" unique_id=2093367795]
 script = ExtResource("10_ohmlr")
 
+[node name="Save" type="Button" parent="." unique_id=997371694]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.575
+anchor_top = 0.62222224
+anchor_right = 0.69194436
+anchor_bottom = 0.69647676
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Save
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_Font_Scaler" type="Node" parent="Save" unique_id=1342135620]
+script = ExtResource("10_ohmlr")
+
+[node name="Load" type="Button" parent="." unique_id=661790972]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7125
+anchor_top = 0.62222224
+anchor_right = 0.82944435
+anchor_bottom = 0.69647676
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Load"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_Font_Scaler" type="Node" parent="Load" unique_id=480879877]
+script = ExtResource("10_ohmlr")
+
 [node name="Vehicle" parent="." unique_id=1053722670 instance=ExtResource("12_f6kri")]
 freeze = true
 
@@ -488,6 +519,8 @@ shape = SubResource("ConvexPolygonShape3D_nl10n")
 [connection signal="button_down" from="Engine_Rev" to="." method="_on_engine_rev_button_down"]
 [connection signal="button_up" from="Engine_Rev" to="." method="_on_engine_rev_button_up"]
 [connection signal="pressed" from="Equip" to="." method="_on_equip_pressed"]
+[connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Load" to="." method="_on_load_pressed"]
 
 [editable path="VehicleWindow/VehicleSpinner"]
 [editable path="Vehicle"]

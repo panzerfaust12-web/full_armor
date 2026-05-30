@@ -122,6 +122,7 @@ func blank_components():
 	wheels = []
 	guns = []
 	
+	mounts = []
 	engine_mounts = []
 	transmission_mounts = []
 	turret_mounts = []
@@ -159,6 +160,7 @@ func get_components():
 		if component is Component_Suspension: suspensions.append(component)
 		if component is Component_Wheel: wheels.append(component)
 		if component is Component_Gun: guns.append(component)
+		
 	
 	all_components.append_array(hulls)
 	all_components.append_array(engines)
@@ -170,6 +172,11 @@ func get_components():
 	
 	for component in all_components:
 		if debug_enabled: component.debug_enabled = true
+	
+	if mounts.size() == 1:
+		freeze = true
+	else:
+		freeze = false
 	
 	null_component_check()
 	if null_components: return
@@ -191,6 +198,7 @@ func get_components():
 		if suspension.engine_driven:
 			driven_suspensions.append(suspension)
 
+
 func assign_component_values():
 	#Clear Weight Calcs
 	mass = 1.0
@@ -211,13 +219,13 @@ func regenerate_collisions():
 	var owned_collisions: Array = find_children("*","CollisionShape3D",0,0) # Nuke any direct collisions still existing.
 	#var owned_collisions: Array = find_children("*")
 	#var owned_collisions: Array = get_children(0)
-	print("OC" + str(owned_collisions))
+	#print("OC" + str(owned_collisions))
 	for ow in owned_collisions:
 		if ow is CollisionShape3D and ow.get_parent():
 			ow.queue_free()
 
 	var collisions: Array = find_children("*","CollisionShape3D",1,1) # Find all collisions, duplicate them in place (without adding to array), steal originals.
-	print("NC" + str(collisions))
+	#print("NC" + str(collisions))
 	for cm in collisions:
 		var copy = cm.duplicate(7)
 		#var offset = cm.global_position - global_position
@@ -260,17 +268,30 @@ func add_component(mount:Component_Mount,component: PackedScene):
 
 
 #how would you save all the components any where they go?
-#func save_build():
-	#var build_array: Array = []
-	#for a in get_children():
-		#if a is Component_Mount:
-			#if a.get_children().size() > 0:
-				#build_array.append([a, a.get_child(0)])
+func save_build():
+	var build_array: Array = []
+	for a in mounts:
+		if a.get_children().size() > 0:
+			build_array.append([mounts.find(a), a.get_child(0).get_scene_file_path()])
+	GlobalVariables.vehicle_load_array = build_array
+	print(GlobalVariables.vehicle_load_array)
 	#return build_array
-	#
-#func load_build(Array):
-	#for a in build_array:
-		#
+
+func empty_build():
+	for a in $Mount_Hull.get_children():
+		$Mount_Hull.remove_child(a)
+		a.queue_free()
+	get_components()
+
+func load_build(): #build_array: Array
+	var loader = GlobalVariables.vehicle_load_array
+	empty_build()
+	for a in loader.size():
+		add_component(mounts[loader[a][0]],load(loader[a][1]))
+	get_components()
+	for a in wheels:
+		a.get_child(0).parent_wheels = wheels.size()
+		a.get_child(0).reready()
 
 func add_component_DEBUG():
 	if name != "Vehicle": return #This is debug stuff

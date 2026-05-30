@@ -28,7 +28,7 @@ class_name Phys_Wheel
 @export_custom(PROPERTY_HINT_NONE, "suffix:m") var wheel_thickness: float = 0.5 #Wheel width might be better name.
 @export_custom(PROPERTY_HINT_NONE, "suffix:") var wheel_passive_traction: float = 0.01 #Traction applied when nothing happens. 
 @export_range(-45, 45, 1.0, "radians_as_degrees") var wheel_steering_angle: float = 0.0 # Wheel angle in degrees.
-@export_range(-45, 45, 1.0, "radians_as_degrees") var wheel_steering_angle_max: float = 90.0 #Limiter. Unused yet.
+@export_range(-45, 45, 1.0, "radians_as_degrees") var wheel_steering_angle_max: float = deg_to_rad(45.0) #Limiter. Unused yet.
 
 # YOU NEED TO COME BACK TO STEERING AT SOME POINT AND ACCOUNT FOR PERFECTED STEERING ANGLES BASED ON VEHICLE WIDTH
 # THIS MIGHT COME FROM THE VEHICLE CONTROLLER ITSELF THOUGH, AS IT WOULD CARRY THE WIDTH
@@ -220,7 +220,8 @@ func _ready() -> void:
 	cmcopy2.name = str(name) + "_Col_Illegal"
 	parent.add_child.call_deferred(cmcopy2)
 	
-	
+func reready():
+	mass_and_wheel_multiplier = ((parent.mass * gravity) / parent_wheels)
 
 #func _process(delta: float) -> void: #Dunno if visuals should go here :V
 	#pass

@@ -1,5 +1,5 @@
 res://default_bus_layout.tres
-res://entities/turret/turret03_testa1.tscn
+res://entities/hud/parts/samplebuildmenu.tscn
 res://skybox_sun_and_moon.gdshader
 res://test_generic_stone.tres
 res://shaders/water.gdshader
@@ -9,4 +9,17 @@ res://test_phys_rocket.gdshader
 res://skybox_simple_overcast.gdshader
 res://test_bullet_shader.gdshader
 res://test_decal_shader.gdshader
-res://entities/turret/turret04_testa1.tscn
+res://ctrl_vehicle.gd
+res://global_functions.gd
+res://global_variables.gd
+res://entities/hud/parts/samplebuildmenu.gd
+res://ctrl_vehicle_base.tscn
+res://scripts/player_controller.gd
+res://pause_menu.gd
+res://PauseMenu.tscn
+res://entities/hull/hull03_test_wv2000.tscn
+res://scripts/component_mount.gd
+res://scripts/component_wheel.gd
+res://phys_wheel.gd
+res://vhm_wv2000.tscn
+res://entities/wheel/wheel02_wz2000.tscn

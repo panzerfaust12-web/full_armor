@@ -31,17 +31,31 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=579165179]
 layout_mode = 2
 
+[node name="Current" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1967512105]
+layout_mode = 2
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="MarginContainer/VBoxContainer" unique_id=333775688]
+layout_mode = 2
+text = "00:00"
+horizontal_alignment = 1
+
 [node name="Resume" type="Button" parent="MarginContainer/VBoxContainer" unique_id=612167380]
 layout_mode = 2
 text = "Resume"
 
+[node name="Reset Position" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1287129661]
+layout_mode = 2
+text = "Reset Position"
+
+[node name="Load" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1953408003]
+layout_mode = 2
+text = "Load Build"
+
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=543616736]
 layout_mode = 2
 text = "Quit"
-
-[node name="Game Speed" type="Button" parent="MarginContainer/VBoxContainer" unique_id=891257474]
-layout_mode = 2
-text = "Game Speed"
 
 [node name="Camera" type="MarginContainer" parent="." unique_id=620535301]
 layout_mode = 1
@@ -68,6 +82,10 @@ text = "Toggle Perspective"
 layout_mode = 2
 text = "Cycle FOV"
 
+[node name="Game Speed" type="Button" parent="Camera/VBoxContainer" unique_id=891257474]
+layout_mode = 2
+text = "Game Speed"
+
 [node name="Sky" type="MarginContainer" parent="." unique_id=138410532]
 layout_mode = 1
 anchors_preset = 8
@@ -91,12 +109,14 @@ text = "Cycle Sky Speed"
 
 [node name="Sunmove" type="Button" parent="Sky/VBoxContainer" unique_id=131287288]
 layout_mode = 2
-text = "Move Sun 45'"
+text = "1+ Hour"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Reset Position" to="." method="_on_reset_position_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Game Speed" to="." method="_on_game_speed_pressed"]
 [connection signal="pressed" from="Camera/VBoxContainer/Camera" to="." method="_on_camera_pressed"]
 [connection signal="pressed" from="Camera/VBoxContainer/FOV" to="." method="_on_fov_pressed"]
+[connection signal="pressed" from="Camera/VBoxContainer/Game Speed" to="." method="_on_game_speed_pressed"]
 [connection signal="pressed" from="Sky/VBoxContainer/Skyscale" to="." method="_on_skyscale_pressed"]
 [connection signal="pressed" from="Sky/VBoxContainer/Sunmove" to="." method="_on_sunmove_pressed"]

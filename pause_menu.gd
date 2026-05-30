@@ -5,7 +5,32 @@ var speed_in: int = 1
 
 @onready var physics_fps: float = Engine.physics_ticks_per_second
 
+var reset_pos: Vector3
+var reset_rotation: Vector3
 
+var world: Sky3D
+
+var hours: float
+var minutes: float
+var seconds: float
+var timestring: String
+var vehicle
+
+func _ready() -> void:
+	vehicle = get_parent().get_parent()
+	reset_pos = vehicle.global_position
+	reset_rotation = vehicle.global_rotation
+	world = get_tree().get_first_node_in_group("WorldEnvironment") 
+	
+
+func _process(delta: float) -> void:
+	hours = float(int(world.current_time))
+	minutes = (world.current_time - int(world.current_time)) * 60.0
+	seconds = (minutes - int(minutes)) * 60.0
+	timestring = "%02d:%02d:%02d" % [hours, minutes, seconds]
+	$MarginContainer/VBoxContainer/Time.text = timestring
+	$MarginContainer/VBoxContainer/Current.text = Time.get_time_string_from_system()
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		if get_tree().paused:
@@ -57,15 +82,12 @@ func _on_fov_pressed() -> void:
 
 
 func _on_skyscale_pressed() -> void:
-	var world = get_tree().get_first_node_in_group("WorldEnvironment") #get_node("../../../Skybox/WorldEnvironment")
-	world.rotational_speed *= 10.0
-	if world.rotational_speed <= -75: world.rotational_speed = -0.00075
-	print(world.rotational_speed)
+	world.minutes_per_day = wrapf(world.minutes_per_day + 5, 0, 60)
+	print(world.minutes_per_day)
 
 func _on_sunmove_pressed() -> void:
-	var sun = get_tree().get_first_node_in_group("Sun")
-	sun.rotation.x -= deg_to_rad(45)
-	print(rad_to_deg(sun.rotation.x))
+	world.current_time = round(world.current_time + 1.0)
+	print(world.current_time)
 
 
 func _on_game_speed_pressed() -> void:
@@ -73,3 +95,14 @@ func _on_game_speed_pressed() -> void:
 	Engine.time_scale = speeds[speed_in]
 	Engine.physics_ticks_per_second = physics_fps * speeds[speed_in]
 	print(speeds[speed_in])
+
+
+func _on_load_pressed() -> void:
+	if vehicle is Controller_Vehicle:
+		vehicle.load_build()
+	pass # Replace with function body.
+
+
+func _on_reset_position_pressed() -> void:
+	vehicle.global_position = reset_pos
+	vehicle.global_rotation = reset_rotation

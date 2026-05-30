@@ -14,7 +14,9 @@ var component_name: String = "Wheel"
 @export_category("Specific") # These are basic, shared component value that let attachment points know what is/isn't legal.
 @export_custom(PROPERTY_HINT_NONE, "suffix:kg") var safe_weight: int = 200
 @export_custom(PROPERTY_HINT_NONE, "suffix:kg") var maximum_weight: int = 200
+
 @export var engine_driven: bool = false
+@export var steering_enabled: bool = false
 
 @export var debug_enabled: bool = false
 
@@ -43,6 +45,11 @@ var parent: Node3D
 # DO THE MOUNTS THEMSELVES NEED TO SAY WHAT GOES WHERE FOR INPUTS??? ?AUGHUIAGHUAHGUASGHUSG
 
 func _ready() -> void:
+	if get_parent() is Component_Mount:
+		steering_enabled = get_parent().steering_enabled
+		engine_driven = get_parent().engine_driven
+	$Phys_Wheel.engine_enabled = engine_driven
+	$Phys_Wheel.steering_enabled = steering_enabled
 	if owner != null: await owner.ready
 	if parent == null:
 		parent = GlobalFunctions.grab_rigid_parent(self)

@@ -218,7 +218,31 @@ func _on_equip_pressed() -> void:
 		vehicle.freeze = false
 		#$VehicleWindow/VehicleSpinner.vehicle_load = $Vehicle
 	else: AudioController.play_sound("ButtonError")
-	
+
+func _on_save_pressed() -> void:
+	var vehicle: Controller_Vehicle = $VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport/VehicleSpawn/Vehicle
+	vehicle.save_build()
+
+func _on_load_pressed() -> void:
+	var vehicle: Controller_Vehicle = $VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport/VehicleSpawn/Vehicle
+	vehicle.load_build()
+	refresh_mounts(vehicle)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("build"):
+		if get_tree().paused:
+			hide()
+			if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			get_tree().paused = false
+		else:
+			show()
+			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			get_tree().paused = true
+			PhysicsServer3D.set_active(true)
+
+
 #func thousands_sep(number, prefix=''):
 	#number = int(number)
 	#var neg = false
