@@ -137,6 +137,7 @@ size = Vector3(0.18432617, 0.20043945, 1.6149292)
 
 [node name="Cannon" type="Node3D" unique_id=206138512]
 script = ExtResource("1_ds7oa")
+weight = 100
 width = 200
 depth = 200
 long_name = "Ribaldi 47/32 1902"
@@ -149,6 +150,7 @@ dispersion_mil_horizontal = 0.25
 dispersion_mil_vertical = 0.25
 dispersion_time_to_bloom = 10.0
 dispension_time_to_center = 1.0
+debug_key = 49
 bullet = ExtResource("2_w8g25")
 metadata/_custom_type_script = "uid://cnb4jsu5smh10"
 

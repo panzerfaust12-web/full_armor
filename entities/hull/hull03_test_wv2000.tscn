@@ -98,3 +98,33 @@ light_color = Color(1, 0.85400385, 0.70014197, 1)
 light_energy = 2.0
 light_specular = 0.0
 omni_range = 0.2
+
+[node name="Mount_Gun" type="Node3D" parent="." unique_id=63878977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2060492, -0.31827164)
+script = ExtResource("2_p6a40")
+accepts = "Gun"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Gun2" type="Node3D" parent="." unique_id=60734665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16777837, 0.88777256, -1.1456532)
+script = ExtResource("2_p6a40")
+accepts = "Gun"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Gun3" type="Node3D" parent="." unique_id=715710636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20671582, 0.6011653, -0.52502203)
+script = ExtResource("2_p6a40")
+accepts = "Gun"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Suspension" type="Node3D" parent="." unique_id=262104846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.4, 0)
+script = ExtResource("2_p6a40")
+accepts = "Suspension"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"
+
+[node name="Mount_Suspension2" type="Node3D" parent="." unique_id=1154552316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.4, 0)
+script = ExtResource("2_p6a40")
+accepts = "Suspension"
+metadata/_custom_type_script = "uid://be0ffafnlxhw3"

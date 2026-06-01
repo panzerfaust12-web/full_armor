@@ -23,9 +23,13 @@ func _ready() -> void:
 	tank = get_parent()
 	if tank.get_class() != "RigidBody3D": queue_free()
 	pause_menu = find_child("Pause_Menu")
+	var camp = $CameraPivot
+	camp.global_position = self.global_position
+	camp.global_rotation.y = self.global_rotation.y
+	
 
 func _process(delta: float) -> void:
-	_camera()
+	_camera(delta)
 	
 	
 
@@ -95,11 +99,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 
 #PROCESS FUNCTIONS
-func _camera() -> void:
+func _camera(delta) -> void:
 	var offset = Vector3(0,0,0)
 	var camp = $CameraPivot
-	camp.global_position = self.global_position + offset
-	camp.global_rotation.y = self.global_rotation.y + cam_y_rot
+	camp.global_position = lerp(camp.global_position, self.global_position + offset, delta * 10.0)
+	camp.global_rotation.y = lerp_angle(camp.global_rotation.y, self.global_rotation.y + cam_y_rot, delta * 10.0)
 	camp.orthonormalize()
 #	$HUD/SubViewportContainer/SubViewport/Node3D.global_transform = global_transform
 

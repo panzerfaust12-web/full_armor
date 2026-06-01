@@ -81,7 +81,6 @@ func _ready() -> void:
 		for a in find_children("*","*",1,0):
 			a.owner = self
 	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
-	#add_component_DEBUG()
 	get_components()
 	assign_component_values()
 	regenerate_collisions()
@@ -239,7 +238,15 @@ func regenerate_collisions():
 		#add_child(copied_collision)
 
 
-
+func remove_component(mount:Component_Mount):
+	if mount == null:
+		print("TRIED TO REMOVE NULL MOUNT")
+		print(self)
+		return
+	for m in mount.get_children():
+		print(m)
+		mount.remove_child(m)
+		m.queue_free()
 
 #func get_mounts(): NOT NEEDED - GET COMPONENTS DOES THIS
 func add_component(mount:Component_Mount,component: PackedScene):
@@ -292,17 +299,6 @@ func load_build(): #build_array: Array
 	for a in wheels:
 		a.get_child(0).parent_wheels = wheels.size()
 		a.get_child(0).reready()
-
-func add_component_DEBUG():
-	if name != "Vehicle": return #This is debug stuff
-	return
-	add_component($Mount_Hull,load("res://entities/hull/hull03_test_wv2000.tscn"))
-	add_component(wheel_mounts[0],load("res://entities/wheel/wheel02_wz2000.tscn"))
-	add_component(wheel_mounts[1],load("res://entities/wheel/wheel02_wz2000.tscn"))
-	add_component(wheel_mounts[2],load("res://entities/hull/hull03_test_wv2000.tscn"))
-	add_component(engine_mounts[0],load("res://entities/engine/engine03_test_wv2000.tscn"))
-	add_component(transmission_mounts[0],load("res://entities/transmission/trans01_test.tscn"))
-
 
 func air_resis():
 	var r: float = 1.2250 #Air Density - kg/m^3

@@ -205,28 +205,42 @@ func _on_engine_rev_button_down() -> void:
 		active_thing_holder.throttle = 1.0
 	else: AudioController.play_sound("ButtonError")
 
+func _on_unequip_pressed() -> void:
+	if active_thing_holder != null:
+		var vehicle = $VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport/VehicleSpawn/Vehicle
+		AudioController.play_sound("ButtonEquip")
+		vehicle.remove_component(live_mount)
+		refresh_mounts(vehicle)
+		refresh_vehicle_location(vehicle)
+	else: AudioController.play_sound("ButtonError")
+
 func _on_equip_pressed() -> void:
 	if active_thing_holder != null:
 		var vehicle = $VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport/VehicleSpawn/Vehicle
 		AudioController.play_sound("ButtonEquip")
 		vehicle.add_component(live_mount, load(active_thing_holder.get_scene_file_path()))
 		refresh_mounts(vehicle)
+		refresh_vehicle_location(vehicle)
+	else: AudioController.play_sound("ButtonError")
+
+func refresh_vehicle_location(vehicle):
 		vehicle.global_position = Vector3(0,2.0,0)
 		vehicle.global_rotation = Vector3(0,0,0)
 		vehicle.linear_velocity = Vector3(0,0,0)
 		vehicle.angular_velocity = Vector3(0,0,0)
 		vehicle.freeze = false
-		#$VehicleWindow/VehicleSpinner.vehicle_load = $Vehicle
-	else: AudioController.play_sound("ButtonError")
 
 func _on_save_pressed() -> void:
 	var vehicle: Controller_Vehicle = $VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport/VehicleSpawn/Vehicle
 	vehicle.save_build()
+	GlobalVariables.save_game()
 
 func _on_load_pressed() -> void:
 	var vehicle: Controller_Vehicle = $VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport/VehicleSpawn/Vehicle
+	GlobalVariables.load_game()
 	vehicle.load_build()
 	refresh_mounts(vehicle)
+	refresh_vehicle_location(vehicle)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("build"):
@@ -235,12 +249,20 @@ func _unhandled_input(event: InputEvent) -> void:
 			if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			get_tree().paused = false
+			var vehicle: Controller_Vehicle = $VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport/VehicleSpawn/Vehicle
+			vehicle.save_build()
+			for a in get_parent().get_children(1):
+				if a.name == "Vehicle":
+					a.load_build()
 		else:
 			show()
 			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			get_tree().paused = true
 			PhysicsServer3D.set_active(true)
+			var vehicle: Controller_Vehicle = $VehicleWindow/VehicleSpinner/AspectRatioContainer/SubViewportContainer/SubViewport/VehicleSpawn/Vehicle
+			vehicle.load_build()
+			refresh_mounts(vehicle)
 
 
 #func thousands_sep(number, prefix=''):

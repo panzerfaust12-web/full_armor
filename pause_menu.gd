@@ -14,7 +14,7 @@ var hours: float
 var minutes: float
 var seconds: float
 var timestring: String
-var vehicle
+var vehicle: Controller_Vehicle
 
 func _ready() -> void:
 	vehicle = get_parent().get_parent()
@@ -106,3 +106,17 @@ func _on_load_pressed() -> void:
 func _on_reset_position_pressed() -> void:
 	vehicle.global_position = reset_pos
 	vehicle.global_rotation = reset_rotation
+	vehicle.linear_velocity = Vector3.ZERO
+	vehicle.angular_velocity = Vector3.ZERO
+
+
+func _on_save_game_pressed() -> void:
+	GlobalVariables.save_game()
+
+
+func _on_load_game_pressed() -> void:
+	GlobalVariables.load_game()
+
+
+func _on_delete_save_pressed() -> void:
+	GlobalVariables.delete_save()

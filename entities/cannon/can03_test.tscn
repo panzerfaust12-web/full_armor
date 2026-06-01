@@ -137,6 +137,7 @@ size = Vector3(0.09899902, 0.2164917, 1.1552734)
 
 [node name="Cannon" type="Node3D" unique_id=2040387545]
 script = ExtResource("1_tbmre")
+weight = 10
 length = 700
 width = 100
 depth = 150
@@ -150,9 +151,11 @@ magazine_size = 50
 dispersion_mil_horizontal = 0.0
 dispersion_mil_vertical = 0.0
 dispersion_time_to_bloom = 10.0
+debug_enabled = true
 projectile_mass = 0.1
 projectile_speed = 970.0
 recoil_dampening = 0.0
+debug_key = 49
 bullet = ExtResource("2_e4w2f")
 metadata/_custom_type_script = "uid://cnb4jsu5smh10"
 

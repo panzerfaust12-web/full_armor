@@ -79,8 +79,8 @@ shader_parameter/cirrus_absorption = 2.0
 shader_parameter/cirrus_sky_tint_fade = 0.5
 shader_parameter/cirrus_size = 1.0
 shader_parameter/cirrus_uv = Vector2(0.16, 0.11)
-shader_parameter/cirrus_position1 = Vector2(0.47863948, 0.47863948)
-shader_parameter/cirrus_position2 = Vector2(0.47863948, 0.47863948)
+shader_parameter/cirrus_position1 = Vector2(0.63721234, 0.63721234)
+shader_parameter/cirrus_position2 = Vector2(0.63721234, 0.63721234)
 shader_parameter/cirrus_texture = ExtResource("3_g45ha")
 shader_parameter/cumulus_visible = true
 shader_parameter/cumulus_intensity = 0.6
@@ -90,7 +90,7 @@ shader_parameter/cumulus_absorption = 2.0
 shader_parameter/cumulus_noise_freq = 2.7
 shader_parameter/cumulus_sky_tint_fade = 0.0
 shader_parameter/cumulus_size = 0.5
-shader_parameter/cumulus_position = Vector2(2.3936262, 2.3936262)
+shader_parameter/cumulus_position = Vector2(3.1851585, 3.1851585)
 shader_parameter/cumulus_texture = ExtResource("4_rohce")
 shader_parameter/cumulus_partial_mie_phase = Vector3(0.957564, 1.042436, 0.412)
 shader_parameter/cumulus_mie_intensity = 1.0
@@ -228,6 +228,26 @@ size = Vector3(7.5, 35, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_41bbf"]
 size = Vector3(7.5, 35, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6d5ld"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uoow6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_6aswl"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0mgpw"]
+radius = 2.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_stwqj"]
+friction = 0.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_ceoti"]
+size = Vector3(10, 15, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8sy83"]
+size = Vector3(10, 15, 1)
 
 [node name="warld2" type="Node3D" unique_id=24574871]
 
@@ -848,12 +868,336 @@ shape = SubResource("BoxShape3D_41bbf")
 
 [node name="loopdeloops" type="Node3D" parent="Things" unique_id=357835002]
 
+[node name="bumpers" type="Node3D" parent="Things" unique_id=967188813]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Things/bumpers" unique_id=1918640737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0754905, 0.9172946, 8.863814)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D" unique_id=687802840]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D" unique_id=1924932402]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="Things/bumpers" unique_id=1041575835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.805203, 0.9172946, 8.863814)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D2" unique_id=1959081338]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D2" unique_id=1535242651]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D5" type="RigidBody3D" parent="Things/bumpers" unique_id=1128015526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8073335, 0.9172946, 8.863814)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D5" unique_id=1169516867]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D5" unique_id=1740992377]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D6" type="RigidBody3D" parent="Things/bumpers" unique_id=177245896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3653917, 0.9172946, 8.863814)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D6" unique_id=2070535023]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D6" unique_id=680598690]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D7" type="RigidBody3D" parent="Things/bumpers" unique_id=956554402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.853488, 0.9172946, 8.863814)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D7" unique_id=1733196059]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D7" unique_id=1378569238]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D8" type="RigidBody3D" parent="Things/bumpers" unique_id=811356524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.158606, 0.9172946, 8.863814)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D8" unique_id=1037302217]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D8" unique_id=593974034]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D9" type="RigidBody3D" parent="Things/bumpers" unique_id=1964170895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.658183, 0.9172946, 8.863814)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D9" unique_id=958874863]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D9" unique_id=1956159124]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D10" type="RigidBody3D" parent="Things/bumpers" unique_id=1237794544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0754905, 0.9172946, 7.153718)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D10" unique_id=1669032367]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D10" unique_id=7189028]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D11" type="RigidBody3D" parent="Things/bumpers" unique_id=428042033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.805203, 0.9172946, 7.153718)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D11" unique_id=2136316082]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D11" unique_id=901461456]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D12" type="RigidBody3D" parent="Things/bumpers" unique_id=1420711145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8073335, 0.9172946, 7.153718)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D12" unique_id=58881764]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D12" unique_id=441566747]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D13" type="RigidBody3D" parent="Things/bumpers" unique_id=1917436128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3653917, 0.9172946, 7.153718)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D13" unique_id=1654179053]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D13" unique_id=564948285]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D14" type="RigidBody3D" parent="Things/bumpers" unique_id=2034170330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.853488, 0.9172946, 7.153718)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D14" unique_id=336086460]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D14" unique_id=738124141]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D15" type="RigidBody3D" parent="Things/bumpers" unique_id=1260719175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.158606, 0.9172946, 7.153718)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D15" unique_id=1784532494]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D15" unique_id=863831282]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D16" type="RigidBody3D" parent="Things/bumpers" unique_id=339835567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.658183, 0.9172946, 7.153718)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D16" unique_id=1658180417]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D16" unique_id=1643880657]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D17" type="RigidBody3D" parent="Things/bumpers" unique_id=1971927215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0754905, 0.9172946, 5.098325)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D17" unique_id=1652030753]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D17" unique_id=335568609]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D18" type="RigidBody3D" parent="Things/bumpers" unique_id=2081450462]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.805203, 0.9172946, 5.098325)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D18" unique_id=844689028]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D18" unique_id=1091476217]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D19" type="RigidBody3D" parent="Things/bumpers" unique_id=1691506742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8073335, 0.9172946, 5.098325)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D19" unique_id=372016031]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D19" unique_id=1504862506]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D20" type="RigidBody3D" parent="Things/bumpers" unique_id=1844009035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3653917, 0.9172946, 5.098325)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D20" unique_id=829601173]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D20" unique_id=1503421881]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D21" type="RigidBody3D" parent="Things/bumpers" unique_id=382635588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.853488, 0.9172946, 5.098325)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D21" unique_id=427318888]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D21" unique_id=1010599132]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D22" type="RigidBody3D" parent="Things/bumpers" unique_id=266632423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.158606, 0.9172946, 5.098325)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D22" unique_id=819451944]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D22" unique_id=816109744]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D23" type="RigidBody3D" parent="Things/bumpers" unique_id=1607607161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.658183, 0.9172946, 5.098325)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D23" unique_id=603247450]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D23" unique_id=236757773]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D24" type="RigidBody3D" parent="Things/bumpers" unique_id=2093416659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0754905, 0.9172946, 2.9306154)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D24" unique_id=586365093]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D24" unique_id=2133963649]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D25" type="RigidBody3D" parent="Things/bumpers" unique_id=283578051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.805203, 0.9172946, 2.9306154)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D25" unique_id=524033898]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D25" unique_id=1895533291]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D26" type="RigidBody3D" parent="Things/bumpers" unique_id=1716478873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8073335, 0.9172946, 2.9306154)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D26" unique_id=2087319304]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D26" unique_id=939762144]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D27" type="RigidBody3D" parent="Things/bumpers" unique_id=190397757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3653917, 0.9172946, 2.9306154)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D27" unique_id=1790931379]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D27" unique_id=1258051267]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D28" type="RigidBody3D" parent="Things/bumpers" unique_id=879586112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.853488, 0.9172946, 2.9306154)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D28" unique_id=1546596043]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D28" unique_id=1881618959]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D29" type="RigidBody3D" parent="Things/bumpers" unique_id=99127511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.158606, 0.9172946, 2.9306154)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D29" unique_id=1306481258]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D29" unique_id=222342761]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D30" type="RigidBody3D" parent="Things/bumpers" unique_id=1097569060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.658183, 0.9172946, 2.9306154)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D30" unique_id=1398278554]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D30" unique_id=927372710]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="Things/bumpers" unique_id=1390222584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.028015, 1.9971958, 18.81461)
+mass = 100.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D3" unique_id=78398440]
+mesh = SubResource("SphereMesh_6aswl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D3" unique_id=2075308347]
+shape = SubResource("SphereShape3D_0mgpw")
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="Things/bumpers" unique_id=1376643873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.756256, 8.41695, 13.94623)
+mass = 10000.0
+physics_material_override = SubResource("PhysicsMaterial_stwqj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D4" unique_id=1649816697]
+mesh = SubResource("BoxMesh_ceoti")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D4" unique_id=1890377572]
+shape = SubResource("BoxShape3D_8sy83")
+
+[node name="RigidBody3D31" type="RigidBody3D" parent="Things/bumpers" unique_id=825099668]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -40.125557, 0.9658367, 18.424887)
+mass = 10000.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D31" unique_id=946836309]
+mesh = SubResource("BoxMesh_ceoti")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D31" unique_id=831706227]
+shape = SubResource("BoxShape3D_8sy83")
+
+[node name="RigidBody3D32" type="RigidBody3D" parent="Things/bumpers" unique_id=2063553634]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -50.89227, 0.9658367, 18.424887)
+mass = 10000.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D32" unique_id=1222534714]
+mesh = SubResource("BoxMesh_ceoti")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D32" unique_id=972255144]
+shape = SubResource("BoxShape3D_8sy83")
+
 [node name="Build_Menu" parent="." unique_id=759303387 instance=ExtResource("25_oqksl")]
 visible = false
 
 [node name="Vehicle" parent="." unique_id=1053722670 instance=ExtResource("20_wq4s7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2270.671, 2.6499028, 1299.1472)
 player = true
+debug_enabled = true
 
 [node name="PlayerController" type="Node3D" parent="Vehicle" unique_id=602681776]
 script = ExtResource("21_j8y18")

@@ -74,13 +74,18 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera" unique_id=1886920771]
 layout_mode = 2
 
-[node name="Camera" type="Button" parent="Camera/VBoxContainer" unique_id=93619413]
+[node name="SaveGame" type="Button" parent="Camera/VBoxContainer" unique_id=1104957101]
 layout_mode = 2
-text = "Toggle Perspective"
+text = "Save Game"
 
-[node name="FOV" type="Button" parent="Camera/VBoxContainer" unique_id=1168754436]
+[node name="LoadGame" type="Button" parent="Camera/VBoxContainer" unique_id=1005088452]
 layout_mode = 2
-text = "Cycle FOV"
+text = "Load Game"
+
+[node name="DeleteSave" type="Button" parent="Camera/VBoxContainer" unique_id=493032116]
+layout_mode = 2
+text = "Delete Save
+"
 
 [node name="Game Speed" type="Button" parent="Camera/VBoxContainer" unique_id=891257474]
 layout_mode = 2
@@ -111,12 +116,23 @@ text = "Cycle Sky Speed"
 layout_mode = 2
 text = "1+ Hour"
 
+[node name="Camera" type="Button" parent="Sky/VBoxContainer" unique_id=93619413]
+layout_mode = 2
+text = "Toggle Perspective"
+
+[node name="FOV" type="Button" parent="Sky/VBoxContainer" unique_id=1168754436]
+layout_mode = 2
+text = "Cycle FOV"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Reset Position" to="." method="_on_reset_position_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Camera/VBoxContainer/Camera" to="." method="_on_camera_pressed"]
-[connection signal="pressed" from="Camera/VBoxContainer/FOV" to="." method="_on_fov_pressed"]
+[connection signal="pressed" from="Camera/VBoxContainer/SaveGame" to="." method="_on_save_game_pressed"]
+[connection signal="pressed" from="Camera/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="Camera/VBoxContainer/DeleteSave" to="." method="_on_delete_save_pressed"]
 [connection signal="pressed" from="Camera/VBoxContainer/Game Speed" to="." method="_on_game_speed_pressed"]
 [connection signal="pressed" from="Sky/VBoxContainer/Skyscale" to="." method="_on_skyscale_pressed"]
 [connection signal="pressed" from="Sky/VBoxContainer/Sunmove" to="." method="_on_sunmove_pressed"]
+[connection signal="pressed" from="Sky/VBoxContainer/Camera" to="." method="_on_camera_pressed"]
+[connection signal="pressed" from="Sky/VBoxContainer/FOV" to="." method="_on_fov_pressed"]

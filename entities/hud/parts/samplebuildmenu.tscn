@@ -461,15 +461,30 @@ script = ExtResource("10_ohmlr")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.42916667
-anchor_top = 0.43209878
+anchor_top = 0.37777779
 anchor_right = 0.528993
-anchor_bottom = 0.47993824
+anchor_bottom = 0.42561647
 pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "Equip
 "
 metadata/_edit_use_anchors_ = true
 
 [node name="Button_Font_Scaler" type="Node" parent="Equip" unique_id=2093367795]
+script = ExtResource("10_ohmlr")
+
+[node name="Unequip" type="Button" parent="." unique_id=1758223146]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42916667
+anchor_top = 0.43209878
+anchor_right = 0.528993
+anchor_bottom = 0.47993824
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Unequip
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_Font_Scaler" type="Node" parent="Unequip" unique_id=450709092]
 script = ExtResource("10_ohmlr")
 
 [node name="Save" type="Button" parent="." unique_id=997371694]
@@ -519,6 +534,7 @@ shape = SubResource("ConvexPolygonShape3D_nl10n")
 [connection signal="button_down" from="Engine_Rev" to="." method="_on_engine_rev_button_down"]
 [connection signal="button_up" from="Engine_Rev" to="." method="_on_engine_rev_button_up"]
 [connection signal="pressed" from="Equip" to="." method="_on_equip_pressed"]
+[connection signal="pressed" from="Unequip" to="." method="_on_unequip_pressed"]
 [connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Load" to="." method="_on_load_pressed"]
 

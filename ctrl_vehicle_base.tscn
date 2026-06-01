@@ -30,7 +30,6 @@ script = ExtResource("1_qkvuq")
 player = false
 
 [node name="Mount_Hull" type="Node3D" parent="." unique_id=1599081847]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -1.0000001)
 script = ExtResource("2_tr68t")
 accepts = "Hull"
 weight_limit = 100000.0
