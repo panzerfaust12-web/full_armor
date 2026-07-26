@@ -1,0 +1,470 @@
+[gd_scene format=3 uid="uid://bii54ux2jtpv2"]
+
+[ext_resource type="Script" uid="uid://cnb4jsu5smh10" path="res://scripts/component_gun.gd" id="1_mv8qy"]
+[ext_resource type="PackedScene" uid="uid://vr8hl6emxn0a" path="res://entities/bullets/bullet_13mm.tscn" id="2_eh3f2"]
+[ext_resource type="PackedScene" uid="uid://drcbsqe23fkgy" path="res://meshes/Guns/Autocannons/potsden_20l_40.tscn" id="3_mv8qy"]
+[ext_resource type="AudioStream" uid="uid://budpvet2m1l52" path="res://sound/Gun/Autocannon01.ogg" id="4_eh3f2"]
+[ext_resource type="Script" uid="uid://di7a0bgrpv3ca" path="res://entities/cannon/audio_play_once.gd" id="5_ho2vf"]
+[ext_resource type="Script" uid="uid://fmojw4s0iybu" path="res://entities/cannon/effect_muzzle_flash.gd" id="6_birun"]
+[ext_resource type="Texture2D" uid="uid://dyp1yhgcw4cqx" path="res://materials/Particles/MuzzlePlane01.png" id="7_8dou4"]
+[ext_resource type="ArrayMesh" uid="uid://uaboa6sn6gtt" path="res://meshes/Particles/MuzzlePlane01.obj" id="8_43rwf"]
+[ext_resource type="Texture2D" uid="uid://e7aqyghetilf" path="res://materials/Particles/MuzzleCone01.png" id="9_iu1h6"]
+[ext_resource type="ArrayMesh" uid="uid://b70kdrccammnp" path="res://meshes/Particles/MuzzleCone01.obj" id="10_5odr3"]
+[ext_resource type="Texture2D" uid="uid://b52a8fot66p1e" path="res://materials/Particles/MuzzleFlash01.png" id="11_q3ckm"]
+[ext_resource type="Script" uid="uid://dmqm8jov1bnh" path="res://entities/cannon/debug_gun_disp.gd" id="12_rri23"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_poqg3"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("7_8dou4")
+
+[sub_resource type="Curve" id="Curve_poqg3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kqyj3"]
+curve = SubResource("Curve_poqg3")
+
+[sub_resource type="Curve" id="Curve_ni5ff"]
+_data = [Vector2(0, 0), 0.0, 2.4781897, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j7dkv"]
+curve = SubResource("Curve_ni5ff")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ufdtk"]
+lifetime_randomness = 0.1
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_j7dkv")
+color = Color(1.6832789, 1.3441485, 0.9123984, 1)
+alpha_curve = SubResource("CurveTexture_kqyj3")
+hue_variation_min = -0.050000023
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8f37c"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("9_iu1h6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4uor"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("11_q3ckm")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_r52u4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8f37c"]
+curve = SubResource("Curve_r52u4")
+
+[sub_resource type="Curve" id="Curve_u6wqo"]
+_data = [Vector2(0, 0), 0.0, 2.4781897, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f4uor"]
+curve = SubResource("Curve_u6wqo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c5lw2"]
+lifetime_randomness = 0.1
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_f4uor")
+color = Color(1.4369954, 1.1459137, 0.775335, 1)
+alpha_curve = SubResource("CurveTexture_8f37c")
+hue_variation_min = -0.050000023
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="QuadMesh" id="QuadMesh_xv31e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufdtk"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("11_q3ckm")
+
+[sub_resource type="Curve" id="Curve_kqyj3"]
+_data = [Vector2(0, 0.359375), 0.0, -0.359375, 0, 1, Vector2(1, 0), -0.359375, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r52u4"]
+curve = SubResource("Curve_kqyj3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8f37c"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, -1)
+spread = 10.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+damping_min = 0.5
+damping_max = 0.8
+scale_min = 0.049999997
+scale_max = 0.29999998
+color = Color(3.2944162, 2.248599, 0.82927567, 1)
+alpha_curve = SubResource("CurveTexture_r52u4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_f4uor"]
+size = Vector2(0.1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ajf46"]
+size = Vector3(0.09899902, 0.18264008, 1.3227539)
+
+[sub_resource type="Animation" id="Animation_mv8qy"]
+resource_name = "Firing"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Potsden 20L40/Potsden 20 L_40 Action")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.1803, 0, 0, 0.5, 1, 0.33261967, 0, -6.6581043e-09, 1, 1, 0.1803, 0, 0)
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Potsden 20L40/Potsden 20 L_40 Spring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.5, 1, 1.1, 0.65, 1.1, 1, 1, 1, 1, 1)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Potsden 20L40/Potsden 20 L_40 Magazine")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.1803, 0, 0)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Potsden 20L40/Potsden 20 L_40 Magazine")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.75261366, -0.65846235, 0, 1.2336825e-07)
+
+[sub_resource type="Animation" id="Animation_eh3f2"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Potsden 20L40/Potsden 20 L_40 Action")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Potsden 20L40/Potsden 20 L_40 Spring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Potsden 20L40/Potsden 20 L_40 Magazine:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Potsden 20L40/Potsden 20 L_40 Magazine")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.6155057, 0.7881324, 1.282082e-08, -1.244537e-07)
+
+[sub_resource type="Animation" id="Animation_fwltj"]
+resource_name = "Reload"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Potsden 20L40/Potsden 20 L_40 Magazine")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.6155057, 0.7881324, 1.282082e-08, -1.244537e-07, 0.23333333, 1, 0.75261366, -0.65846235, 0, 1.2336825e-07)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Potsden 20L40/Potsden 20 L_40 Magazine")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.18034172, 0.20607442, 0, 0.23333333, 1, 0.18034172, 0.0034663081, 0)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Potsden 20L40/Potsden 20 L_40 Magazine:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Potsden 20L40/Potsden 20 L_40 Action")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.1803, 0, 0, 0.26666668, 1, 0.1803, 0, 0, 0.5, 1, 0.33186626, 0, -6.6251715e-09, 0.7, 1, 0.33186626, 0, -6.6251715e-09, 0.8333333, 1, 0.1803, 0, 0)
+tracks/4/type = "scale_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Potsden 20L40/Potsden 20 L_40 Spring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.26666668, 1, 1, 1, 1, 0.5, 1, 1.1, 0.65, 1.1, 0.7, 1, 1.1, 0.65, 1.1, 0.8333333, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_ajx7d"]
+resource_name = "Unload"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Potsden 20L40/Potsden 20 L_40 Magazine")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.18034172, 0.0034663081, 0, 0.06666668, 1, 0.18034172, 0.05013697, 0, 0.16666669, 1, 0.18034172, 0.085363284, -0.051163197, 0.6666667, 1, 0.1803417, -0.084645875, -0.3151782)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Potsden 20L40/Potsden 20 L_40 Magazine")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.75261366, -0.65846235, 0, 1.2336825e-07, 0.06666668, 1, 0.75261366, -0.65846235, 0, 1.2336825e-07, 0.16666669, 1, 0.72575635, -0.6349649, 0.1743338, 0.19926134, 0.6666667, 1, 0.6153644, -0.5383829, 0.37909967, 0.4333059)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Potsden 20L40/Potsden 20 L_40 Magazine:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.001, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6630667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_ejector_prop"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fwltj"]
+_data = {
+&"Firing": SubResource("Animation_mv8qy"),
+&"RESET": SubResource("Animation_eh3f2"),
+&"Reload": SubResource("Animation_fwltj"),
+&"Unload": SubResource("Animation_ajx7d")
+}
+
+[node name="Cannon" type="Node3D" unique_id=2040387545 node_paths=PackedStringArray("animations", "ejectspawner", "ejectedmesh")]
+script = ExtResource("1_mv8qy")
+weight = 10
+length = 700
+width = 100
+depth = 150
+long_name = "Potsden 20mm L/40"
+short_name = "AC 20 L/40 - P"
+description = "wagoogus (sr) - very scary"
+rate_of_fire = 520.0
+firing_type = 3
+magazine_size = 60
+dispersion_mil_horizontal = 0.0
+dispersion_mil_vertical = 0.0
+dispersion_time_to_bloom = 10.0
+debug_enabled = true
+projectile_mass = 0.1
+projectile_speed = 970.0
+recoil_dampening = 0.0
+debug_key = 49
+animations = NodePath("AnimationPlayer")
+bullet = ExtResource("2_eh3f2")
+ejectspawner = NodePath("EjectSpawn")
+ejectedmesh = NodePath("Potsden 20L40/Potsden 20 L_40 Magazine")
+metadata/_custom_type_script = "uid://cnb4jsu5smh10"
+
+[node name="Potsden 20L40" parent="." unique_id=757464905 instance=ExtResource("3_mv8qy")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Potsden 20 L_40 Action" parent="Potsden 20L40" index="0" unique_id=313557543]
+transform = Transform3D(0.9238795, -0.38268352, 0, 4.4703484e-08, 5.9604645e-08, -1, 0.3826835, 0.9238795, 5.9604645e-08, 0, 0, 0)
+
+[node name="Potsden 20 L_40 Magazine" parent="Potsden 20L40" index="1" unique_id=2097516551]
+transform = Transform3D(-0.24230543, -0.97019994, -1.509958e-07, -0.97019994, 0.24230543, -1.3299493e-07, 1.6561877e-07, 1.1427073e-07, -1, 0.18034172, 0.0034663081, 0)
+
+[node name="Potsden 20 L_40 Spring" parent="Potsden 20L40" index="3" unique_id=2018116519]
+transform = Transform3D(5.5233505e-07, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, 5.5233505e-07, -2.4143332e-14, 0.051170945, 0, 0)
+
+[node name="BarrelExit" type="Node3D" parent="." unique_id=1999825254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0062910104, -0.77002025)
+
+[node name="Sound_Firing" type="AudioStreamPlayer3D" parent="." unique_id=1717346660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8153619)
+stream = ExtResource("4_eh3f2")
+max_db = 6.0
+doppler_tracking = 2
+script = ExtResource("5_ho2vf")
+
+[node name="RateOfFire" type="Timer" parent="." unique_id=1014208021]
+process_callback = 0
+one_shot = true
+
+[node name="FirstFire" type="Timer" parent="." unique_id=437638201]
+process_callback = 0
+wait_time = 0.25
+one_shot = true
+
+[node name="Reload" type="Timer" parent="." unique_id=710224492]
+one_shot = true
+
+[node name="ReloadAnimation" type="Timer" parent="." unique_id=584784498]
+one_shot = true
+
+[node name="MuzzleFlash" type="Node3D" parent="." unique_id=1039606087 node_paths=PackedStringArray("parent", "light", "emitters")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8192977)
+visible = false
+script = ExtResource("6_birun")
+parent = NodePath("..")
+light = NodePath("OmniLight3D")
+emitters = [NodePath("MuzzleFlash"), NodePath("MuzzleCone"), NodePath("BeamFlash"), NodePath("Sparks"), NodePath("Sparks2")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MuzzleFlash" unique_id=677793069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3958904)
+visible = false
+light_color = Color(0.7488544, 0.5745385, 0.22149566, 1)
+light_energy = 16.0
+light_size = 1.0
+omni_range = 15.0
+omni_attenuation = 2.0
+
+[node name="MuzzleFlash" type="GPUParticles3D" parent="MuzzleFlash" unique_id=1495686082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.062256277)
+material_override = SubResource("StandardMaterial3D_poqg3")
+amount = 1
+lifetime = 0.1
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ufdtk")
+draw_pass_1 = ExtResource("8_43rwf")
+
+[node name="MuzzleCone" type="GPUParticles3D" parent="MuzzleFlash" unique_id=1162437694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0028967261)
+material_override = SubResource("StandardMaterial3D_8f37c")
+amount = 1
+lifetime = 0.1
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ufdtk")
+draw_pass_1 = ExtResource("10_5odr3")
+
+[node name="BeamFlash" type="GPUParticles3D" parent="MuzzleFlash" unique_id=1029454320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0028967261)
+material_override = SubResource("StandardMaterial3D_f4uor")
+amount = 1
+lifetime = 0.1
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_c5lw2")
+draw_pass_1 = SubResource("QuadMesh_xv31e")
+
+[node name="Sparks" type="GPUParticles3D" parent="MuzzleFlash" unique_id=1839261708]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.0065071583)
+material_override = SubResource("StandardMaterial3D_ufdtk")
+amount = 2
+lifetime = 0.05
+explosiveness = 0.7
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8f37c")
+draw_pass_1 = SubResource("QuadMesh_f4uor")
+
+[node name="Sparks2" type="GPUParticles3D" parent="MuzzleFlash" unique_id=1815127245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0065071583)
+material_override = SubResource("StandardMaterial3D_ufdtk")
+amount = 2
+lifetime = 0.05
+explosiveness = 0.7
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8f37c")
+draw_pass_1 = SubResource("QuadMesh_f4uor")
+
+[node name="DebugDisplay" type="Node3D" parent="." unique_id=414817166]
+transform = Transform3D(0.42530936, 0, 0, 0, 0.42530936, 0, 0, 0, 0.42530936, -0.7181144, 0.31686258, 0)
+script = ExtResource("12_rri23")
+
+[node name="Ammo" type="Label3D" parent="DebugDisplay" unique_id=1913827958]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+text = "Ammo Left:
+"
+horizontal_alignment = 0
+
+[node name="Reload" type="Label3D" parent="DebugDisplay" unique_id=148679043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10000001, 0)
+text = "Reload (s): "
+horizontal_alignment = 0
+
+[node name="Bloom" type="Label3D" parent="DebugDisplay" unique_id=478808647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+text = "Bloom %:"
+horizontal_alignment = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1130563189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007507324, 0.010051727, -0.16137695)
+visible = false
+shape = SubResource("BoxShape3D_ajf46")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=10978377]
+libraries/ = SubResource("AnimationLibrary_fwltj")
+
+[node name="EjectSpawn" type="Node3D" parent="." unique_id=1452639704]
+transform = Transform3D(-0.7310026, -0.68237466, 0, 0.68237466, -0.7310026, 0, 0, 0, 1, 0.5157634, 0.003913179, 0.12220636)
+
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]
+[connection signal="timeout" from="ReloadAnimation" to="." method="_on_reload_animation_timeout"]
+
+[editable path="Potsden 20L40"]

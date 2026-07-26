@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://o5wpyx2jdtea"]
+
+[ext_resource type="Script" uid="uid://mdw6filkhi66" path="res://phy_ejector_prop.gd" id="1_bcs3c"]
+
+[node name="MagazineProp" type="RigidBody3D" unique_id=961294365]
+top_level = true
+mass = 5.0
+continuous_cd = true
+script = ExtResource("1_bcs3c")
+
+[node name="Lifetime" type="Timer" parent="." unique_id=965018225]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_timer_timeout"]

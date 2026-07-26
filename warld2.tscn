@@ -79,8 +79,8 @@ shader_parameter/cirrus_absorption = 2.0
 shader_parameter/cirrus_sky_tint_fade = 0.5
 shader_parameter/cirrus_size = 1.0
 shader_parameter/cirrus_uv = Vector2(0.16, 0.11)
-shader_parameter/cirrus_position1 = Vector2(0.63721234, 0.63721234)
-shader_parameter/cirrus_position2 = Vector2(0.63721234, 0.63721234)
+shader_parameter/cirrus_position1 = Vector2(0.15038313, 0.15038313)
+shader_parameter/cirrus_position2 = Vector2(0.15038313, 0.15038313)
 shader_parameter/cirrus_texture = ExtResource("3_g45ha")
 shader_parameter/cumulus_visible = true
 shader_parameter/cumulus_intensity = 0.6
@@ -90,7 +90,7 @@ shader_parameter/cumulus_absorption = 2.0
 shader_parameter/cumulus_noise_freq = 2.7
 shader_parameter/cumulus_sky_tint_fade = 0.0
 shader_parameter/cumulus_size = 0.5
-shader_parameter/cumulus_position = Vector2(3.1851585, 3.1851585)
+shader_parameter/cumulus_position = Vector2(0.7518924, 0.7518924)
 shader_parameter/cumulus_texture = ExtResource("4_rohce")
 shader_parameter/cumulus_partial_mie_phase = Vector3(0.957564, 1.042436, 0.412)
 shader_parameter/cumulus_mie_intensity = 1.0
@@ -918,6 +918,16 @@ mass = 50.0
 mesh = SubResource("SphereMesh_6d5ld")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D7" unique_id=1378569238]
+shape = SubResource("SphereShape3D_uoow6")
+
+[node name="RigidBody3D33" type="RigidBody3D" parent="Things/bumpers" unique_id=549786265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.07004, 2.1553516, 20.158981)
+mass = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Things/bumpers/RigidBody3D33" unique_id=703199679]
+mesh = SubResource("SphereMesh_6d5ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Things/bumpers/RigidBody3D33" unique_id=203526410]
 shape = SubResource("SphereShape3D_uoow6")
 
 [node name="RigidBody3D8" type="RigidBody3D" parent="Things/bumpers" unique_id=811356524]

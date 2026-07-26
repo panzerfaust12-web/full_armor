@@ -20,6 +20,7 @@ var e5 = load("res://entities/engine/engine05_test.tscn")
 var c3 = load("res://entities/cannon/can03_test.tscn")
 var c4 = load("res://entities/cannon/can04_test.tscn")
 var c5 = load("res://entities/cannon/can05_test.tscn")
+var c6 = load("res://entities/cannon/can06_potsden.tscn")
 
 var h1 = load("res://entities/hull/hull01_test.tscn")
 var h2 = load("res://entities/hull/hull02_test.tscn")
@@ -45,7 +46,7 @@ var w4 = load("res://entities/wheel/wheel03_wz_sprocket.tscn")
 var w5 = load("res://entities/wheel/wheel03_wz_tracked.tscn")
 
 @onready var engines: Array = [e1,e2,e3,e4,e5]
-@onready var guns: Array = [c3,c4,c5]
+@onready var guns: Array = [c3,c4,c5,c6]
 @onready var hulls: Array = [h1,h2,h3,h4,h5,h6,h7]
 @onready var turrets: Array = [t1,t2,t3]
 @onready var suspensions: Array = [s3]

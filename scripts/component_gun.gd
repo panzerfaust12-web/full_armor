@@ -47,8 +47,14 @@ var fired: bool = false
 var first_fire: bool = true
 var reloaded: bool = true
 
+@export var animations: AnimationPlayer
+var animationsenabled:bool = false
+
 
 @export var bullet: PackedScene
+@export var ejectspawner: Node3D
+@export var ejectedmesh: MeshInstance3D
+var ejector: PackedScene = load("res://phys_ejector_prop.tscn")
 
 var parent: RigidBody3D
 
@@ -66,6 +72,10 @@ func _ready() -> void:
 	magazine_count_loaded = magazine_size
 	$Reload.wait_time = magazine_reload_time
 
+	if animations != null:
+		animationsenabled = true
+		$ReloadAnimation.wait_time = max(0, $Reload.wait_time - 1.0)
+		
 func _physics_process(delta: float) -> void:
 	dispersion_bloomed = dispersion + ((dispersion_bloom_penalty_percent * dispersion_bloom_percent / 100.0) * dispersion)
 	
@@ -73,6 +83,10 @@ func _physics_process(delta: float) -> void:
 		reloaded = false
 		fired = false
 		$Reload.start()
+		if animations != null:
+			animations.speed_scale = 1.0
+			animations.play("Unload")
+			$ReloadAnimation.start()
 	
 	if not fired:
 		dispersion_bloom_percent = clampf(dispersion_bloom_percent - (delta / dispension_time_to_center), 0.0, 1.0)
@@ -86,7 +100,7 @@ func _physics_process(delta: float) -> void:
 				fire()
 			if not Input.is_key_pressed(debug_key):
 				fired = false
-		if firing_type == 3:
+		if firing_type == 3: #REVIEW THIS, NOT SMART?
 			if Input.is_key_pressed(debug_key):
 				if $RateOfFire.is_stopped():
 					if $FirstFire.is_stopped():
@@ -119,9 +133,27 @@ func fire():
 		add_sibling(nbullet)
 	dispersion_bloom_percent = clampf(dispersion_bloom_percent + dispersion_bloom_shot_impact, 0.0, 1.0)
 	magazine_count_loaded -= 1
+	if animationsenabled:
+		animations.speed_scale = (rate_of_fire / 60.0) * 2.0
+		animations.stop()
+		animations.play("Firing")
 	
 
 
 func _on_reload_timeout() -> void:
 	magazine_count_loaded = magazine_size
 	reloaded = true
+	
+
+func spawn_ejector_prop() -> void: # YOU WILL NEED A SANITY CHECK LATER TO NOT SPAWN INSIDE VEHICLES
+	if ejectspawner != null:
+		var ejected:RigidBody3D = ejector.instantiate()
+		ejected.add_child(ejectedmesh.duplicate(0))
+		ejected.mass = 0.000001
+		ejected.global_transform = ejectspawner.global_transform
+		ejected.generate()
+		get_tree().get_root().add_child(ejected)
+
+func _on_reload_animation_timeout() -> void:
+	animations.speed_scale = 1.0
+	animations.play("Reload")

@@ -182,9 +182,10 @@ one_shot = true
 [node name="Reload" type="Timer" parent="." unique_id=710224492]
 one_shot = true
 
-[node name="MuzzleFlash" type="Node3D" parent="." unique_id=1039606087 node_paths=PackedStringArray("light", "emitters")]
+[node name="MuzzleFlash" type="Node3D" parent="." unique_id=1039606087 node_paths=PackedStringArray("parent", "light", "emitters")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.64585096)
 script = ExtResource("6_qo4ws")
+parent = NodePath("..")
 light = NodePath("OmniLight3D")
 emitters = [NodePath("MuzzleFlash"), NodePath("MuzzleCone"), NodePath("BeamFlash"), NodePath("Sparks"), NodePath("Sparks2")]
 

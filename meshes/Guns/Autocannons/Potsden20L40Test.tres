@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cevhif7rcn2ai"]
+
+[ext_resource type="Texture2D" uid="uid://dha3r1rqcydj6" path="res://meshes/Guns/Autocannons/GUN_2048px_Color.png" id="1_hs38w"]
+[ext_resource type="Texture2D" uid="uid://cx78qacmlqhl8" path="res://meshes/Guns/Autocannons/GUN_2048px_Metallic.png" id="2_q1jug"]
+[ext_resource type="Texture2D" uid="uid://p68punepqsi3" path="res://meshes/Guns/Autocannons/GUN_2048px_Normal.png" id="3_8elmr"]
+[ext_resource type="Texture2D" uid="uid://buy7la07mfv2b" path="res://meshes/Guns/Autocannons/GUN_2048px_Roughness.png" id="4_68i0p"]
+
+[resource]
+albedo_texture = ExtResource("1_hs38w")
+metallic = 1.0
+metallic_texture = ExtResource("2_q1jug")
+roughness_texture = ExtResource("4_68i0p")
+normal_enabled = true
+normal_texture = ExtResource("3_8elmr")

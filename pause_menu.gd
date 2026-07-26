@@ -17,13 +17,16 @@ var timestring: String
 var vehicle: Controller_Vehicle
 
 func _ready() -> void:
+	world = get_tree().get_first_node_in_group("WorldEnvironment") 
 	vehicle = get_parent().get_parent()
+	if vehicle == null: return
 	reset_pos = vehicle.global_position
 	reset_rotation = vehicle.global_rotation
-	world = get_tree().get_first_node_in_group("WorldEnvironment") 
+
 	
 
 func _process(delta: float) -> void:
+	if world == null:return
 	hours = float(int(world.current_time))
 	minutes = (world.current_time - int(world.current_time)) * 60.0
 	seconds = (minutes - int(minutes)) * 60.0
@@ -120,3 +123,10 @@ func _on_load_game_pressed() -> void:
 
 func _on_delete_save_pressed() -> void:
 	GlobalVariables.delete_save()
+
+
+func _on_speak_pressed() -> void:
+	var voices = DisplayServer.tts_get_voices_for_language("en")
+	var voice_id = voices[0]
+	DisplayServer.tts_stop()
+	DisplayServer.tts_speak($Camera/VBoxContainer/Words.text,voice_id)

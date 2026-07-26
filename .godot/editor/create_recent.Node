@@ -1,4 +1,10 @@
+Timer
+CollisionShape3D
+MeshInstance3D
+RigidBody3D
 Node3D
+AnimationPlayer
+LineEdit
 Label
 AudioStreamPlayer
 Node
@@ -6,9 +12,3 @@ ItemList
 OmniLight3D
 SpotLight3D
 Sky3D
-Terrain3D
-StaticBody3D
-RigidBody3D
-MeshInstance3D
-Label3D
-Camera3D
